@@ -19,12 +19,7 @@
   echo "</div>";
   echo "<h2>Zubereitung</h2>";
   $parsedown = new Parsedown;
-  // var_dump($recipe->Beschreibung);
   echo $parsedown->text($recipe->Beschreibung);
-  // foreach(explode("\r\n", $recipe->Beschreibung) as $paragraph){
-  //   echo "<p>$paragraph</p>";
-  // }
-
 ?>
 <div id="editingMenu"></div>
 <div id="editingMenuOpen">
