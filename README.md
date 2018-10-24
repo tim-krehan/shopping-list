@@ -1,6 +1,6 @@
 # Voraussetzungen
-## Apache Moduls:
-* php-rewrite
+## Apache Module:
+* mod-rewrite
 ## Packages
 * php7
 * php7-mysql
