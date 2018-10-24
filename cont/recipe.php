@@ -2,6 +2,7 @@
 <script src="/bin/recipe.js" charset="utf-8"></script>
 <?php
   include $_SESSION["docroot"].'/php/classes.recipe.php';
+    include $_SESSION["docroot"].'/php/classes.parsedown.php';
   $book = new cookbook;
   $book->getRecipe($_GET["number"]);
   $recipe = $book->sites[0];
@@ -17,9 +18,13 @@
   }
   echo "</div>";
   echo "<h2>Zubereitung</h2>";
-  foreach(explode("\r\n", $recipe->Beschreibung) as $paragraph){
-    echo "<p>$paragraph</p>";
-  }
+  $parsedown = new Parsedown;
+  // var_dump($recipe->Beschreibung);
+  echo $parsedown->text($recipe->Beschreibung);
+  // foreach(explode("\r\n", $recipe->Beschreibung) as $paragraph){
+  //   echo "<p>$paragraph</p>";
+  // }
+
 ?>
 <div id="editingMenu"></div>
 <div id="editingMenuOpen">
