@@ -7,7 +7,7 @@
   $book->getRecipe($_GET["number"]);
   $recipe = $book->sites[0];
 
-  echo "<h1 data-recipeid='$recipe->ID'>$recipe->Name</h1>";
+  echo "<h1 id='recipeHeader' data-recipeid='$recipe->ID'>$recipe->Name</h1>";
   echo "<h2>Zutaten</h2>";
   echo "<button id='addToListButton' class='button'>Zur Einkaufsliste hinzufügen</button>";
   echo "<div id='ingredients'>";
