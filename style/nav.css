@@ -1,0 +1,71 @@
+#navigation {
+  position: fixed;
+  display: block;
+  margin: 0;
+  padding: 0;
+  left: 100%;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #c3c3c3;
+  text-align: center;
+  transition: .6s;
+}
+#navigation nav {
+  width: 80%;
+  height: 100%;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#navigation nav font {
+  padding: .25em .5em;
+  margin-bottom: 1em;
+  color: white;
+  border-radius: 5px;
+}
+#logout {
+  position: absolute;
+  top: .5em;
+  right: 1em;
+  height: 45px;
+  cursor: pointer;
+}
+#burgerMenue {
+  width: 60px;
+  height: 45px;
+  position: fixed;
+  top: .5em;
+  left: .5em;
+  margin: 0;
+  transform: rotate(0deg) scale(.6);
+  transition: .5s ease-in-out;
+  cursor: pointer;
+}
+#burgerMenue span {
+  display: block;
+  position: absolute;
+  height: 9px;
+  width: 100%;
+  background: #000;
+  border-radius: 9px;
+  opacity: 1;
+  left: 0;
+  transform: rotate(0deg);
+  transition: .25s ease-in-out;
+}
+#burgerMenue span:nth-child(1) {top: 0px;}
+#burgerMenue span:nth-child(2) {top: 18px;}
+#burgerMenue span:nth-child(3) {top: 36px;}
+#burgerMenue.open span:nth-child(1) {
+  top: 18px;
+  transform: rotate(135deg);
+}
+#burgerMenue.open span:nth-child(2) {
+  opacity: 0;
+  left: -60px;
+}
+#burgerMenue.open span:nth-child(3) {
+  top: 18px;
+  transform: rotate(-135deg);
+}

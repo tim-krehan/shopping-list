@@ -1,0 +1,4 @@
+# prevent access to these files while not logged in
+<files "adduser.php">
+Require all denied
+</files>

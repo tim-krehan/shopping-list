@@ -1,0 +1,28 @@
+#searchRecipe {
+  width: 75%;
+  margin-top: 2em;
+}
+
+#recipes {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  padding: 0;
+  margin-top: 1em;
+  left: 0;
+  width: 100%;
+}
+
+#recipes font {
+  height: 24px;
+  margin: .1em;
+  padding: 0 1em;
+  color: #ffffff;
+  border-radius: 5px;
+}
+
+#new-recipe {
+  float: right;
+}

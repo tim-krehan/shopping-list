@@ -1,0 +1,17 @@
+<IfModule mod_rewrite.c>
+  #Rewrite Engine anschalten
+  RewriteEngine on
+
+  #normale Seiten ohne Unterverzeichnis (Liste, Rezeptliste)
+  RewriteRule ^([a-zA-Z0-9-]+)$ ?site=$1
+
+  #Error Seite
+  RewriteRule ^error/([a-zA-Z0-9-]+)$ ?site=error&id=$1
+
+  #Rezept Seite
+  RewriteRule ^recipe/([0-9]+)$ ?site=recipe&number=$1
+
+  #Loginseite
+  RewriteRule ^login/url=(.+)$ ?site=login&refurl=$1 [L]
+
+</IfModule>

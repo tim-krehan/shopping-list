@@ -1,0 +1,72 @@
+#recipeHeader {
+  margin-top: 2em;
+  font-size: 2em;
+  text-align: center;
+}
+#ingredients {
+  display: inline-flex;
+  flex-direction: column;
+  margin-top: 1em;
+  color: white;
+  width: 100%;
+}
+.ingredients_row {
+  width: 95%;
+  max-width: 30em;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  border-radius: 5px;
+  margin-bottom: .1em;
+}
+.ingredients_row_amount {
+  text-indent: 1em;
+}
+.ingredients_row_unit {
+  text-indent: .5em;
+  text-align: left;
+}
+.ingredients_row_name {
+  text-indent: 2em;
+}
+#editingMenu font {
+  display: block;
+}
+#editingMenu {
+  position: fixed;
+  width: 2em;
+  height: 3em;
+  top: 1em;
+  right: .5em;
+  background-image: url("/pic/editingMenu.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  transition: .6s;
+  cursor: pointer;
+}
+#editingMenuOpen {
+  display: flex;
+  position: fixed;
+  top: 1em;
+  right: .5em;
+  flex-direction: column;
+  justify-content: center;
+  transition: .6s;
+  transform: translate(0, -12em);
+}
+
+#editingMenuOpen font {
+  text-align: center;
+  background-color: /*#4CAF50*/ black;
+  font-family: "Lucida Console", Monaco, monospace;
+  color: white;
+  font-size: 2em;
+  height: 40px;
+  width: 40px;
+  padding: .1em .2em .3em .2em;
+  margin-bottom: .1em;
+  border-radius: 100%;
+  cursor: pointer;
+  user-select: none;
+}
