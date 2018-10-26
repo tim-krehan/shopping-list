@@ -2,7 +2,7 @@
   #Rewrite Engine anschalten
   RewriteEngine on
 
-  #normale Seiten ohne Unterverzeichnis (Liste, Rezeptliste)
+  #normale Seiten ohne Unterverzeichnis (Liste, Rezeptliste, neues Rezept)
   RewriteRule ^([a-zA-Z0-9-]+)$ ?site=$1
 
   #Error Seite
@@ -10,6 +10,9 @@
 
   #Rezept Seite
   RewriteRule ^recipe/([0-9]+)$ ?site=recipe&number=$1
+
+  #Rezepteditieren
+  RewriteRule ^edit-recipe/([0-9]+)$ ?site=edit-recipe&number=$1
 
   #Loginseite
   RewriteRule ^login/url=(.+)$ ?site=login&refurl=$1 [L]

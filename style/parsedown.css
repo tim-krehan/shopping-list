@@ -1,0 +1,100 @@
+.parsedown-section h1 {
+  font-size: 1.3em;
+  text-align: left;
+  border-bottom: 1px solid grey;
+  color: #333;
+  text-transform: uppercase;
+  max-width: 75%;
+}
+
+.parsedown-section h2 {
+  font-size: 1.2em;
+  text-align: left;
+  border-bottom: 1px solid grey;
+  color: #333;
+  text-transform: uppercase;
+  max-width: 70%;
+}
+
+.parsedown-section h3 {
+  font-size: 1.1em;
+  text-align: left;
+  border-bottom: 1px solid grey;
+  color: #444;
+  text-transform: capitalize;
+  max-width: 60%;
+}
+
+.parsedown-section h4 {
+  font-size: 1em;
+  text-align: left;
+  border-bottom: 1px solid grey;
+  color: #444;
+  text-transform: capitalize;
+  max-width: 60%;
+}
+
+.parsedown-section h5 {
+  font-size: .9em;
+  text-align: left;
+  border-bottom: 1px solid grey;
+  color: #555;
+  text-transform: lowercase;
+  font-weight: normal;
+  max-width: 55%;
+}
+
+.parsedown-section h6 {
+  font-size: .8em;
+  text-align: left;
+  border-bottom: 1px solid grey;
+  color: #555;
+  text-transform: lowercase;
+  font-weight: normal;
+  max-width: 50%;
+}
+
+.parsedown-section table {
+  border-collapse: collapse;
+  border: 1px solid black;
+  margin: 1em 0;
+}
+
+.parsedown-section th {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.parsedown-section td, th {
+  /* border: 1px solid black; */
+  padding: .2em .5em;
+}
+
+.parsedown-section tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.parsedown-section button {
+  display: block;
+  border: 1px solid #777777;
+  padding: .5em 1em;
+  margin: 1em .25em;
+}
+
+.parsedown-section pre {
+  max-height: calc(50vh - 9em);
+  background: #f4f4f4;
+  border: 1px solid #ddd;
+  border-left: 3px solid #a0c391;
+  color: #666;
+  page-break-inside: avoid;
+  font-family: monospace;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 1.6em;
+  max-width: 100%;
+  overflow: auto;
+  padding: 1em 1.5em;
+  display: block;
+  word-wrap: break-word;
+}

@@ -120,7 +120,7 @@
         }
         else{
           $mysqli->query("INSERT INTO `Zutat` (`Name`) VALUES ('".ucwords($Zutat["Name"])."')");
-          $ingredientID = $mysqli->insert_id;
+          $ZutatID = $mysqli->insert_id;
         }
         $mysqli->query("INSERT INTO `RezeptZutat` (`Rezept`,`Menge`,`Einheit`,`Zutat`) VALUES ('{$ID}','{$Zutat["Amount"]}','{$Zutat["Unit"]}','{$ZutatID}');");
       }
