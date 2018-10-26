@@ -17,7 +17,9 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
-  border-radius: 5px;
+  border-left: 3px solid #4CAF50;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
   margin-bottom: .1em;
 }
 .ingredients_row_amount {
