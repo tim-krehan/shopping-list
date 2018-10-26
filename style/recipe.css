@@ -75,3 +75,9 @@
   cursor: pointer;
   user-select: none;
 }
+section.parsedown-section {
+  padding: 1em;
+  margin: 1em;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
