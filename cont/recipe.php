@@ -18,8 +18,10 @@
   }
   echo "</div>";
   echo "<h2>Zubereitung</h2>";
+  echo "<section class='parsedown-section'>";
   $parsedown = new Parsedown;
   echo $parsedown->text($recipe->Beschreibung);
+  echo "</section>";
 ?>
 <div id="editingMenu"></div>
 <div id="editingMenuOpen">
