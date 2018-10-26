@@ -23,7 +23,7 @@
 }
 .ingredients_row_amount {
   width: auto;
-  min-width: 1em;
+  min-width: 2em;
   max-width: 3em;
   text-align: right;
 }
