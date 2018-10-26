@@ -4,7 +4,7 @@
   border-bottom: 1px solid grey;
   color: #333;
   text-transform: uppercase;
-  max-width: 90%;
+  max-width: 75%;
 }
 
 .parsedown-section h2 {
@@ -13,7 +13,7 @@
   border-bottom: 1px solid grey;
   color: #333;
   text-transform: uppercase;
-  max-width: 85%;
+  max-width: 70%;
 }
 
 .parsedown-section h3 {
@@ -22,7 +22,7 @@
   border-bottom: 1px solid grey;
   color: #444;
   text-transform: capitalize;
-  max-width: 80%;
+  max-width: 60%;
 }
 
 .parsedown-section h4 {
@@ -31,7 +31,7 @@
   border-bottom: 1px solid grey;
   color: #444;
   text-transform: capitalize;
-  max-width: 75%;
+  max-width: 60%;
 }
 
 .parsedown-section h5 {
@@ -41,7 +41,7 @@
   color: #555;
   text-transform: lowercase;
   font-weight: normal;
-  max-width: 70%;
+  max-width: 55%;
 }
 
 .parsedown-section h6 {
@@ -51,7 +51,7 @@
   color: #555;
   text-transform: lowercase;
   font-weight: normal;
-  max-width: 65%;
+  max-width: 50%;
 }
 
 .parsedown-section table {
