@@ -217,13 +217,6 @@ INSERT INTO `Einheit` (`ID`, `Name`, `Standard`) VALUES
   (11, 'Glas', 0);");
 
 
-array_push($SQLStatements, "
-CREATE EVENT hourly_session_cleanup
-ON SCHEDULE EVERY 1 HOUR
-DO
-  DELETE FROM `sessions` WHERE `expires` < NOW();");
-
-
 foreach($SQLStatements as $statement){
   $result = $connection->query($statement);
 }
