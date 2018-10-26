@@ -108,22 +108,10 @@ CREATE TABLE `RezeptZutat` (
 );");
 
 array_push($SQLStatements, "
-CREATE TABLE `ViewEinkauf` (
-  `ID` int(11),
-  `Anzahl` double,
-  `Einheit` varchar(255),
-  `Name` varchar(255),
-  `Erledigt` tinyint(1)
-);");
-
-array_push($SQLStatements, "
 CREATE TABLE `Zutat` (
   `ID` int(11) NOT NULL,
   `Name` varchar(255) NOT NULL
 );");
-
-array_push($SQLStatements, "
-DROP TABLE IF EXISTS `ViewEinkauf`;");
 
 array_push($SQLStatements, "
 CREATE VIEW `ViewEinkauf` AS  select `Einkauf`.`ID` AS `ID`,`Einkauf`.`Anzahl` AS `Anzahl`,`Einheit`.`Name` AS `Einheit`,`Einkauf`.`Name` AS `Name`,`Einkauf`.`Erledigt` AS `Erledigt` from (`Einkauf` join `Einheit` on((`Einkauf`.`Einheit` = `Einheit`.`ID`))) ;");
@@ -189,7 +177,7 @@ ALTER TABLE `users`
   ");
 
 array_push($SQLStatements, "
-ALTER TABLE `sessions` 
+ALTER TABLE `sessions`
   ADD CONSTRAINT `fk_session_uid` FOREIGN KEY (`user`) REFERENCES `users` (`uid`);");
 
 array_push($SQLStatements, "
@@ -215,13 +203,6 @@ INSERT INTO `Einheit` (`ID`, `Name`, `Standard`) VALUES
   (9, 'Dose', 0),
   (10, 'Packung', 0),
   (11, 'Glas', 0);");
-
-
-array_push($SQLStatements, "
-CREATE EVENT hourly_session_cleanup
-ON SCHEDULE EVERY 1 HOUR
-DO
-  DELETE FROM `sessions` WHERE `expires` < NOW();");
 
 
 foreach($SQLStatements as $statement){
