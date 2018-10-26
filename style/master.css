@@ -1,88 +1,21 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,800');
+@font-face {
+    font-family: Roboto;
+    src: url("/fonts/Roboto-Regular.ttf");
+}
 
 html {
   transition: .6s;
-  font-family: 'Open Sans', sans-serif;
-  background-color: #c3c3c3;
+  font-family: 'Roboto';
+  background-color: #ccc;
 }
 
 h1 {
   font-size: 3em;
+  text-align: left;
+  margin-top: .5em;
+  padding-bottom: .5em;
+  border-bottom: 1px solid grey;
   text-align: center;
-  color: #333;
-  text-transform: uppercase;
-}
-
-h2 {
-  color: #333;
-  text-transform: uppercase;
-}
-
-h3 {
-  color: #444;
-  text-transform: capitalize;
-}
-
-h4 {
-  color: #444;
-  text-transform: capitalize;
-}
-
-h5 {
-  color: #555;
-  text-transform: lowercase;
-  font-weight: normal;
-}
-
-h6 {
-  color: #555;
-  text-transform: lowercase;
-  font-weight: normal;
-}
-
-table {
-  border-collapse: collapse;
-  border: 1px solid black;
-  margin: 1em 0;
-}
-
-th {
-  background-color: #63bf3c;
-  color: white;
-}
-
-td, th {
-  /* border: 1px solid black; */
-  padding: .2em .5em;
-}
-
-tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
-
-button {
-  display: block;
-  border: 1px solid #777777;
-  padding: .5em 1em;
-  margin: 1em .25em;
-}
-
-pre {
-  max-height: calc(50vh - 9em);
-  background: #f4f4f4;
-  border: 1px solid #ddd;
-  border-left: 3px solid #a0c391;
-  color: #666;
-  page-break-inside: avoid;
-  font-family: monospace;
-  font-size: 15px;
-  line-height: 1.6;
-  margin-bottom: 1.6em;
-  max-width: 100%;
-  overflow: auto;
-  padding: 1em 1.5em;
-  display: block;
-  word-wrap: break-word;
 }
 
 .even {

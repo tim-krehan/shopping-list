@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="/style/recipe.css">
+<link rel="stylesheet" href="/style/parsedown.css">
 <script src="/bin/recipe.js" charset="utf-8"></script>
 <?php
   include $_SESSION["docroot"].'/php/classes.recipe.php';
