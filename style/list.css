@@ -84,6 +84,15 @@ border-left: none;
 .checked {
   background-color: #4CAF50;
 }
+
+.list_row.even.checked {
+  border-left: 3px solid #565656;
+}
+
+.list_row.odd.checked {
+  border-left: 3px solid #888;
+}
+
 #saved, #error {
   pointer-events: none;
   position: fixed;
