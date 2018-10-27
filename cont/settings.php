@@ -15,6 +15,6 @@
       <span><font class="attribute">Email</font><input class="change-attribute-input" type="text" name="username" value="<?php echo $user["email"]; ?>"></span>
       <span><font class="attribute">Letzter Login</font><font><?php echo $user["last_login"]; ?></font></span>
     </div>
-    <button class="button" id="safeButton">Speichern</button>
+    <button class="button" id="saveButton">Speichern</button>
   </div>
 </div>
