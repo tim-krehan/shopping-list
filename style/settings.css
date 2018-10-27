@@ -1,6 +1,7 @@
 .userprofile {
   width: 30em;
   max-width: 90%;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   border: 1px solid grey;
@@ -13,8 +14,11 @@
   align-items: center;
 }
 .attribute {
-  width: 10em;
+  width: 6em;
   padding: 1em;
+}
+.change-attribute-input {
+  
 }
 .value {
   padding: 1em;
