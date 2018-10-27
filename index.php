@@ -44,6 +44,10 @@
       include $_SESSION["docroot"].'/cont/list.php';
       break;
 
+    case "settings":
+      include $_SESSION["docroot"].'/cont/settings.php';
+      break;
+
     case "recipes":
       include $_SESSION["docroot"].'/cont/recipes.php';
       break;
