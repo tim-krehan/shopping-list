@@ -36,9 +36,9 @@ if (!($_SESSION["docroot"]))
   </head>
   <h1>Installation</h1>
   <form class="installer" action="install_action.php" method="post">
-    <label for="text_database">Datenbank-Name</label><input id="text_database" type="text" name="database" placeholder="shopping-list" required>
-    <label for="text_host">Datenbank-Host</label><input id="text_dbhost" type="text" name="dbhost" placeholder="localhost" required>
-    <label for="text_user">Benutzername</label><input id="text_user" type="text" name="username" placeholder="shopping-list" required>
-    <label for="text_passwd">Password</label><input id="text_passwd" type="Password" name="passwd" placeholder="********" required>
+    <label for="text_database">Datenbank-Name</label><input id="text_database" type="text" name="database" placeholder="shopping-list" autocomplete="off" required>
+    <label for="text_host">Datenbank-Host</label><input id="text_dbhost" type="text" name="dbhost" placeholder="localhost" autocomplete="off" required>
+    <label for="text_user">Benutzername</label><input id="text_user" type="text" name="username" placeholder="shopping-list" autocomplete="off" required>
+    <label for="text_passwd">Password</label><input id="text_passwd" type="Password" name="passwd" placeholder="********" autocomplete="off" required>
     <input id="button_install" class="button" type="submit" name="" value="Installieren">
   </form>
