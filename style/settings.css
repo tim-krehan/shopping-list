@@ -18,12 +18,12 @@
   padding: 1em;
 }
 .change-attribute-input {
-  
+
 }
 .value {
   padding: 1em;
 }
-#safeButton {
+#saveButton {
   margin: 1em;
   width: min-content;
   float: right;
