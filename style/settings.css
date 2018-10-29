@@ -1,12 +1,26 @@
-.userprofile {
-  width: 30em;
-  max-width: 90%;
-  margin: 0 auto;
+.settings {
   display: flex;
+  justify-content: flex-start;
   flex-direction: column;
+  flex-wrap: wrap;
+}
+.pane {
   border: 1px solid grey;
   border-radius: 5px;
   background-color: #ddd;
+  margin: 1em;
+  min-width: max-content;
+  max-width: 50%;
+}
+.userprofile-pane {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.userprofile {
+  width: 22em;
+  display: flex;
+  flex-direction: column;
 }
 .userprofile span {
   display: flex;
@@ -18,13 +32,13 @@
   padding: 1em;
 }
 .change-attribute-input {
-
+  text-indent: 1em;
+  color: grey;
 }
 .value {
   padding: 1em;
 }
 #saveButton {
+  align-self: flex-end;
   margin: 1em;
-  width: min-content;
-  float: right;
 }

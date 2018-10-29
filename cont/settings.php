@@ -1,6 +1,5 @@
 <link rel="stylesheet" href="/style/settings.css">
 <h1>Settings</h1>
-<h2>User</h2>
 <?php
   include $_SESSION["docroot"].'/php/connect.php';
   $token = $_COOKIE["token"];
@@ -9,12 +8,18 @@
   $user = $result->fetch_assoc();
 ?>
 <div class="settings">
-  <div class="userprofile-pane">
+  <h2>User</h2>
+  <div class="userprofile-pane pane">
     <div class="userprofile">
       <span><font class="attribute">Benutzername</font><input class="change-attribute-input" type="text" name="username" value="<?php echo $user["username"]; ?>"></span>
       <span><font class="attribute">Email</font><input class="change-attribute-input" type="text" name="username" value="<?php echo $user["email"]; ?>"></span>
       <span><font class="attribute">Letzter Login</font><font><?php echo $user["last_login"]; ?></font></span>
     </div>
     <button class="button" id="saveButton">Speichern</button>
+  </div>
+  <div class="import-export-pane">
+    <h2>Import / Export</h2>
+    <p>Hiermit werden alle Rezepte und sich zurzeit auf der Shoppingliste befindlichen Einträge als Download zur Verfügung gestellt. Diese Datei kann dann an anderer Stelle wieder Importiert werden, oder als Backup abgespeichert werden.</p>
+    <button type="button" name="button" class="button">Export</button>
   </div>
 </div>

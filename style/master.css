@@ -26,6 +26,15 @@ h2 {
   width: 80%;
 }
 
+h3 {
+  font-size: 1.5em;
+  text-align: left;
+  margin-top: .5em;
+  padding-bottom: .5em;
+  border-bottom: 1px solid grey;
+  width: 75%;
+}
+
 .even {
   background-color: #565656;
 }
