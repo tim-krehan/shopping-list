@@ -12,7 +12,12 @@ $(document).ready(function(){
   $("#mail-input").focus(function(){$(this).css("color", "black");});
   $("#export-recipe-button").click(function(){
     $.post("/php/edit-recipes.php", {function:"export"}, function(data){
-      downloadObjectAsJson(data, "recipes");
+      downloadObjectAsJson(JSON.parse(data), "recipes");
+    });
+  });
+  $("#export-list-button").click(function(){
+    $.post("/php/edit-list.php", {function:"export"}, function(data){
+      downloadObjectAsJson(JSON.parse(data), "list");
     });
   });
 });

@@ -29,7 +29,6 @@
 
     case 'export':
       $book->fillCookbook();
-      header("Content-type: text/json");
       echo json_encode($book);
       break;
 
