@@ -55,7 +55,7 @@
 .value {
   padding: 1em;
 }
-#saveButton {
+#passwordSaveButton, #userSaveButton {
   align-self: flex-end;
   margin: 1em;
 }
