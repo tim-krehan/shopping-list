@@ -1,3 +1,4 @@
+<script src="/bin/settings.js" charset="utf-8"></script>
 <link rel="stylesheet" href="/style/settings.css">
 <h1>Settings</h1>
 <?php
@@ -11,11 +12,11 @@
   <h2>User</h2>
   <div class="userprofile-pane pane">
     <div class="userprofile">
-      <span><font class="attribute">Benutzername</font><input class="change-attribute-input" type="text" name="username" placeholder="<?php echo $user["username"]; ?>"></span>
-      <span><font class="attribute">Email</font><input class="change-attribute-input" type="text" name="username" placeholder="<?php echo $user["email"]; ?>"></span>
+      <span><font class="attribute">Benutzername</font><input class="change-attribute-input" id="username-input" type="text" name="username" placeholder="<?php echo $user["username"]; ?>"></span>
+      <span><font class="attribute">Email</font><input class="change-attribute-input" id="mail-input" type="email" name="username" placeholder="<?php echo $user["email"]; ?>"></span>
       <span><font class="attribute">Letzter Login</font><font><?php echo $user["last_login"]; ?></font></span>
     </div>
-    <button class="button" id="saveButton">Speichern</button>
+    <button class="button" id="userSaveButton">Speichern</button>
   </div>
   <div class="userpassword-pane pane">
     <div class="userpassword">
@@ -23,7 +24,7 @@
       <span><font class="attribute">Neues Passwort</font><input class="change-attribute-input" type="text" name="username" placeholder="********"></span>
       <span><font class="attribute">Passwort bestätigen</font><input class="change-attribute-input" type="text" name="username" placeholder="********"></span>
     </div>
-    <button class="button" id="saveButton">Speichern</button>
+    <button class="button" id="passwordSaveButton">Speichern</button>
   </div>
   <div class="import-export-pane">
     <h2>Import / Export</h2>
