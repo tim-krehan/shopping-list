@@ -20,6 +20,8 @@
   <div class="import-export-pane">
     <h2>Import / Export</h2>
     <p>Hiermit werden alle Rezepte und sich zurzeit auf der Shoppingliste befindlichen Einträge als Download zur Verfügung gestellt. Diese Datei kann dann an anderer Stelle wieder Importiert werden, oder als Backup abgespeichert werden.</p>
-    <button type="button" name="button" class="button">Export</button>
+    <button type="button" name="export-button" class="button">Export</button>
+    <p>Der Import kann Benutzt werden, um alle Daten von einer exportierten Datei in diese Datenbankk einzupflegen. Hierbei werden nur die Einträge in der Shoppingliste, sowie die Rezepte beachtet. Die Benutzer bleiben unberührt!</p>
+    <button type="button" name="import-button" class="button">Import ...</button>
   </div>
 </div>
