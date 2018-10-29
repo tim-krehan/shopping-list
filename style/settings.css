@@ -8,9 +8,11 @@
   border: 1px solid grey;
   border-radius: 5px;
   background-color: #ddd;
-  margin: 1em;
+  margin: 1%;
+  width: auto;
   min-width: max-content;
   max-width: 45%;
+  height: max-content;
 }
 .userprofile-pane {
   display: flex;
