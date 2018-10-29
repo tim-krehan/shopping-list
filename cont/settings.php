@@ -17,6 +17,14 @@
     </div>
     <button class="button" id="saveButton">Speichern</button>
   </div>
+  <div class="userpassword-pane pane">
+    <div class="userpassword">
+      <span><font class="attribute">Altes Passwort</font><input class="change-attribute-input" type="text" name="username" value="********"></span>
+      <span><font class="attribute">Neues Passwort</font><input class="change-attribute-input" type="text" name="username" value="********"></span>
+      <span><font class="attribute">Passwort bestätigen</font><input class="change-attribute-input" type="text" name="username" value="********"></span>
+    </div>
+    <button class="button" id="saveButton">Speichern</button>
+  </div>
   <div class="import-export-pane">
     <h2>Import / Export</h2>
     <p>Hiermit werden alle Rezepte und sich zurzeit auf der Shoppingliste befindlichen Einträge als Download zur Verfügung gestellt. Diese Datei kann dann an anderer Stelle wieder Importiert werden, oder als Backup abgespeichert werden.</p>
