@@ -65,7 +65,47 @@ h3 {
   cursor: pointer;
 }
 
+.button:hover {
+  background-color: #4CAFFF;
+}
+
+.button-disabled {
+  background-color: grey;
+  cursor: not-allowed;
+}
+
+.button-disabled:hover {
+  background-color: grey;
+}
+
 .hover:hover {
   background-color: #4CAF50;
   cursor: pointer;
+}
+
+#info-popup {
+  pointer-events: none;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  bottom: 2%;
+  margin: 0;
+  left: 0;
+  width: 100%;
+}
+#info-popup-text {
+  color: #ffffff;
+  background-color: #000000;
+  padding: .1em .5em .2em;
+  border-radius: 50px;
+  opacity: 0;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
 }

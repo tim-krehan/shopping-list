@@ -92,33 +92,3 @@ border-left: none;
 .list_row.odd.checked {
   border-left: 3px solid #888;
 }
-
-#saved, #error {
-  pointer-events: none;
-  position: fixed;
-  display: flex;
-  justify-content: center;
-  bottom: 2%;
-  margin: 0;
-  left: 0;
-  width: 100%;
-}
-#saved font, #error font {
-  color: #ffffff;
-  background-color: #000000;
-  padding: .1em .5em .2em;
-  border-radius: 50px;
-  opacity: 0;
-}
-
-#error font {
-  padding: .1em 1em .2em;
-}
-@keyframes fade {
-  0% {
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-  }
-}

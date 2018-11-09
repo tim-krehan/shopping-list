@@ -35,5 +35,3 @@
   ?>
 </div>
 </form>
-<div id="saved"><font>SAVED!</font></div>
-<div id="error"><font>Netzwerkfehler!<br /> Bitte aktualisieren.</font></div>
