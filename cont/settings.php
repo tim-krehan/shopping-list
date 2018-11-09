@@ -2,19 +2,16 @@
 <link rel="stylesheet" href="/style/settings.css">
 <h1>Settings</h1>
 <?php
-  include $_SESSION["docroot"].'/php/connect.php';
-  $token = $_COOKIE["token"];
-  $query = "SELECT username, email, last_login FROM `users` WHERE `uid` = (SELECT user FROM `sessions` WHERE `session_id` = \"$token\")";
-  $result = $mysqli->query($query);
-  $user = $result->fetch_assoc();
+  include $_SESSION["docroot"].'/php/classes.user.php';
+  $user = new user($_COOKIE["token"]);
 ?>
 <div class="settings">
   <h2>User</h2>
   <div class="userprofile-pane pane">
     <div class="userprofile">
-      <span><font class="attribute">Benutzername</font><input class="change-attribute-input" id="username-input" type="text" name="username" placeholder="<?php echo $user["username"]; ?>"></span>
-      <span><font class="attribute">Email</font><input class="change-attribute-input" id="mail-input" type="email" name="username" placeholder="<?php echo $user["email"]; ?>"></span>
-      <span><font class="attribute">Letzter Login</font><font><?php echo $user["last_login"]; ?></font></span>
+      <span><font class="attribute">Benutzername</font><input class="change-attribute-input" id="username-input" type="text" name="username" placeholder="<?php echo $user->username; ?>"></span>
+      <span><font class="attribute">Email</font><input class="change-attribute-input" id="mail-input" type="email" name="username" placeholder="<?php echo $user->email; ?>"></span>
+      <span><font class="attribute">Letzter Login</font><font><?php echo $user->last_login; ?></font></span>
     </div>
     <button class="button" id="userSaveButton">Speichern</button>
   </div>
