@@ -32,5 +32,25 @@
         print_r("1");
       }
     }
+
+    function new($uname, $password){
+      session_start();
+      include $_SESSION["docroot"].'/php/connect.php';
+      include $_SESSION["docroot"].'/php/hash.php';
+
+      $query = "SELECT `uid` FROM `users` WHERE `username` = '$uname'";
+      $result = $mysqli->query($query);
+      if($result->num_rows==0){
+        $salt = create_salt();
+        $passhash = hash_password($password, $salt);
+        $query = "INSERT INTO `users` (`username`, `password`, `salt`, `last_login`) VALUES ('$uname', '$passhash', '$salt', CURRENT_TIMESTAMP);";
+        $result = $mysqli->query($query);
+        unset($salt);
+        unset($password);
+        print_r(0);
+      }
+      else{print_r(1);}
+      $mysqli->close();
+    }
   }
 ?>
