@@ -10,6 +10,47 @@ function downloadObjectAsJson(exportObj, exportName){
 $(document).ready(function(){
   $("#username-input").focus(function(){$(this).css("color", "black");});
   $("#mail-input").focus(function(){$(this).css("color", "black");});
+
+  // change password
+  $("#old-password-input").focus(function(){$(this).css("color", "black");});
+  $("#new-password-input").focus(function(){$(this).css("color", "black");});
+  $("#check-password-input").focus(function(){$(this).css("color", "black");});
+  $(".password-input").on("input", function(){
+    if(
+      (($("#old-password-input").val()).length>0) &&
+      (($("#new-password-input").val()).length>0) &&
+      (($("#check-password-input").val()).length>0) &&
+      ($("#new-password-input").val()==$("#check-password-input").val())
+    ){
+      $("#passwordSaveButton").prop("disabled", false);
+      $("#passwordSaveButton").removeClass("button-disabled");
+    }
+    else{
+      $("#passwordSaveButton").prop("disabled", true);
+      $("#passwordSaveButton").addClass("button-disabled");
+    }
+  });
+  $("#passwordSaveButton").click(function(){
+    $.post("/php/edit-user.php",
+      {
+        function: "change-pw",
+        current: $("#old-password-input").val(),
+        new: $("#new-password-input").val()
+      },
+      function(data){
+        if(data==0){
+          $("#old-password-input").val("");
+          $("#new-password-input").val("");
+          $("#check-password-input").val("");
+          infoPopUp("Passwort erfolgreich geändert!");
+        }
+        else {
+          infoPopUp("Altes Passwort Falsch!");
+        }
+      }
+    );
+  });
+
   $("#export-recipe-button").click(function(){
     $.post("/php/edit-recipes.php", {function:"export"}, function(data){
       downloadObjectAsJson(JSON.parse(data), "recipes");

@@ -3,7 +3,8 @@
 <h1>Settings</h1>
 <?php
   include $_SESSION["docroot"].'/php/classes.user.php';
-  $user = new user($_COOKIE["token"]);
+  $user = new user;
+  $user->get_info($_COOKIE["token"]);
 ?>
 <div class="settings">
   <h2>User</h2>
@@ -17,11 +18,11 @@
   </div>
   <div class="userpassword-pane pane">
     <div class="userpassword">
-      <span><font class="attribute">Altes Passwort</font><input class="change-attribute-input" type="text" name="username" placeholder="********"></span>
-      <span><font class="attribute">Neues Passwort</font><input class="change-attribute-input" type="text" name="username" placeholder="********"></span>
-      <span><font class="attribute">Passwort bestätigen</font><input class="change-attribute-input" type="text" name="username" placeholder="********"></span>
+      <span><font class="attribute">Altes Passwort</font><input class="change-attribute-input password-input" id="old-password-input" type="password" name="username" placeholder="********"></span>
+      <span><font class="attribute">Neues Passwort</font><input class="change-attribute-input password-input" id="new-password-input" type="password" name="username" placeholder="********"></span>
+      <span><font class="attribute">Passwort bestätigen</font><input class="change-attribute-input password-input" id="check-password-input" type="password" name="username" placeholder="********"></span>
     </div>
-    <button class="button" id="passwordSaveButton">Speichern</button>
+    <button class="button button-disabled" id="passwordSaveButton" disabled>Speichern</button>
   </div>
   <div class="import-export-pane">
     <h2>Import / Export</h2>
