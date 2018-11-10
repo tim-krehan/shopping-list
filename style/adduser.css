@@ -13,3 +13,8 @@ label {
     flex-direction: column;
     width: 50%;
 }
+#adduser-button-done {
+  position: absolute;
+  bottom: 2em;
+  right: 2em;
+}
