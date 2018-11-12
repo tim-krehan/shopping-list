@@ -1,6 +1,4 @@
 <head>
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-    <!-- <link rel="stylesheet" href="/style/master.css"> -->
     <link rel="stylesheet" href="/style/adduser.css">
     <script src="/bin/adduser.js" charset="utf-8"></script>
 </head>
