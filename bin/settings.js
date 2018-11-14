@@ -42,10 +42,10 @@ $(document).ready(function(){
           $("#old-password-input").val("");
           $("#new-password-input").val("");
           $("#check-password-input").val("");
-          infoPopUp("Passwort erfolgreich geändert!");
+          infoPopUp("Passwort erfolgreich geändert!", 100);
         }
         else {
-          infoPopUp("Altes Passwort Falsch!");
+          infoPopUp("Altes Passwort Falsch!", 100);
         }
       }
     );
@@ -77,10 +77,10 @@ $(document).ready(function(){
             },
             function(data){
               if(data==0){
-                infoPopUp("Alle Rezepte erfolgreich Importiert!");
+                infoPopUp("Alle Rezepte erfolgreich Importiert!", 200);
               }
               else{
-                infoPopUp("Nicht alle Rezepte konnten Importiert werden!");
+                infoPopUp("Nicht alle Rezepte konnten Importiert werden!", 1000);
                 downloadObjectAsJson(JSON.parse(data), "failed_recipe_import.json");
               }
             }
@@ -94,13 +94,9 @@ $(document).ready(function(){
             },
             function(data){
               console.log(data);
-              // if(data==0){
-              //   infoPopUp("Alle Rezepte erfolgreich Importiert!");
-              // }
-              // else{
-              //   infoPopUp("Nicht alle Rezepte konnten Importiert werden!");
-              //   downloadObjectAsJson(JSON.parse(data), "failed_recipe_import.json");
-              // }
+              if(data==0){
+                infoPopUp("Alle Listeneinträge erfolgreich Importiert!", 200);
+              }
             }
           );
         }

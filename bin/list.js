@@ -9,8 +9,8 @@ $(document).ready(function(){
         id: dataId,
         status: $(this).prop("checked")
       },
-      success: function(){infoPopUp("SAVED!");},
-      error: function(){infoPopUp("Netzwerkfehler! Bitte aktualisieren.");}
+      success: function(){infoPopUp("SAVED!", 100);},
+      error: function(){infoPopUp("Netzwerkfehler! Bitte aktualisieren.", 100);}
     });
     if($(this).prop("checked")){$("[data-id='"+dataId+"']").addClass("checked");}
     else{$("[data-id='"+dataId+"']").removeClass("checked");}

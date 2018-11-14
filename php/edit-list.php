@@ -25,6 +25,10 @@
       echo json_encode($shopping);
       break;
 
+    case 'import':
+      $shopping->import();
+      break;
+
     default:
       // code...
       break;

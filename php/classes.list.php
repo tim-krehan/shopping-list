@@ -60,6 +60,15 @@
       $mysqli->query("UPDATE `Einkauf` SET `Erledigt` = $status WHERE `Einkauf`.`ID` = $id");
       $mysqli->close();
     }
+
+    function import(){
+      $import = json_decode($_POST["content"]);
+      $units = new units();
+      foreach($import->list as $item){
+        $this->newItem($item->Anzahl, $units->getID($item->Einheit), $item->Name);
+      }
+      print_f("0");
+    }
   }
 
   class unit {
@@ -85,6 +94,14 @@
         $this->addItem($item["ID"], $item["Name"], $item["Standard"]);
       }
       $mysqli->close();
+    }
+
+    function getID($Name){
+      foreach($this->list as $units){
+        if($units->Name==$Name){
+          return $units->ID;
+        }
+      }
     }
   }
 ?>
