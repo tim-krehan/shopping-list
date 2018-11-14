@@ -56,9 +56,56 @@ $(document).ready(function(){
       downloadObjectAsJson(JSON.parse(data), "recipes");
     });
   });
+
   $("#export-list-button").click(function(){
     $.post("/php/edit-list.php", {function:"export"}, function(data){
       downloadObjectAsJson(JSON.parse(data), "list");
     });
+  });
+
+  $("#import-button").click(function(){
+    $('<input type="file" accept=".json">').on('change', function () {
+      var file = this.files[0];
+      var reader = new FileReader();
+      reader.onload = function(){
+        var content = JSON.parse(reader.result);
+        if(content.sites!=null){
+          $.post("/php/edit-recipes.php",
+            {
+              function: "import",
+              content: reader.result
+            },
+            function(data){
+              if(data==0){
+                infoPopUp("Alle Rezepte erfolgreich Importiert!");
+              }
+              else{
+                infoPopUp("Nicht alle Rezepte konnten Importiert werden!");
+                downloadObjectAsJson(JSON.parse(data), "failed_recipe_import.json");
+              }
+            }
+          );
+        }
+        else if(content.list!=null){
+          $.post("/php/edit-list.php",
+            {
+              function: "import",
+              content: reader.result
+            },
+            function(data){
+              console.log(data);
+              // if(data==0){
+              //   infoPopUp("Alle Rezepte erfolgreich Importiert!");
+              // }
+              // else{
+              //   infoPopUp("Nicht alle Rezepte konnten Importiert werden!");
+              //   downloadObjectAsJson(JSON.parse(data), "failed_recipe_import.json");
+              // }
+            }
+          );
+        }
+      };
+      reader.readAsText(file);
+    }).click();
   });
 });

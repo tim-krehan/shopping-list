@@ -32,6 +32,10 @@
       echo json_encode($book);
       break;
 
+    case 'import':
+      $book->importCookbook();
+      break;
+
     default:
       // code...
       break;

@@ -20,6 +20,12 @@
       }
       $mysqli->close();
     }
+    function getID($Name){
+      include $_SESSION["docroot"].'/php/connect.php';
+      $result = $mysqli->query("SELECT `ID` FROM `Einheit` WHERE `Name` = '$Name'");
+      $ID = $result->fetch_assoc();
+      return $ID["ID"];
+    }
   }
 
   class ingredient {
@@ -89,15 +95,51 @@
       $mysqli->close();
     }
 
+    function importCookbook(){
+      include $_SESSION["docroot"].'/php/connect.php';
+      $units = new unitList();
+      $failed_sites = array();
+      $succeeded_sites = array();
+      $import = json_decode($_POST["content"]);
+      if($import->sites!=null){
+        foreach ($import->sites as $site) {
+          $result = $mysqli->query("SELECT * FROM `Rezept` WHERE `Name`='$site->Name'");
+          if($result->num_rows>0){
+            array_push($failed_sites, $site);
+          }
+          else{
+            array_push($succeeded_sites, $site);
+            $Zutaten = array();
+            foreach($site->Zutaten as $Zutat) {
+              $nZutat = null;
+              $nZutat["ID"] = $Zutat->ID;
+              $nZutat["Amount"] = $Zutat->Menge;
+              $nZutat["Unit"] = $units->getID($Zutat->Einheit);
+              $nZutat["Name"] = $Zutat->Name;
+              array_push($Zutaten, $nZutat);
+            }
+            $this->newRecipe($site->Name, $site->Dauer, $site->Beschreibung, $Zutaten);
+          }
+        }
+        if(sizeof($failed_sites)==0){
+          print_r("0");
+        }
+        else{
+          print_r(json_encode($failed_sites));
+        }
+      }
+    }
+
     function newRecipe($Name, $Dauer, $Beschreibung, $Zutaten){
       include $_SESSION["docroot"].'/php/connect.php';
-      $mysqli->query("INSERT INTO Rezept (Name, Dauer, Beschreibung) VALUES ('$Name', '$Dauer', '$Beschreibung')");
+      $mysqli->query("INSERT INTO `Rezept` (`Name`, `Dauer`, `Beschreibung`) VALUES ('$Name', '$Dauer', '$Beschreibung')");
       $RezeptID = $mysqli->insert_id;
       foreach ($Zutaten as $Zutat) {
         $ZutatID = null;
         $result = $mysqli->query("SELECT ID FROM `Zutat` WHERE `Name` LIKE '".$Zutat["Name"]."'");
         if($result->num_rows>0){
-          while($item = $result->fetch_assoc()){$ZutatID = $item["ID"];}
+          $item = $result->fetch_assoc();
+          $ZutatID = $item["ID"];
         }
         else{
           $mysqli->query("INSERT INTO `Zutat` (`Name`) VALUES ('".ucwords($Zutat["Name"])."')");
