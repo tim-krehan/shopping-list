@@ -81,7 +81,7 @@ $(document).ready(function(){
               }
               else{
                 infoPopUp("Nicht alle Rezepte konnten Importiert werden!", 1000);
-                downloadObjectAsJson(JSON.parse(data), "failed_recipe_import.json");
+                downloadObjectAsJson(JSON.parse(data), "failed_recipe_import");
               }
             }
           );
