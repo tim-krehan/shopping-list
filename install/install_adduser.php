@@ -13,6 +13,4 @@
   <input id="button_newuser" class="button" type="submit" name="" value="Neuer Benutzer">
 </div>
 <button class="button button-disabled" id="adduser-button-done">Fertig</button>
-
-<!-- Only here in install/adduser -->
 <div id="info-popup"><font id="info-popup-text"></font></div>

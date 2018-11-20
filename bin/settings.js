@@ -31,9 +31,8 @@ $(document).ready(function(){
     }
   });
   $("#passwordSaveButton").click(function(){
-    $.post("/php/edit-user.php",
+    $.post("/api/user/change-pw",
       {
-        function: "change-pw",
         current: $("#old-password-input").val(),
         new: $("#new-password-input").val()
       },

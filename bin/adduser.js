@@ -1,13 +1,12 @@
 $(document).ready(function(){
   $("#button_newuser").click(function(){
-    $.post("/php/edit-user.php",
+    $.post("/api/user/new",
       {
-        function: "new-user",
         username: $("#text_user").val(),
         passwd: $("#text_passwd").val()
       },
       function(data){
-        if(data==0){
+        if(data=="0"){
           infoPopUp("Benutzer erfolgreich erstellt!", 100);
           $("#text_user").val("");
           $("#text_passwd").val("");

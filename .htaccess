@@ -21,12 +21,14 @@
   RewriteRule ^api/([\w-]+)/([\w-]+)$ php/api.php?site=api&call=$1&function=$2 [L]
 </IfModule>
 
+#Deny every *.php file
 <Files *.php>
     Order Deny,Allow
     Deny from all
     Allow from 127.0.0.1
 </Files>
 
+#allow following files
 <Files index.php>
     Order Allow,Deny
     Allow from all
