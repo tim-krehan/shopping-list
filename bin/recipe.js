@@ -14,9 +14,8 @@ $(document).ready(function(){
     if(!(confirm("Wirklich löschen?"))){return;}
     $.ajax({
       type: "POST",
-      url: "/php/edit-recipes.php",
+      url: "/api/recipes/del",
       data: {
-        function: "del",
         id: $("#recipeHeader").data("recipeid")
       },
       success: function(data){
@@ -45,10 +44,9 @@ $(document).ready(function(){
     });
     $.ajax({
       type: "POST",
-      url: "/php/edit-list.php",
+      url: "/api/list/multiple",
       data: {
-        list: list,
-        function: "multiple"
+        list: list
       },
       success: function(data){
         window.location = "/";

@@ -209,5 +209,5 @@ foreach($SQLStatements as $statement){
   $result = $connection->query($statement);
 }
 $connection->close();
-header ("Location: adduser.php");
+header ("Location: install_adduser.php");
 ?>

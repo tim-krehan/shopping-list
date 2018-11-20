@@ -1,9 +1,8 @@
 <?php
-  session_start();
   include $_SESSION["docroot"].'/php/classes.list.php';
   $shopping = new shopping;
 
-  switch ($_POST["function"]) {
+  switch ($_GET["function"]) {
     case 'new':
       $shopping->newItem($_POST["anzahl"], $_POST["einheit"], $_POST["name"]);
       header("Location: /list");

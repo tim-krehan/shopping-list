@@ -1,9 +1,8 @@
 <?php
-  session_start();
   include $_SESSION["docroot"].'/php/classes.recipe.php';
   $book = new cookbook;
 
-  switch ($_POST["function"]) {
+  switch ($_GET["function"]) {
     case 'del':
       $book->removeRecipe($_POST["id"]);
       break;

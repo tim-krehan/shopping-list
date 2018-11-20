@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="/style/list.css">
 <h1>Liste</h1>
 <button type="button" id="remove" class="button">Auswahl entfernen</button>
-<form id="neu" action="php/edit-list.php" method="post">
+<form id="neu" action="api/list/new" method="post">
   <input type="hidden" name="function" value="new">
 <div id="list">
   <?php

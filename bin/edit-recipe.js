@@ -1,16 +1,15 @@
 $(document).ready(function(){
   var recipeID = window.location.href.split("/")[(window.location.href.split("/").length-1)];
-  $("#FormSubmitfunction").prop("value", "update");
+  $("#newRecipeForm").prop("action", "/api/recipes/update");
   $.ajax({
     type: "POST",
-    url: "/php/edit-recipes.php",
+    url: "/api/recipes/edit",
     data: {
-      function: "edit",
       id: recipeID
     },
     success: function(data){
       var recipe = JSON.parse(data);
-      $("#FormSubmitfunction").after("<input type='hidden' name='id' value='"+recipe.ID+"'>");
+      $("#safeRecipe").before("<input type='hidden' name='id' value='"+recipe.ID+"'>");
       $("#RecipeFormName").val(recipe.Name);
       $("#recipeDurationInput").val(recipe.Dauer);
       $("#recipeDescription").val(recipe.Beschreibung);

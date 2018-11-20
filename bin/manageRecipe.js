@@ -14,9 +14,8 @@ $(document).ready(function(){
     if(!(confirm("Wirklich löschen?"))){return;}
     $.ajax({
       type: "POST",
-      url: "/php/edit-recipes.php",
+      url: "/api/recipes/del",
       data: {
-        function: "del",
         id: $("#recipeHeader").data("recipeid")
       },
       success: function(data){
