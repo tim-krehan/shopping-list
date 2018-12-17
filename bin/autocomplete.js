@@ -71,10 +71,8 @@ var values = [];
 $(document).ready(function(){
   $.ajax({
     type: "POST",
-    url: "/php/edit-recipes.php",
-    data: {
-      function: "auto",
-    },
+    url: "/api/recipes/auto",
+    data: {},
     success: function(data){
       values = data.split("||");
     }

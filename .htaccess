@@ -15,6 +15,41 @@
   RewriteRule ^edit-recipe/([0-9]+)$ ?site=edit-recipe&number=$1
 
   #Loginseite
-  RewriteRule ^login/url=(.+)$ ?site=login&refurl=$1 [L]
+  RewriteRule ^login/url=(.+)$ ?site=login&refurl=$1
 
+  #API Calls
+  RewriteRule ^api/([\w-]+)/([\w-]+)$ php/api.php?site=api&call=$1&function=$2 [L]
 </IfModule>
+
+#Deny every *.php file
+<Files *.php>
+    Order Deny,Allow
+    Deny from all
+    Allow from 127.0.0.1
+</Files>
+
+#allow following files
+<Files index.php>
+    Order Allow,Deny
+    Allow from all
+</Files>
+
+<Files api.php>
+    Order Allow,Deny
+    Allow from all
+</Files>
+
+<Files login.php>
+    Order Allow,Deny
+    Allow from all
+</Files>
+
+<Files logout.php>
+    Order Allow,Deny
+    Allow from all
+</Files>
+
+<Files install*.php>
+    Order Allow,Deny
+    Allow from all
+</Files>

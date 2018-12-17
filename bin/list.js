@@ -3,9 +3,8 @@ $(document).ready(function(){
     var dataId = $(this).parent().data("id");
     $.ajax({
       type: "POST",
-      url: "php/edit-list.php",
+      url: "api/list/check",
       data: {
-        function: "check",
         id: dataId,
         status: $(this).prop("checked")
       },
@@ -18,10 +17,7 @@ $(document).ready(function(){
   $("#remove").click(function(){
     $.ajax({
       type: "POST",
-      url: "php/edit-list.php",
-      data: {
-        function: "del"
-      },
+      url: "api/list/del",
       success: function(){
         location.reload();
       }

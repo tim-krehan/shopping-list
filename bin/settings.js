@@ -31,9 +31,8 @@ $(document).ready(function(){
     }
   });
   $("#passwordSaveButton").click(function(){
-    $.post("/php/edit-user.php",
+    $.post("/api/user/change-pw",
       {
-        function: "change-pw",
         current: $("#old-password-input").val(),
         new: $("#new-password-input").val()
       },
@@ -52,13 +51,13 @@ $(document).ready(function(){
   });
 
   $("#export-recipe-button").click(function(){
-    $.post("/php/edit-recipes.php", {function:"export"}, function(data){
+    $.post("/api/recipes/export", {}, function(data){
       downloadObjectAsJson(JSON.parse(data), "recipes");
     });
   });
 
   $("#export-list-button").click(function(){
-    $.post("/php/edit-list.php", {function:"export"}, function(data){
+    $.post("/api/list/export", {}, function(data){
       downloadObjectAsJson(JSON.parse(data), "list");
     });
   });
@@ -70,9 +69,8 @@ $(document).ready(function(){
       reader.onload = function(){
         var content = JSON.parse(reader.result);
         if(content.sites!=null){
-          $.post("/php/edit-recipes.php",
+          $.post("/api/recipes/import",
             {
-              function: "import",
               content: reader.result
             },
             function(data){
@@ -87,9 +85,8 @@ $(document).ready(function(){
           );
         }
         else if(content.list!=null){
-          $.post("/php/edit-list.php",
+          $.post("/api/list/import",
             {
-              function: "import",
               content: reader.result
             },
             function(data){

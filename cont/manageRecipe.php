@@ -8,8 +8,7 @@
 else{
   echo "<h1 id=\"header\">Neu</h1>";
 } ?>
-<form id="newRecipeForm" autocomplete="off" action="/php/edit-recipes.php" method="post">
-  <input id="FormSubmitfunction" type="hidden" name="function" value="new">
+<form id="newRecipeForm" autocomplete="off" action="/api/recipes/new" method="post">
   <div><input id="safeRecipe" type="submit" name="" value="Speichern" class="button"> </div>
   <div><font>Name:</font><br /><input id="RecipeFormName" type="text" name="recipeName" placeholder="Name" required="required"></div>
   <div><font>Dauer (Minuten):</font><br /><input type="number" name="recipeDuration" id="recipeDurationInput" value="30"></div>
