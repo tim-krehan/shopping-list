@@ -1,1 +1,4 @@
-Require all denied
+# prevent access to these files while not logged in
+<files "*.php">
+  Require all denied
+</files>

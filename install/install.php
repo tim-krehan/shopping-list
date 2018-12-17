@@ -1,9 +1,9 @@
 <?php
-session_start();
-if (!($_SESSION["docroot"]))
-{
-   $_SESSION["docroot"] = str_replace("/install", "", __DIR__);
-}
+  session_start();
+  if (!($_SESSION["docroot"]))
+  {
+     $_SESSION["docroot"] = str_replace("/install", "", __DIR__);
+  }
 
   header("Cache-Control: no-cache, no-store, must-revalidate"); // HTTP 1.1.
   header("Pragma: no-cache"); // HTTP 1.0.
@@ -12,14 +12,19 @@ if (!($_SESSION["docroot"]))
 
   $mods_enabled = array("mod_rewrite");
   $missing_mods = array();
-  foreach($mods_enabled as $mod){
-    if(!(in_array($mod, apache_get_modules()))){
-      array_push($missing_mods, $mod);
+  if(function_exists("apache_get_modules")){
+    $apache_mods = apache_get_modules();
+    foreach($mods_enabled as $mod){
+      if(!(in_array($mod, $apache_mods))){
+        array_push($missing_mods, $mod);
+      }
     }
   }
+
   if(!(class_exists('mysqli'))){ #php-mysql not installed
       array_push($missing_mods, "mysql");
   }
+
   if(sizeof($missing_mods)>0){
     header("Location: /cont/error.php?id=php_modules&missing_mods=".serialize($missing_mods));
   }
@@ -28,7 +33,7 @@ if (!($_SESSION["docroot"]))
     header("Location: /");
     exit;
   }
-  ?>
+?>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/style/master.css">

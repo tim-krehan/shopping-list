@@ -23,6 +23,7 @@
         <link rel="shortcut icon" type="image/png" href="/pic/fav.ico"/>
         <link rel="stylesheet" href="/style/master.css">
         <script src="/bin/jquery.js"></script>
+        <script src="/bin/index.js" charset="utf-8"></script>
         <title>Einkaufsliste</title>
       </head>
       <body>
@@ -42,6 +43,10 @@
 
     case "list":
       include $_SESSION["docroot"].'/cont/list.php';
+      break;
+
+    case "settings":
+      include $_SESSION["docroot"].'/cont/settings.php';
       break;
 
     case "recipes":
@@ -76,5 +81,6 @@
   echo "</div>";
   if($site && ($site!="login")){include $_SESSION["docroot"].'/cont/nav.php';}
 ?>
+        <div id="info-popup"><font id="info-popup-text"></font></div>
       </body>
     </html>

@@ -19,6 +19,15 @@
 
     case 'check':
       $shopping->check($_POST["id"], $_POST["status"]);
+      break;
+
+    case 'export':
+      echo json_encode($shopping);
+      break;
+
+    case 'import':
+      $shopping->import();
+      break;
 
     default:
       // code...

@@ -27,6 +27,15 @@
       header(("Location: /recipe/".$_POST["id"]));
       break;
 
+    case 'export':
+      $book->fillCookbook();
+      echo json_encode($book);
+      break;
+
+    case 'import':
+      $book->importCookbook();
+      break;
+
     default:
       // code...
       break;

@@ -31,6 +31,13 @@
   height: 45px;
   cursor: pointer;
 }
+#settings {
+  position: absolute;
+  top: calc(.5em + 5px);
+  right: calc(2em + 45px);
+  height: 35px;
+  cursor: pointer;
+}
 #burgerMenue {
   width: 60px;
   height: 45px;

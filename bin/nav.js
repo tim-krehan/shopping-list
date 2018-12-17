@@ -15,4 +15,7 @@ $(document).ready(function(){
   $("#logout").click(function(){
     window.location.href = "/php/logout.php";
   });
+  $("#settings").click(function(){
+    window.location.href = "/settings";
+  });
 });

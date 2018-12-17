@@ -9,14 +9,8 @@ $(document).ready(function(){
         id: dataId,
         status: $(this).prop("checked")
       },
-      success: function(){
-          $("#saved font").css("animation", "none");
-          setTimeout(function(){$("#saved font").css("animation", "fade 4s linear");}, 100);
-      },
-      error: function(){
-          $("#error font").css("animation", "none");
-          setTimeout(function(){$("#error font").css("animation", "fade 6s linear");}, 100);
-      }
+      success: function(){infoPopUp("SAVED!", 100);},
+      error: function(){infoPopUp("Netzwerkfehler! Bitte aktualisieren.", 100);}
     });
     if($(this).prop("checked")){$("[data-id='"+dataId+"']").addClass("checked");}
     else{$("[data-id='"+dataId+"']").removeClass("checked");}
