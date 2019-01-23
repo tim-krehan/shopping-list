@@ -13,6 +13,8 @@
   if($_GET["site"]!="error"){
     include $_SESSION["docroot"].'/php/auth.php';
   }
+
+  include $_SESSION["docroot"].'/version.php';
 ?>
     <html lang="de" dir="ltr">
       <head>
