@@ -34,16 +34,47 @@
     exit;
   }
 ?>
+<html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/style/master.css">
-    <link rel="stylesheet" href="/style/install.css">
+    <link rel="stylesheet" href="/style/fontawesome/css/all.css">
+    <link rel="stylesheet" href="/style/main.css">
+    <script src="/bin/jquery.js"></script>
   </head>
-  <h1>Installation</h1>
-  <form class="installer" action="install_action.php" method="post">
-    <label for="text_database">Datenbank-Name</label><input id="text_database" type="text" name="database" placeholder="shopping-list" autocomplete="off" required>
-    <label for="text_host">Datenbank-Host</label><input id="text_dbhost" type="text" name="dbhost" placeholder="localhost" autocomplete="off" required>
-    <label for="text_user">Benutzername</label><input id="text_user" type="text" name="username" placeholder="shopping-list" autocomplete="off" required>
-    <label for="text_passwd">Password</label><input id="text_passwd" type="Password" name="passwd" placeholder="********" autocomplete="off" required>
-    <input id="button_install" class="button" type="submit" name="" value="Installieren">
-  </form>
+  <body>
+
+    <div class="container">
+      <h1>Installation</h1>
+      <form action="install_action.php" method="post">
+        <div class="form-group">
+          <label for="databaseHost">Datenbankhost</label>
+          <input type="text" name="dbhost" class="form-control" id="databaseHost" aria-describedby="databaseHostHelp" placeholder="localhost" autocomplete="off" required>
+          <small id="databaseHostHelp" class="form-text text-muted">Der Host, auf dem die Datenbank läuft.</small>
+        </div>
+        
+        <div class="form-group">
+          <label for="databaseName">Datenbankname</label>
+          <input type="text" name="database" class="form-control" id="databaseName" aria-describedby="databaseNameHelp" placeholder="shopping-list" autocomplete="off" required>
+          <small id="databaseNameHelp" class="form-text text-muted">Der Name der Datenbank.</small>
+        </div>
+        
+        <div class="form-group">
+          <label for="username">Benutzername</label>
+          <input type="text" name="username" class="form-control" id="username" aria-describedby="usernameHelp" placeholder="shopping-user" autocomplete="off" required>
+          <small id="usernameHelp" class="form-text text-muted">Der Benutzer mit Rechten auf die Datenbank.</small>
+        </div>
+        
+        <div class="form-group">
+          <label for="passwd">Passwort</label>
+          <input type="password" name="passwd" class="form-control" id="passwd" aria-describedby="passwdHelp" placeholder="********" autocomplete="off" required>
+          <small id="passwdHelp" class="form-text text-muted">Passwort für den Datenbankbenutzer.</small>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Installieren</button>
+
+      </form>
+    </div>
+
+    <script src="bin/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

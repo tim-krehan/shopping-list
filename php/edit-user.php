@@ -10,6 +10,11 @@
       $user->change_password($_POST["current"], $_POST["new"]);
       break;
 
+    case 'change-theme':
+      $user->change_theme($_POST["theme"]);
+      break;
+  
+
     case 'new':
       $user->new($_POST["username"], $_POST["passwd"]);
       break;

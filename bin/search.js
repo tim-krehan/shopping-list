@@ -1,23 +1,34 @@
 $(document).ready(function(){
-  var recipes = $("#recipes font");
+  var recipes = $("#recipes a");
   var headerLetters = $("#recipes h2");
-  $("#searchRecipe").on("keyup", function(data){
-    var search = $("#searchRecipe").val().toUpperCase();
+  $("#search-recipes").on("keyup", searchRecipe(recipes, headerLetters));
+  $("#clear-search-string").click(clearSearchString);
+});
+
+function searchRecipe(recipes, headerLetters) {
+  return function () {
+    var search = $("#search-recipes").val().toUpperCase();
     for (var i = 0; i < recipes.length; i++) {
-      if(recipes[i].innerHTML.toUpperCase().indexOf(search) > -1){
+      if (recipes[i].innerHTML.toUpperCase().indexOf(search) > -1) {
         recipes[i].style.display = "";
       }
-      else{
+      else {
         recipes[i].style.display = "none";
       }
     }
     for (var j = 0; j < headerLetters.length; j++) {
-      if(($("*[data-letter='"+headerLetters[j].innerHTML+"']:visible")).length>0){
+      if (($("*[data-letter='" + headerLetters[j].innerHTML + "']:visible")).length > 0) {
         headerLetters[j].style.display = "";
       }
-      else{
+      else {
         headerLetters[j].style.display = "none";
       }
     }
-  });
-});
+  };
+}
+
+function clearSearchString(){
+  $("#search-recipes").val("");
+  $("#search-recipes").focus();
+  $("#search-recipes").keyup();
+}

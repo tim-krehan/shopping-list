@@ -1,16 +1,17 @@
 <?php
   Class user {
-    public $uid, $username, $email, $last_login;
+    public $uid, $username, $email, $theme, $last_login;
     private $salt;
 
     function get_info($session_id) {
       include $_SESSION["docroot"].'/php/connect.php';
-      $query = "SELECT uid, username, email, last_login, salt FROM `users` WHERE `uid` = (SELECT user FROM `sessions` WHERE `session_id` = \"$session_id\")";
+      $query = "SELECT uid, username, email, theme, last_login, salt FROM `users` WHERE `uid` = (SELECT user FROM `sessions` WHERE `session_id` = \"$session_id\")";
       $result = $mysqli->query($query);
       $user = $result->fetch_assoc();
       $this->uid = $user["uid"];
       $this->username = $user["username"];
       $this->email = $user["email"];
+      $this->theme = $user["theme"];
       $this->last_login = $user["last_login"];
       $this->salt = $user["salt"];
       $mysqli->close();
@@ -33,8 +34,18 @@
       }
     }
 
+    function change_theme($theme){
+      include $_SESSION["docroot"].'/php/connect.php';
+      $result = $mysqli->query("UPDATE `users` SET `theme` = '$theme' WHERE `users`.`uid` = $this->uid;");
+      if($result){
+        print_r("0");
+      }
+      else{
+        print_r("1");
+      }
+    }
+
     function new($uname, $password){
-      session_start();
       include $_SESSION["docroot"].'/php/connect.php';
       include $_SESSION["docroot"].'/php/hash.php';
 

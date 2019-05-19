@@ -1,16 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/style/master.css">
-    <link rel="stylesheet" href="/style/adduser.css">
-    <script src="/bin/jquery.js" charset="utf-8"></script>
-    <script src="/bin/index.js" charset="utf-8"></script>
-    <script src="/bin/adduser.js" charset="utf-8"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/style/fontawesome/css/all.css">
+  <link rel="stylesheet" href="/style/main.css">
+  <script src="/bin/jquery.js"></script>
+  <script src="/bin/adduser.js" charset="utf-8"></script>
+  <title>Benutzer hinzufügen</title>
 </head>
-<h1>Benutzer hinzufügen</h1>
-<div class="adduser">
-  <label for="text_user">Benutzername</label><input id="text_user" type="text" name="username" placeholder="user" required>
-  <label for="text_passwd">Passwort</label><input id="text_passwd" type="password" name="passwd" placeholder="********" required>
-  <input id="button_newuser" class="button" type="submit" name="" value="Neuer Benutzer">
-</div>
-<button class="button button-disabled" id="adduser-button-done">Fertig</button>
-<div id="info-popup"><font id="info-popup-text"></font></div>
+<body>
+  <div class="container">
+    <h1>Benutzer hinzufügen</h1>
+
+    <div class="form-group">
+      <label for="username">Benutzername</label>
+      <input type="text" class="form-control" id="username" aria-describedby="usernameHelp" placeholder="Benutzername" autocomplete="off">
+      <small id="usernameHelp" class="form-text text-muted">Einen Benutzer für die ShoppingList erstellen.</small>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Passwort</label>
+      <input type="password" class="form-control" id="password" aria-describedby="passwordHelp" placeholder="**********">
+      <small id="passwordHelp" class="form-text text-muted">Ihr Passwort wird verschlüsselt in der Datenbank gespeichert.</small>
+    </div>
+
+    <div class="form-group d-flex flex-row justify-content-end">
+      <a id="newuser" class="btn btn-primary text-light">Neuer Benutzer</a>
+      <a href="/" id="done" class="btn btn-success text-light ml-1 disabled">Fertigstellen</a>
+    </div>
+
+  </div>
+
+
+  <script src="bin/bootstrap.bundle.min.js"></script>
+</body>
+</html>

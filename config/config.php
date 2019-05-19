@@ -1,5 +1,5 @@
-<?php
-  $CONFIG = array (
-    'installed' => false,
-  );
+<?php 
+$CONFIG = array (
+  'installed' => false,
+);
 ?>

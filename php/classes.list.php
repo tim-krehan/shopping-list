@@ -67,7 +67,7 @@
       foreach($import->list as $item){
         $this->newItem($item->Anzahl, $units->getID($item->Einheit), $item->Name);
       }
-      print_f("0");
+      print_r("0");
     }
   }
 

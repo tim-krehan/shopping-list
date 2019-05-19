@@ -78,6 +78,7 @@ CREATE TABLE `users` (
   `uid` INT NOT NULL,
   `username` varchar(32) NOT NULL,
   `email` varchar(128),
+  `theme` varchar(128) NULL,
   `password` char(128) NOT NULL,
   `salt` char(64) NOT NULL,
   `last_login` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
