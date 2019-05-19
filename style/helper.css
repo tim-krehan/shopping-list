@@ -1,9 +1,3 @@
-#nameField {
-    min-width: calc(100% - 67px);
-}
-#add {
-    width: 40px;
-}
 .toast {
     right: 0;
     left: unset !important;

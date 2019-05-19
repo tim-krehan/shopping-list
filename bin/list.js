@@ -1,3 +1,11 @@
+$(document).ready(function () {
+  $("input[type=checkbox]").change(checkItem);
+  $("#remove").click(deleteCheckeditems);
+  $("#nameField").focus();
+  $("#anzahl").on("focus", function () { $(this).select(); });
+  $("#nameField").on("focus", function () { $(this).select(); });
+});
+
 function deleteCheckeditems() {
   $.post({
     url: "api/list/del",
@@ -46,11 +54,3 @@ function checkItem() {
     }
   });
 }
-
-$(document).ready(function () {
-  $("input[type=checkbox]").change(checkItem);
-  $("#remove").click(deleteCheckeditems);
-  $("#nameField").focus();
-  $("#anzahl").on("focus", function () { $(this).select(); });
-  $("#nameField").on("focus", function () { $(this).select(); });
-});

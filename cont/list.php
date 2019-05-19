@@ -48,7 +48,7 @@
           ?>
         </select>
       </div>
-      <input type="text" name='name' class="form-control" placeholder="Item" aria-label="Item" aria-describedby="button-addon2"  autocomplete='off' required>
+      <input type="text" name='name' class="form-control" id="nameField" placeholder="Item" aria-label="Item" aria-describedby="button-addon2"  autocomplete='off' required>
       <div class="input-group-append">
         <button class="btn btn-outline-secondary" type="submit" id="button-addon2"><i class="fas fa-plus"></i></button>
       </div>
