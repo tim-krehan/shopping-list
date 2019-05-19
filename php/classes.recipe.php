@@ -180,8 +180,9 @@
       $values = array();
       $result = $mysqli->query("SELECT Name FROM Zutat ORDER BY Name ASC");
       while($item = $result->fetch_assoc()){
-        echo $item["Name"]."||";
+        array_push($values, $item["Name"]);
       }
+      print_r(json_encode($values));
       $mysqli->close();
     }
 

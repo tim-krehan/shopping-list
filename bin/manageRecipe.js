@@ -4,15 +4,14 @@ $(document).ready(function () {
   $("input[type=number]").on("focus", function () { $(this).select(); });
   $("input[type=text]").on("focus", function () { $(this).select(); });
 
-  // $(".ingredientName").on("focus", function () {
-  //   autocomplete(this, values);
-  // });
-  // $(".ingredientName").keydown(function (x) {
-  //   if ((x.keyCode == 9) && ($(this).parent().parent().next().prop("class") != $(this).parent().parent().prop("class"))) {
-  //     $(this).parent().parent().find(".addIngredient").click();
-  //   }
-  // });
-  // $(".ingredientAmount").on("focus", function () { $(this).select(); });
+  // implement autocomplete with https://bootstrap-autocomplete.readthedocs.io/en/latest/#
+  $(".autocomplete-ingredient").autoComplete(
+    {
+      resolverSettings: {
+        url: '/api/recipes/auto'
+      }
+    }
+  );
 
 });
 

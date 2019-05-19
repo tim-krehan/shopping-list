@@ -12,7 +12,7 @@
     $additionalInput = "";
   }
 ?>
-<!-- <script src="/bin/autocomplete.js" charset="utf-8"></script> -->
+<script src="/bin/bootstrap.autocomplete.js" charset="utf-8"></script>
 <script src="/bin/manageRecipe.js" charset="utf-8"></script>
 <?php echo $script; ?>
 <div class="container mt-5">
@@ -55,7 +55,7 @@
       ?>
     </select>
     <div class="input-group">
-      <input type="text" class="form-control" name="ingredient[1][Name]" placeholder="Zutat" required>
+      <input type="text" class="autocomplete-ingredient form-control" name="ingredient[1][Name]" placeholder="Zutat" autocomplete="off" required>
       <div class="input-group-append">
         <span class="input-group-text p-0"><button onclick="removeItem(this);" class="removeItem fas fa-trash-alt bg-transparent rounded-right border-0 p-2 pl-3 pr-3 text-danger"></button></span>
       </div>
