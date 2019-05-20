@@ -23,7 +23,7 @@
     echo "<h1 data-recipeid='$recipe->ID'>$recipe->Name</h1>";
   echo '</div>';
 
-  echo '<div class="card mw-50">';
+  echo '<div class="card mw-50 mb-3">';
     echo "<div class='card-body' id='ingredients'>";
     echo "<h2 class='card-title'>Zutaten</h2>";
     foreach($recipe->Zutaten as $index => $Zutat){
