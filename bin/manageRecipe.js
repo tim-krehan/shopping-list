@@ -1,6 +1,6 @@
 $(document).ready(function () {
   $("#addItem").click(addItem);
-  $("#cancel").click(function(){window.history.back()});
+  $("#cancel").click(function () { window.history.back() });
   $("input[type=number]").on("focus", function () { $(this).select(); });
   $("input[type=text]").on("focus", function () { $(this).select(); });
 
@@ -20,10 +20,12 @@ function removeItem(elem) {
 function addItem() {
   var dataID = parseInt($("#addItem").data("count")) + 1;
   $("#addItem").data("count", dataID);
-  
+
   var clone = $($(".ingredientRow")[0]).clone();
 
   clone.find("input[type=text]").attr("name", ("ingredient[" + dataID + "][Name]"));
+  clone.find("input[type=text]").attr("id", ("dropdownMenuAutocomplete-" + dataID));
+  clone.find(".dropdown-menu").attr("aria-labelledby", ("dropdownMenuAutocomplete-" + dataID));
   clone.find("input[type=text]").val("");
   clone.find("input[type=text]").on("input", autocomplete);
   clone.find("input[type=text]").on("focus", function () { $(this).select(); });
@@ -35,4 +37,4 @@ function addItem() {
   $(".ingredientRow").last().after(clone);
 
   clone.find("input[type=number]").focus();
-}
+} 

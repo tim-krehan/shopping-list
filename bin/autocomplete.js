@@ -8,7 +8,9 @@ function autocomplete() {
             data: {
                 q: search
             },
-            success: function (data) { createAutocompleteDropdown(elem, JSON.parse(data)); }
+            success: function (data) { 
+                createAutocompleteDropdown(elem, JSON.parse(data));
+            }
         });
     }
 }
@@ -16,6 +18,10 @@ function createAutocompleteDropdown(elem, values) {
     var dropdownmenue = $('[aria-labelledby=' + elem.attr("id") + ']');
     var dropdownItems = dropdownmenue.find(".dropdown-item");
     dropdownItems.remove();
+
+    if (!(dropdownmenue.hasClass("show"))){
+        elem.click();
+    }
 
     for (index = 0; index < values.length; index++) {
         var value = values[index];
@@ -31,4 +37,6 @@ function createAutocompleteDropdown(elem, values) {
 function dropdownButtonClick() {
     var string = $(this).data("val");
     $('#' + $(this).attr("aria-textfield")).val(string);
+    $('[aria-labelledby=' + $('#' + $(this).attr("aria-textfield")).attr("id") + ']').find(".dropdown-item").remove();
+    $('[aria-labelledby=' + $('#' + $(this).attr("aria-textfield")).attr("id") + ']').append('<button class="dropdown-item" type="button" data-value="-1">Tippen um zu suchen... </button>');
 }
