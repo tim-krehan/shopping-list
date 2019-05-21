@@ -56,9 +56,9 @@
     </select>
 
     <div class="input-group">
-      <input type="text" data-apiurl="/api/recipes/auto" data-strlen="2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="dropdownMenuAutocomplete" class="autocomplete-ingredient form-control dropdown"  name="ingredient[1][Name]" placeholder="Zutat" autocomplete="off" required>
+      <input type="text" data-apiurl="/api/recipes/auto" data-strlen="2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="dropdownMenuAutocomplete-1" class="autocomplete-ingredient form-control dropdown"  name="ingredient[1][Name]" placeholder="Zutat" autocomplete="off" required>
       
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuAutocomplete">
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuAutocomplete-1">
         <button class="dropdown-item" type="button" data-value="-1">Tippen um zu suchen... </button>
       </div>
 
