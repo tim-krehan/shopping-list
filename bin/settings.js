@@ -1,4 +1,6 @@
 $(document).ready(function () {
+    $(".user-input").on("input", checkUserStrings);
+    $("#userSaveButton").click(userChange);
     $(".password-input").on("input", checkPasswordStrings);
     $("#passwordSaveButton").click(savePassword);
     $("#export-recipe-button").click(exportRecipe);
@@ -46,18 +48,46 @@ $(document).ready(function () {
     });
 });
 
-function themeChange(){
+function userChange() {
+    var mail = $('.user-input.is-valid[aria-label="email"]').val();
+    var userName = $('.user-input.is-valid[aria-label="Username"]').val();
+    if(mail != null){
+        $.post(
+            "/api/user/change-mail",
+            {
+                mail: mail
+            },
+            function(){
+                window.location.href = window.location.href;
+            }
+        )
+    }
+    
+    if (userName != null) {
+        $.post(
+            "/api/user/change-username",
+            {
+                username: userName
+            },
+            function () {
+                window.location.href = window.location.href;
+            }
+        )
+    }
+}
+
+function themeChange() {
     $("#themeSaveButton").removeClass("disabled");
     $("#themeSaveButton").attr("disabled", false);
 }
 
 function changeTheme() {
     $.post(
-        "/api/user/change-theme", 
+        "/api/user/change-theme",
         {
             theme: $('#changeThemePrepend option:selected').val()
         },
-        function(){
+        function () {
             window.location.href = window.location.href;
         }
     );
@@ -110,6 +140,42 @@ function checkPasswordStrings() {
         $("#passwordSaveButton").addClass("disabled");
         $("#new-password-input").removeClass("is-valid");
         $("#check-password-input").removeClass("is-valid");
+    }
+}
+
+function checkUserStrings() {
+    switch ($(this).attr("aria-label")) {
+        case "Username":
+            if ($(this).val().length >= 3) {
+                $("#userSaveButton").attr("disabled", false);
+                $("#userSaveButton").removeClass("disabled");
+                $(this).removeClass("is-invalid");
+                $(this).addClass("is-valid");
+            }
+            else {
+                $("#userSaveButton").attr("disabled", true);
+                $("#userSaveButton").addClass("disabled");
+                $(this).addClass("is-invalid");
+                $(this).removeClass("is-valid");
+            }
+            break;
+        case "email":
+            mailRegEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            if (($(this).val().length > 5) && (mailRegEx.exec($(this).val()) !== null)) {
+                $("#userSaveButton").attr("disabled", false);
+                $("#userSaveButton").removeClass("disabled");
+                $(this).removeClass("is-invalid");
+                $(this).addClass("is-valid");
+            }
+            else {
+                $("#userSaveButton").attr("disabled", true);
+                $("#userSaveButton").addClass("disabled");
+                $(this).addClass("is-invalid");
+                $(this).removeClass("is-valid");
+            }
+            break;
+        default:
+            break;
     }
 }
 

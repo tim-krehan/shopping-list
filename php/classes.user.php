@@ -34,6 +34,29 @@
       }
     }
 
+    function change_mail($mailaddress){
+      include $_SESSION["docroot"].'/php/hash.php';
+      include $_SESSION["docroot"].'/php/connect.php';
+      $this->mail = $mailaddress;
+      $result = $mysqli->query("UPDATE `users` SET `email` = '$mailaddress' WHERE `users`.`uid` = $this->uid;");
+      $mysqli->close();
+    }
+
+    function change_username($newname){
+      include $_SESSION["docroot"].'/php/hash.php';
+      include $_SESSION["docroot"].'/php/connect.php';
+      $this->username = $newname;
+      $result = $mysqli->query("SELECT * WHERE `username` = $this->username;");
+      if($result->num_rows==0){
+        $result = $mysqli->query("UPDATE `users` SET `username` = '$newname' WHERE `users`.`uid` = $this->uid;");
+        print_r("0");
+      }
+      else{
+        print_r("1");
+      }
+      $mysqli->close();
+    }
+
     function change_theme($theme){
       include $_SESSION["docroot"].'/php/connect.php';
       $result = $mysqli->query("UPDATE `users` SET `theme` = '$theme' WHERE `users`.`uid` = $this->uid;");

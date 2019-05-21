@@ -12,14 +12,14 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="userPrepend">Benutzername</span>
                 </div>
-                <input type="text" class="form-control" placeholder="<?php echo $user->username; ?>" aria-label="Username" aria-describedby="userPrepend">
+                <input type="text" class="user-input form-control" placeholder="<?php echo $user->username; ?>" aria-label="Username" aria-describedby="userPrepend">
             </div>
 
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="mailPrepend">Mail</span>
                 </div>
-                <input type="email" class="form-control" placeholder="<?php echo $user->email; ?>" aria-label="email" aria-describedby="mailPrepend">
+                <input type="email" class="user-input form-control" placeholder="<?php echo $user->email; ?>" aria-label="email" aria-describedby="mailPrepend">
             </div>
 
             <div class="input-group mb-3">
@@ -28,7 +28,7 @@
                 </div>
                 <input type="text" class="form-control" value="<?php echo $user->last_login; ?>" aria-label="login" aria-describedby="loginPrepend" readonly>
             </div>
-            <button class="btn btn-primary" id="userSaveButton">Speichern</button>
+            <button class="btn btn-primary disabled" id="userSaveButton" disabled>Speichern</button>
         </div>
     </div>
 
