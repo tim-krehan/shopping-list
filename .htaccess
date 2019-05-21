@@ -14,7 +14,7 @@
   #Rezept Seite
   RewriteRule ^recipe/([0-9]+)$ ?site=recipe&number=$1
 
-  #Rezepteditieren
+  #Rezept editieren
   RewriteRule ^edit-recipe/([0-9]+)$ ?site=edit-recipe&number=$1
 
   #Loginseite

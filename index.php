@@ -28,16 +28,20 @@ $user->get_info($_COOKIE["token"]);
 
 <head>
   <meta charset="utf-8">
-  <meta name="theme-color" content="#4CAF50" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="apple-touch-icon" href="/pic/fav.ico">
   <link rel="shortcut icon" type="image/png" href="/pic/fav.ico" />
   <link rel="stylesheet" href="/style/fontawesome/css/all.css">
   <?php
   if (file_exists($_SESSION["docroot"] . '/style/themes/' . $user->theme . ".css")) {
+    $cssFileContents = file_get_contents($_SESSION["docroot"]."/style/themes/".$user->theme.".css");
+    preg_match_all('/\s+--primary:\s#(.{3,6})/m', $cssFileContents, $matches, PREG_SET_ORDER, 0);
+    $themecolor = $matches[0][1];
     print_r('<link rel="stylesheet" href="/style/themes/' . $user->theme . '.css">');
+    print_r('<meta name="theme-color" content="#'.$themecolor.'">');
   } else {
     print_r('<link rel="stylesheet" href="/style/main.css">');
+    print_r('<meta name="theme-color" content="#007bff">');
   }
   ?>
   <link rel="stylesheet" href="/style/helper.css">

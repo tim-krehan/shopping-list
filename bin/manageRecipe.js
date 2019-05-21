@@ -4,16 +4,7 @@ $(document).ready(function () {
   $("input[type=number]").on("focus", function () { $(this).select(); });
   $("input[type=text]").on("focus", function () { $(this).select(); });
 
-  // $(".ingredientName").on("focus", function () {
-  //   autocomplete(this, values);
-  // });
-  // $(".ingredientName").keydown(function (x) {
-  //   if ((x.keyCode == 9) && ($(this).parent().parent().next().prop("class") != $(this).parent().parent().prop("class"))) {
-  //     $(this).parent().parent().find(".addIngredient").click();
-  //   }
-  // });
-  // $(".ingredientAmount").on("focus", function () { $(this).select(); });
-
+  $(".autocomplete-ingredient").on("input", autocomplete);
 });
 
 function removeItem(elem) {
@@ -34,6 +25,7 @@ function addItem() {
 
   clone.find("input[type=text]").attr("name", ("ingredient[" + dataID + "][Name]"));
   clone.find("input[type=text]").val("");
+  clone.find("input[type=text]").on("input", autocomplete);
   clone.find("input[type=text]").on("focus", function () { $(this).select(); });
   clone.find("input[type=number]").attr("name", ("ingredient[" + dataID + "][Amount]"));
   clone.find("input[type=number]").val("1");

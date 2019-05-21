@@ -34,24 +34,25 @@
             print_r("<div class='$div_item_name_classes'>$item->Name</div>");
         print_r("</div>");
       }
-      print_r("<div class='$div_item_row_classes  d-flex flex-row align-items-center' data-id='new'>");
-            print_r("<div class='$div_item_checkbox_classes col-0'><input type='checkbox' class='$input_item_checkbox_classes' disabled></div>");
-
-            print_r("<div class='$div_item_quantity_classes'>");
-              print_r("<input type='number' name='anzahl' value='1' class='m-1 p-0 col-4' id='list_row_anzahl_input'>");
-              print_r("<select name='einheit' class='p-0 m-1 col-5'>");
-              foreach ($units->list as $index => $unit) {
-              if($unit->Standard){$selected="selected";}else{$selected=NULL;}
-                print_r("<option value='$unit->ID' $selected>$unit->Name</option>");
-              }
-              print_r("</select>");
-            print_r("</div>");
-
-            print_r("<div class='$div_item_name_classes col-9 align-self-end'>");
-              print_r("<input type='text' name='name' id='nameField' class='col-8 w-100' autocomplete='off' required />");
-              print_r("<input class='btn bg-secondary ml-1 col-2' type='submit' name='submit' value='+' id='add'>");
-            print_r("</div>");
-      print_r("</div>");
     ?>
+
+    <div class="input-group mb-3 mt-3" data-id='new'>
+      <div class="input-group-prepend col-3 p-0">
+        <input type='number' name='anzahl' value='1' class='w-50'>
+        <select class="w-50" name="einheit">
+          <?php
+            foreach ($units->list as $index => $unit) {
+              if($unit->Standard){$selected="selected";}else{$selected=NULL;}
+              print_r("<option value='$unit->ID' $selected>$unit->Name</option>");
+            }
+          ?>
+        </select>
+      </div>
+      <input type="text" name='name' class="form-control" id="nameField" placeholder="Item" aria-label="Item" aria-describedby="button-addon2"  autocomplete='off' required>
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="submit" id="button-addon2"><i class="fas fa-plus"></i></button>
+      </div>
+    </div>
+
   </form>
 </div>

@@ -13,7 +13,14 @@
     case 'change-theme':
       $user->change_theme($_POST["theme"]);
       break;
-  
+
+    case 'change-mail':
+      $user->change_mail($_POST["mail"]);
+      break;
+
+    case 'change-username':
+      $user->change_username($_POST["username"]);
+      break;
 
     case 'new':
       $user->new($_POST["username"], $_POST["passwd"]);

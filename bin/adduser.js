@@ -30,8 +30,8 @@ function userPopover(title, text){
     $("#newuser").data("toggle", "popover");
     $("#newuser").data("container", "body");
     $("#newuser").data("placement", "bottom");
+    $("#newuser").data("trigger", "focus");
     $("#newuser").data("html", true);
-    // $("#newuser").data("trigger", "focus");
     $("#newuser").attr("title", title);
     $("#newuser").data("content", text);
     $("#newuser").popover('show');
