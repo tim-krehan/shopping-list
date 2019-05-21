@@ -13,7 +13,7 @@
       break;
 
     case 'auto':
-      $book->getAllIngredients();
+      $book->getAllIngredientsContaining($_POST["q"]);
       break;
 
     case 'edit':

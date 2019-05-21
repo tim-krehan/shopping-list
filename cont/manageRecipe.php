@@ -12,8 +12,8 @@
     $additionalInput = "";
   }
 ?>
-<script src="/bin/bootstrap.autocomplete.js" charset="utf-8"></script>
 <script src="/bin/manageRecipe.js" charset="utf-8"></script>
+<script src="/bin/autocomplete.js" charset="utf-8"></script>
 <?php echo $script; ?>
 <div class="container mt-5">
   <h1><?php echo $title ?></h1>
@@ -54,12 +54,19 @@
         }
       ?>
     </select>
+
     <div class="input-group">
-      <input type="text" class="autocomplete-ingredient form-control" name="ingredient[1][Name]" placeholder="Zutat" autocomplete="off" required>
+      <input type="text" data-apiurl="/api/recipes/auto" data-strlen="2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="dropdownMenuAutocomplete" class="autocomplete-ingredient form-control dropdown"  name="ingredient[1][Name]" placeholder="Zutat" autocomplete="off" required>
+      
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuAutocomplete">
+        <button class="dropdown-item" type="button" data-value="-1">Tippen um zu suchen... </button>
+      </div>
+
       <div class="input-group-append">
         <span class="input-group-text p-0"><button onclick="removeItem(this);" class="removeItem fas fa-trash-alt bg-transparent rounded-right border-0 p-2 pl-3 pr-3 text-danger"></button></span>
       </div>
     </div>
+
   </div>
 
 

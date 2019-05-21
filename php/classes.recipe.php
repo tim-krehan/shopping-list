@@ -175,10 +175,10 @@
       $mysqli->close();
     }
 
-    function getAllIngredients(){
+    function getAllIngredientsContaining($q){
       include $_SESSION["docroot"].'/php/connect.php';
       $values = array();
-      $result = $mysqli->query("SELECT Name FROM Zutat ORDER BY Name ASC");
+      $result = $mysqli->query("SELECT Name FROM Zutat WHERE Name LIKE '%$q%' ORDER BY Name ASC");
       while($item = $result->fetch_assoc()){
         array_push($values, $item["Name"]);
       }

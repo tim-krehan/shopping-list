@@ -4,15 +4,7 @@ $(document).ready(function () {
   $("input[type=number]").on("focus", function () { $(this).select(); });
   $("input[type=text]").on("focus", function () { $(this).select(); });
 
-  // implement autocomplete with https://bootstrap-autocomplete.readthedocs.io/en/latest/#
-  $(".autocomplete-ingredient").autoComplete(
-    {
-      resolverSettings: {
-        url: '/api/recipes/auto'
-      }
-    }
-  );
-
+  $(".autocomplete-ingredient").on("input", autocomplete);
 });
 
 function removeItem(elem) {
@@ -33,6 +25,7 @@ function addItem() {
 
   clone.find("input[type=text]").attr("name", ("ingredient[" + dataID + "][Name]"));
   clone.find("input[type=text]").val("");
+  clone.find("input[type=text]").on("input", autocomplete);
   clone.find("input[type=text]").on("focus", function () { $(this).select(); });
   clone.find("input[type=number]").attr("name", ("ingredient[" + dataID + "][Amount]"));
   clone.find("input[type=number]").val("1");
