@@ -33,6 +33,12 @@ if ($result->num_rows == 1)
     $insertQuery->execute();
 
   }
+  else
+  {
+    setcookie("token", "false", 0, "/", "");
+    header("Location: /");
+    exit(1);
+  }
   $lastLoginDate = date("Y-m-d H:i:s");
   $updateQuery = $mysqli->prepare("UPDATE `users` SET `last_login` = ? WHERE `uid` = ?;");
   $updateQuery->bind_param("ss", $lastLoginDate, $userdetails["uid"]);
