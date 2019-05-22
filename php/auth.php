@@ -13,7 +13,10 @@
       $token = "-1";
     }
 
-    $result = $mysqli->query('SELECT * FROM `sessions` WHERE `session_id` = \''.$token.'\';');
+    $selectQuery = $mysqli->prepare('SELECT * FROM `sessions` WHERE `session_id` = ?;');
+    $selectQuery->bind_param("s", $token);
+    $selectQuery->execute();
+    $result = $selectQuery->get_result();
 
     if(($result->num_rows) == 0 && (!(in_array("site", array_keys($_GET))) || $_GET["site"]!="login"))
     {
