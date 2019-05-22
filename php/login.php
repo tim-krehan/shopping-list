@@ -33,8 +33,9 @@ if ($result->num_rows == 1)
     $insertQuery->execute();
 
   }
-  $updateQuery = $mysqli->prepare("UPDATE `users` SET `last_login` = \'".date("Y-m-d H:i:s")."\'  WHERE `uid` = ?;");
-  $updateQuery->bind_param($userdetails["uid"]);
+  $lastLoginDate = date("Y-m-d H:i:s");
+  $updateQuery = $mysqli->prepare("UPDATE `users` SET `last_login` = ? WHERE `uid` = ?;");
+  $updateQuery->bind_param("ss", $lastLoginDate, $userdetails["uid"]);
   $updateQuery->execute();
   $mysqli->close();
   header("Location: ".$_POST["refurl"]);
