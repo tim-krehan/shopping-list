@@ -41,7 +41,9 @@
       $insertQuery = $mysqli->prepare("INSERT INTO `Einkauf` (`Anzahl`, `Einheit`, `Name`, `Erledigt`) VALUES (?, ?, ?, 0);");
       $insertQuery->bind_param("sss", $anzahl, $einheit, $name);
       $result = $insertQuery->execute();
+      $insertID = $mysqli->insert_id;
       $mysqli->close();
+      return $insertID;
     }
 
     function newItems($itemList){

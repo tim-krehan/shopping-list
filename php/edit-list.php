@@ -4,7 +4,8 @@
 
   switch ($_GET["function"]) {
     case 'new':
-      $shopping->newItem($_POST["anzahl"], $_POST["einheit"], $_POST["name"]);
+      $newID = $shopping->newItem($_POST["anzahl"], $_POST["einheit"], $_POST["name"]);
+      setcookie("newItem", "$newID", 0, "/", "");
       header("Location: /list");
       break;
 

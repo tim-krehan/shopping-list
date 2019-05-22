@@ -1,10 +1,18 @@
 $(document).ready(function () {
+  highlightNewEntry();
   $("input[type=checkbox]").change(checkItem);
   $("#remove").click(deleteCheckeditems);
   $("#nameField").focus();
   $("#anzahl").on("focus", function () { $(this).select(); });
   $("#nameField").on("focus", function () { $(this).select(); });
 });
+
+function highlightNewEntry(){
+  var cookies = document.cookie;
+  var cookieRegExp = new RegExp(/newItem(\d+)/ig);
+  console.log(cookies.match(cookieRegExp));
+  
+}
 
 function deleteCheckeditems() {
   $.post({
