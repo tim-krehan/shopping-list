@@ -60,7 +60,9 @@
     function check($id, $status){
       include $_SESSION["docroot"].'/config/config.php';
       include $_SESSION["docroot"].'/php/connect.php';
-      $mysqli->query("UPDATE `Einkauf` SET `Erledigt` = $status WHERE `Einkauf`.`ID` = $id");
+      $updateQuery = $mysqli->prepare("UPDATE `Einkauf` SET `Erledigt` = $status WHERE `Einkauf`.`ID` = ?");
+      $updateQuery->bind_param("s", $id);
+      $updateQuery->execute();
       $mysqli->close();
     }
 
