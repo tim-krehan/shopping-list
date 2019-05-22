@@ -31,13 +31,22 @@
       include $_SESSION["docroot"].'/php/connect.php';
       if(!is_int($einheit)){
         $unit_query = "SELECT * FROM `Einheit` WHERE `Name` = \"$einheit\"";
+        // $unit_query = $mysqli->prepare("SELECT * FROM `Einheit` WHERE `Name` = :einheit");
+        // $unit_query->bind_param(":einheit", $einheit);
         $result = $mysqli->query($unit_query);
         while($row = $result->fetch_assoc()){
           $einheit = $row["ID"];
         }
       }
-      $insertQuery = "INSERT INTO `Einkauf` (`Anzahl`, `Einheit`, `Name`, `Erledigt`) VALUES (".$anzahl.", ".$einheit.", '".$name."', 0)";
-      $mysqli->query($insertQuery);
+      // $insertQuery = "INSERT INTO `Einkauf` (`Anzahl`, `Einheit`, `Name`, `Erledigt`) VALUES (".$anzahl.", ".$einheit.", '".$name."', 0)";
+      $insertQuery = $mysqli->prepare("INSERT INTO `Einkauf` (`Anzahl`, `Einheit`, `Name`, `Erledigt`) VALUES (?, ?, ?, 0)");
+      $insertQuery->bind_param("sss", $anzahl, $einheit, $name);
+      $result = $insertQuery->execute();
+      var_dump($result);
+      // $insertQuery->bind_param(":einheit", $einheit);
+      // $insertQuery->bind_param(":itemname", $name);
+      // $insertQuery->execute();
+      // $mysqli->query($insertQuery);
       $mysqli->close();
     }
 
