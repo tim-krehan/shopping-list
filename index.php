@@ -55,7 +55,7 @@ $user->get_info($_COOKIE["token"]);
   if ($site && ($site != "login")) {
     include $_SESSION["docroot"] . '/cont/nav.php';
   }
-  echo '<div id="content" class="container pt-2">';
+  echo '<div id="content" class="container pt-4">';
   switch ($site) {
     case "login":
       include $_SESSION["docroot"] . '/cont/login.php';
