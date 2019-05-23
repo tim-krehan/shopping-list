@@ -47,7 +47,7 @@ $user->get_info($_COOKIE["token"]);
   <link rel="stylesheet" href="/style/helper.css">
   <script src="/js/jquery.js"></script>
   <script src="/js/main.js"></script>
-  <title>Einkaufsliste</title>
+  <title>ShoppingList</title>
 </head>
 
 <body>
