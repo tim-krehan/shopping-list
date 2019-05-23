@@ -1,16 +1,47 @@
-<nav class="navbar navbar-inverse bg-secondary rounded-bottom pt-0 pb-0">
-    <div class="container-fluid">
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark rounded-bottom fixed-top">
+  <a class="navbar-brand" href="/">
+    <i class="fas fa-check-square w-auto"></i>
+    ShoppingList
+  </a>
 
-      <ul class="nav navbar-left">
-        <a class="navbar-brand text-light font-weight-bold p-2" href="/"><i class="fas fa-check-square w-auto"></i></a>
-        <a class="text-light font-weight-bold text-decoration-none p-2 ml-1" href="/list">Liste</a>
-        <a class="text-light font-weight-bold text-decoration-none p-2 ml-1" href="/recipes">Rezepte</a>
-      </ul>
+  <button class="navbar-toggler float-right" type="button" data-toggle="collapse" data-target="#navbarToggleResponsive" aria-controls="navbarToggleResponsive" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fas fa-bars"></i>
+  </button>
+  
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item <?php if(($site=="list")||($site=="-1")){print_r("active");} ?>">
+        <a class="nav-link" href="/list"><i class="fas fa-list"></i> Liste</a>
+      </li>
+      <li class="nav-item <?php if($site=="recipes"){print_r("active");} ?>">
+        <a class="nav-link" href="/recipes"><i class="fas fa-book"></i> Rezepte</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav">
+      <li class="nav-item <?php if($site=="settings"){print_r("active");} ?>">
+        <a class="nav-link" href="/settings"><i class="fas fa-user-cog"></i></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/php/logout.php"><i class="fas fa-sign-out-alt"></i></a>
+      </li>
+    </ul>
+  </div>
 
-      <ul class="nav navbar-right text-light">
-        <a class="fas fa-user-cog text-light text-decoration-none p-1" href="/settings"></a>
-        <a class="fas fa-sign-out-alt text-light text-decoration-none p-1" href="/php/logout.php" id='logout'></a>
-      </ul>
 
-    </div>
+  <div class="collapse w-75 pl-2" id="navbarToggleResponsive">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item <?php if($site=="list"){print_r("active");} ?>">
+        <a class="nav-link" href="/list"><i class="fas fa-list"></i> Liste</a>
+      </li>
+      <li class="nav-item <?php if($site=="recipes"){print_r("active");} ?>">
+        <a class="nav-link" href="/recipes"><i class="fas fa-book"></i> Rezepte</a>
+      </li>
+      <li class="nav-item <?php if($site=="settings"){print_r("active");} ?>">
+        <a class="nav-link" href="/settings"><i class="fas fa-user-cog"></i> Einstellungen</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/php/logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
+      </li>
+    </ul>
+  </div>
 </nav>

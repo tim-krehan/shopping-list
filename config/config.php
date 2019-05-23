@@ -2,4 +2,5 @@
 $CONFIG = array (
   'installed' => false,
 );
+
 ?>

@@ -3,7 +3,7 @@
 <head>
     <title>Installationsfehler</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="/bin/error.js" charset="utf-8"></script>
+    <script src="/js/error.js" charset="utf-8"></script>
 </head>
 <body>
   <div class="container">

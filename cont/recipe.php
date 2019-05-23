@@ -1,13 +1,12 @@
-<script src="/bin/recipe.js" charset="utf-8"></script>
+<script src="/js/recipe.js" charset="utf-8"></script>
 <?php
   include $_SESSION["docroot"].'/php/classes.recipe.php';
-  include $_SESSION["docroot"].'/php/classes.parsedown.php';
   $book = new cookbook;
   $book->getRecipe($_GET["number"]);
   $recipe = $book->sites[0];
 ?>
 
-<div class="dropdown text-right mt-4">
+<div class="dropdown text-right mt-5">
   <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Menü
   </button>

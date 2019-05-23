@@ -45,9 +45,9 @@ $user->get_info($_COOKIE["token"]);
   }
   ?>
   <link rel="stylesheet" href="/style/helper.css">
-  <script src="/bin/jquery.js"></script>
-  <script src="/bin/main.js"></script>
-  <title>Einkaufsliste</title>
+  <script src="/js/jquery.js"></script>
+  <script src="/js/main.js"></script>
+  <title>ShoppingList</title>
 </head>
 
 <body>
@@ -55,7 +55,7 @@ $user->get_info($_COOKIE["token"]);
   if ($site && ($site != "login")) {
     include $_SESSION["docroot"] . '/cont/nav.php';
   }
-  echo '<div id="content" class="container">';
+  echo '<div id="content" class="container pt-4">';
   switch ($site) {
     case "login":
       include $_SESSION["docroot"] . '/cont/login.php';
@@ -100,7 +100,7 @@ $user->get_info($_COOKIE["token"]);
   }
   echo "</div>";
   ?>
-  <script src="bin/bootstrap.bundle.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

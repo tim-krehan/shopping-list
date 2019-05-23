@@ -1,10 +1,30 @@
 $(document).ready(function () {
+  highlightNewEntry();
   $("input[type=checkbox]").change(checkItem);
   $("#remove").click(deleteCheckeditems);
   $("#nameField").focus();
   $("#anzahl").on("focus", function () { $(this).select(); });
   $("#nameField").on("focus", function () { $(this).select(); });
 });
+
+function highlightNewEntry(){
+  var cookies = document.cookie;
+  var cookieRegExp = new RegExp(/;?\s+newItem=(\d+)/g);
+  var match = cookieRegExp.exec(cookies);
+  if(match!=null){  
+    var newID = match[1];
+    var checkBox = $("[data-id=" + newID + "]");
+    var newRow = checkBox.parent().parent();
+    newRow.removeClass($(checkBox).data("color"));
+    newRow.addClass("alert-primary");
+    setTimeout(function () {
+      newRow.removeClass("alert-primary");
+      newRow.addClass($(checkBox).data("color"));
+    }, 1000);
+    document.cookie = "newItem=-1"
+    console.log(document.cookie);
+  }
+}
 
 function deleteCheckeditems() {
   $.post({

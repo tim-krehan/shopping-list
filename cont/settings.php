@@ -1,4 +1,4 @@
-<script src="/bin/settings.js" charset="utf-8"></script>
+<script src="/js/settings.js" charset="utf-8"></script>
 <div class="container mt-5">
     <h1>Einstellungen</h1>
 </div>
@@ -112,11 +112,8 @@
 
 <div class="toast fixed-bottom m-2" role="alert" id="toast-pw-success" aria-live="assertive" aria-atomic="true" data-delay="4000" data-animation="true">
     <div class="toast-header">
-        <i class="close_toast fas fa-check-square w-auto mr-2"></i>
+        <i class="fas fa-check-square w-auto mr-2"></i>
         <strong class="mr-auto">ShoppingList</strong>
-        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
     </div>
     <div class="toast-body">
         Passwort erfolgreich geändert!
@@ -125,11 +122,8 @@
 
 <div class="toast fixed-bottom m-2" role="alert" id="toast-list-import-success" aria-live="assertive" aria-atomic="true" data-delay="4000" data-animation="true">
     <div class="toast-header">
-        <i class="close_toast fas fa-check-square w-auto mr-2"></i>
+        <i class="fas fa-check-square w-auto mr-2"></i>
         <strong class="mr-auto">ShoppingList</strong>
-        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
     </div>
     <div class="toast-body">
         Liste erfolgreich importiert!
@@ -138,24 +132,18 @@
 
 <div class="toast fixed-bottom m-2" role="alert" id="toast-recipe-import-success" aria-live="assertive" aria-atomic="true" data-delay="4000" data-animation="true">
     <div class="toast-header">
-        <i class="close_toast fas fa-check-square w-auto mr-2"></i>
+        <i class="fas fa-check-square w-auto mr-2"></i>
         <strong class="mr-auto">ShoppingList</strong>
-        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
     </div>
     <div class="toast-body">
         Rezepte erfolgreich importiert!
     </div>
 </div>
 
-<div class="toast fixed-bottom m-2" role="alert" id="toast-recipe-import-warning" aria-live="assertive" aria-atomic="true" data-autohide="false" data-animation="true">
+<div class="toast fixed-bottom m-2" role="alert" id="toast-recipe-import-warning" aria-live="assertive" aria-atomic="true" data-autohide="4000" data-animation="true">
     <div class="toast-header">
         <i class="close_toast fas fa-check-square w-auto mr-2"></i>
         <strong class="mr-auto">ShoppingList</strong>
-        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
     </div>
     <div class="toast-body">
         Nicht alle Rezepte konnten importiert werden! Fehlerhafte Rezepte wieder exportiert.

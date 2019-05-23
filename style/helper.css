@@ -1,9 +1,9 @@
 .toast {
     right: 0;
     left: unset !important;
-    pointer-events: none
+    pointer-events: none;
 }
 
-.close_toast {
-    pointer-events: all;
+.list-row {
+    transition: .5s;
 }
