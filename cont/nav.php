@@ -10,7 +10,7 @@
   
   <div class="collapse navbar-collapse">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item <?php if($site=="list"){print_r("active");} ?>">
+      <li class="nav-item <?php if(($site=="list")||($site=="-1")){print_r("active");} ?>">
         <a class="nav-link" href="/list"><i class="fas fa-list"></i> Liste</a>
       </li>
       <li class="nav-item <?php if($site=="recipes"){print_r("active");} ?>">
