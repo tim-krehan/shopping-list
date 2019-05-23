@@ -9,9 +9,24 @@ $(document).ready(function () {
 
 function highlightNewEntry(){
   var cookies = document.cookie;
-  var cookieRegExp = new RegExp(/newItem(\d+)/ig);
-  console.log(cookies.match(cookieRegExp));
-  
+  var cookieRegExp = new RegExp(/;?\s+newItem=(\d+)/g);
+  var match = cookieRegExp.exec(cookies);
+  if(match!=null){  
+    var newID = match[1];
+    var checkBox = $("[data-id=" + newID + "]");
+    var newRow = checkBox.parent().parent();
+    newRow.removeClass($(checkBox).data("color"));
+    newRow.addClass("alert-primary");
+    setTimeout(function () {
+      newRow.css({
+        transition: ".5s"
+      });
+      newRow.removeClass("alert-primary");
+      newRow.addClass($(checkBox).data("color"));
+    }, 1000);
+    document.cookie = "newItem=-1"
+    console.log(document.cookie);
+  }
 }
 
 function deleteCheckeditems() {
