@@ -45,7 +45,6 @@ $CONFIG["host"] = $_POST['dbhost'];
 $CONFIG["username"] = $_POST['username'];
 $CONFIG["passwd"] = $_POST['passwd'];
 $CONFIG["database"] = $_POST['database'];
-$CONFIG["theme"] = "default";
 
 file_put_contents($_SESSION["docroot"].'/config/config.php', '<?php '."\r\n".'$CONFIG = '.var_export($CONFIG, true).";\n\r?>");
 
