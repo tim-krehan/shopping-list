@@ -11,10 +11,10 @@
   <div class="collapse navbar-collapse">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item <?php if($site=="list"){print_r("active");} ?>">
-        <a class="nav-link" href="/list">Liste</a>
+        <a class="nav-link" href="/list"><i class="fas fa-list"></i> Liste</a>
       </li>
       <li class="nav-item <?php if($site=="recipes"){print_r("active");} ?>">
-        <a class="nav-link" href="/recipes">Rezepte</a>
+        <a class="nav-link" href="/recipes"><i class="fas fa-book"></i> Rezepte</a>
       </li>
     </ul>
     <ul class="navbar-nav">
