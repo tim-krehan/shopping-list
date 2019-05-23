@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse bg-secondary rounded-bottom pt-0 pb-0">
+<nav class="navbar navbar-inverse bg-secondary rounded-bottom fixed-top">
     <div class="container-fluid">
 
       <ul class="nav navbar-left">
