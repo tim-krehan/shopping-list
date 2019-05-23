@@ -1,6 +1,6 @@
 <head>
     <link rel="stylesheet" href="/style/adduser.css">
-    <script src="/bin/adduser.js" charset="utf-8"></script>
+    <script src="/js/adduser.js" charset="utf-8"></script>
 </head>
 <h1>Benutzer hinzufügen</h1>
 <div class="adduser">

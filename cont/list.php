@@ -1,4 +1,4 @@
-<script src="/bin/list.js" charset="utf-8"></script>
+<script src="/js/list.js" charset="utf-8"></script>
 <div class="container mt-5">
   <h1>Liste</h1>
 </div>
@@ -28,7 +28,7 @@
           $checked = "";
         }
 
-        print_r("<div class='$div_item_row_classes $div_item_row_color_classes'>");
+        print_r("<div class='list-row $div_item_row_classes $div_item_row_color_classes'>");
             print_r("<div class='$div_item_checkbox_classes'><input type='checkbox' class='$input_item_checkbox_classes' data-color='$color_theme' data-id='$item->ID' $checked></div>");
             print_r("<div class='$div_item_quantity_classes'>$item->Anzahl $item->Einheit</div>");
             print_r("<div class='$div_item_name_classes'>$item->Name</div>");

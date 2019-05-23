@@ -4,8 +4,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/style/fontawesome/css/all.css">
   <link rel="stylesheet" href="/style/main.css">
-  <script src="/bin/jquery.js"></script>
-  <script src="/bin/adduser.js" charset="utf-8"></script>
+  <script src="/js/jquery.js"></script>
+  <script src="/js/adduser.js" charset="utf-8"></script>
   <title>Benutzer hinzufügen</title>
 </head>
 <body>

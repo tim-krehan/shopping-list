@@ -1,4 +1,4 @@
-<script src="/bin/recipe.js" charset="utf-8"></script>
+<script src="/js/recipe.js" charset="utf-8"></script>
 <?php
   include $_SESSION["docroot"].'/php/classes.recipe.php';
   $book = new cookbook;

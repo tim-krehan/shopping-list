@@ -45,8 +45,8 @@ $user->get_info($_COOKIE["token"]);
   }
   ?>
   <link rel="stylesheet" href="/style/helper.css">
-  <script src="/bin/jquery.js"></script>
-  <script src="/bin/main.js"></script>
+  <script src="/js/jquery.js"></script>
+  <script src="/js/main.js"></script>
   <title>Einkaufsliste</title>
 </head>
 
@@ -100,7 +100,7 @@ $user->get_info($_COOKIE["token"]);
   }
   echo "</div>";
   ?>
-  <script src="bin/bootstrap.bundle.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

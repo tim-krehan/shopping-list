@@ -1,5 +1,4 @@
-<!-- <link rel="stylesheet" href="/style/recipes.css"> -->
-<script src="/bin/search.js" charset="utf-8"></script>
+<script src="/js/search.js" charset="utf-8"></script>
 
 <div class="container mt-5 mb-5">
     <h1>Rezepte</h1>

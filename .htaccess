@@ -6,7 +6,7 @@
   RewriteRule ^([a-zA-Z0-9-]+)$ ?site=$1
 
   #alles, was versucht ein Script aufzurufen
-  RewriteRule /bin/(.+) /bin/$1
+  RewriteRule /js/(.+) /js/$1
 
   #Error Seite
   RewriteRule ^error/([a-zA-Z0-9-_]+)$ ?site=error&id=$1

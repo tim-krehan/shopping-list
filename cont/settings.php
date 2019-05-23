@@ -1,4 +1,4 @@
-<script src="/bin/settings.js" charset="utf-8"></script>
+<script src="/js/settings.js" charset="utf-8"></script>
 <div class="container mt-5">
     <h1>Einstellungen</h1>
 </div>

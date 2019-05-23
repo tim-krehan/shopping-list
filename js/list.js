@@ -18,9 +18,6 @@ function highlightNewEntry(){
     newRow.removeClass($(checkBox).data("color"));
     newRow.addClass("alert-primary");
     setTimeout(function () {
-      newRow.css({
-        transition: ".5s"
-      });
       newRow.removeClass("alert-primary");
       newRow.addClass($(checkBox).data("color"));
     }, 1000);

@@ -2,7 +2,7 @@
   if($_SERVER["REQUEST_URI"]!="/new-recipe"){
     $submitFunction = "update";
     $title = "Bearbeiten";
-    $script = '<script src="/bin/edit-recipe.js" charset="utf-8"></script>';
+    $script = '<script src="/js/edit-recipe.js" charset="utf-8"></script>';
     $additionalInput = "<input type='hidden' name='id' value=''>";
   }
   else{
@@ -12,8 +12,8 @@
     $additionalInput = "";
   }
 ?>
-<script src="/bin/manageRecipe.js" charset="utf-8"></script>
-<script src="/bin/autocomplete.js" charset="utf-8"></script>
+<script src="/js/manageRecipe.js" charset="utf-8"></script>
+<script src="/js/autocomplete.js" charset="utf-8"></script>
 <?php echo $script; ?>
 <div class="container mt-5">
   <h1><?php echo $title ?></h1>
