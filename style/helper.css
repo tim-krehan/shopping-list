@@ -1,11 +1,7 @@
 .toast {
     right: 0;
     left: unset !important;
-    pointer-events: none
-}
-
-.close_toast {
-    pointer-events: all;
+    pointer-events: none;
 }
 
 .list-row {
