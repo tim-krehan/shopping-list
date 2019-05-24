@@ -1,33 +1,32 @@
-$(document).ready(function(){
-  var recipes = $("#recipes a");
-  var headerLetters = $("#recipes h2");
-  $("#search-recipes").on("keyup", searchRecipe(recipes, headerLetters));
+$(document).ready(function () {
+  $("#search-recipes").on("keyup", searchRecipe);
   $("#clear-search-string").click(clearSearchString);
 });
 
-function searchRecipe(recipes, headerLetters) {
-  return function () {
-    var search = $("#search-recipes").val().toUpperCase();
-    for (var i = 0; i < recipes.length; i++) {
-      if (recipes[i].innerHTML.toUpperCase().indexOf(search) > -1) {
-        recipes[i].style.display = "";
-      }
-      else {
-        recipes[i].style.display = "none";
-      }
+function searchRecipe() {
+  var searchString = $("#search-recipes").val().toUpperCase();
+  var recipes = $("#recipes a");
+
+  for (var i = 0; i < recipes.length; i++) {
+    if (recipes[i].innerHTML.toUpperCase().indexOf(searchString) > -1) {
+      $(recipes[i]).show()
     }
-    for (var j = 0; j < headerLetters.length; j++) {
-      if (($("*[data-letter='" + headerLetters[j].innerHTML + "']:visible")).length > 0) {
-        headerLetters[j].style.display = "";
-      }
-      else {
-        headerLetters[j].style.display = "none";
-      }
+    else {
+      $(recipes[i]).hide();
     }
-  };
+  }
+  
+  $("#recipes").children().each(index => {
+    var container = ($("#recipes").children())[index];
+    $(container).removeClass("d-none").addClass("d-flex");
+    if(($(container).find("a:visible")).length==0){
+      $(container).removeClass("d-flex").addClass("d-none");
+    }
+  });
+
 }
 
-function clearSearchString(){
+function clearSearchString() {
   $("#search-recipes").val("");
   $("#search-recipes").focus();
   $("#search-recipes").keyup();
