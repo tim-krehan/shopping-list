@@ -22,7 +22,6 @@ function highlightNewEntry(){
       newRow.addClass($(checkBox).data("color"));
     }, 1000);
     document.cookie = "newItem=-1"
-    console.log(document.cookie);
   }
 }
 
