@@ -7,3 +7,7 @@
 .list-row {
     transition: .5s;
 }
+
+.nav-link-font {
+    font-size: 16px !important;
+}
