@@ -47,7 +47,7 @@ function checkItem() {
       status: $(this).prop("checked")
     },
     success: function () {
-      var dataIdSelector = (("[data-id='" + dataId) + "'");
+      var dataIdSelector = (`[data-id='${dataId}']`);
       console.log(dataIdSelector);
     //   var color = $(dataIdSelector).data("color");
     //   $(dataIdSelector).parent().parent().removeClass("bg-danger");
