@@ -55,8 +55,8 @@
 
     <div class="input-group mb-3 mt-3" data-id='new'>
       <div class="input-group-prepend col-3 p-0">
-        <input type='number' name='anzahl' value='1' class='form-control w-50'>
-        <select class="form-control w-50" name="einheit">
+        <input type='number' name='anzahl' value='1' class='form-control w-50 mr-1'>
+        <select class="form-control w-50 mr-1" name="einheit">
           <?php
           foreach ($units->list as $index => $unit) {
             if ($unit->Standard) {
