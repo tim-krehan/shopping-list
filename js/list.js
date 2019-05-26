@@ -13,7 +13,7 @@ function highlightNewEntry(){
   var match = cookieRegExp.exec(cookies);
   if(match!=null){  
     var newID = match[1];
-    var checkBox = $("[data-id=" + newID + "]");
+    var checkBox = $(`[data-id='${newID}']`);
     var newRow = checkBox.parent().parent();
     newRow.removeClass($(checkBox).data("color"));
     newRow.addClass("alert-primary");
@@ -48,7 +48,6 @@ function checkItem() {
     },
     success: function () {
       var dataIdSelector = (`[data-id='${dataId}']`);
-      // console.log(dataIdSelector);
       var color = $(dataIdSelector).data("color");
       $(dataIdSelector).parent().parent().removeClass("bg-danger");
 
