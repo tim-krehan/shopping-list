@@ -39,7 +39,7 @@
         print_r("<div class='$div_item_name_classes'>$item->Name</div>");
         print_r("<div class='$div_item_menu dropdown'>");
           print_r("<button type='button' class='btn $button_theme pt-0 pb-0' id='dropdownMenuButtonDataID-" . $item->ID . "' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>");
-            print_r("<i class='fas fa-ellipsis-v'></i>");
+            print_r("<i class='fas fa-angle-down'></i>");
           print_r("</button>");
           print_r("<div class='dropdown-menu' aria-labelledby='dropdownMenuButtonDataID-" . $item->ID . "'>");
             print_r("<button class='dropdown-item'><i class='fas fa-edit'></i> Bearbeiten</button>");
