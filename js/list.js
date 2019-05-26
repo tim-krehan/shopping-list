@@ -9,11 +9,11 @@ $(document).ready(function () {
 
 function highlightNewEntry(){
   var cookies = document.cookie;
-  var cookieRegExp = new RegExp(/;?\s+newItem=(\d+)/g);
+  var cookieRegExp = new RegExp(/[;]{0,1}\s{0,1}newItem=(\d+)/g);
   var match = cookieRegExp.exec(cookies);
   if(match!=null){  
     var newID = match[1];
-    var checkBox = $("[data-id=" + newID + "]");
+    var checkBox = $(`[data-id='${newID}']`);
     var newRow = checkBox.parent().parent();
     newRow.removeClass($(checkBox).data("color"));
     newRow.addClass("alert-primary");
@@ -22,7 +22,6 @@ function highlightNewEntry(){
       newRow.addClass($(checkBox).data("color"));
     }, 1000);
     document.cookie = "newItem=-1"
-    console.log(document.cookie);
   }
 }
 
@@ -48,29 +47,29 @@ function checkItem() {
       status: $(this).prop("checked")
     },
     success: function () {
-      var color = $("[data-id='" + dataId + "'").data("color");
-      
-      $("[data-id='" + dataId + "'").parent().parent().removeClass("bg-danger");
+      var dataIdSelector = (`[data-id='${dataId}']`);
+      var color = $(dataIdSelector).data("color");
+      $(dataIdSelector).parent().parent().removeClass("bg-danger");
 
-      if($("[data-id='" + dataId + "'").prop("checked")){
-        $("[data-id='" + dataId + "'").parent().parent().removeClass(color);
-        $("[data-id='" + dataId + "'").parent().parent().addClass("bg-success");
+      if($(dataIdSelector).prop("checked")){
+        $(dataIdSelector).parent().parent().removeClass(color);
+        $(dataIdSelector).parent().parent().addClass("bg-success");
       }
       else{
-        $("[data-id='" + dataId + "'").parent().parent().removeClass("bg-success");
-        $("[data-id='" + dataId + "'").parent().parent().addClass(color);
+        $(dataIdSelector).parent().parent().removeClass("bg-success");
+        $(dataIdSelector).parent().parent().addClass(color);
       }
     },
     error: function () {
-      $("[data-id='" + dataId + "'").parent().parent().addClass("bg-danger");
-      $("[data-id='" + dataId + "'").parent().parent().data("toggle", "popover");
-      $("[data-id='" + dataId + "'").parent().parent().data("container", "body");
-      $("[data-id='" + dataId + "'").parent().parent().data("placement", "top");
-      $("[data-id='" + dataId + "'").parent().parent().data("html", true);
-      $("[data-id='" + dataId + "'").parent().parent().data("trigger", "focus");
-      $("[data-id='" + dataId + "'").parent().parent().data("content", "Dieses Element konnte nicht gespeichert werden.<br />Bitte die Seite Aktualisieren");
-      $("[data-id='" + dataId + "'").parent().parent().attr("title", "Fehler!");
-      $("[data-id='" + dataId + "'").parent().parent().popover('show');
+      $(dataIdSelector).parent().parent().addClass("bg-danger");
+      $(dataIdSelector).parent().parent().data("toggle", "popover");
+      $(dataIdSelector).parent().parent().data("container", "body");
+      $(dataIdSelector).parent().parent().data("placement", "top");
+      $(dataIdSelector).parent().parent().data("html", true);
+      $(dataIdSelector).parent().parent().data("trigger", "focus");
+      $(dataIdSelector).parent().parent().data("content", "Dieses Element konnte nicht gespeichert werden.<br />Bitte die Seite Aktualisieren");
+      $(dataIdSelector).parent().parent().attr("title", "Fehler!");
+      $(dataIdSelector).parent().parent().popover('show');
     }
   });
 }
