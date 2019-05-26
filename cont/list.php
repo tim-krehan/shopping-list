@@ -16,6 +16,7 @@
     $div_item_quantity_classes = "p-1 col-3";
     $div_item_name_classes = "p-1 font-weight-bold";
     $div_item_menu = "ml-auto mr-2";
+    $button_dropdown_classes = "dropdown-menu-button btn pt-0 pb-0";
 
     foreach ($shopping->list as $index => $item) {
       if ($index % 2 == 0) {
@@ -27,9 +28,11 @@
       }
       if ($item->Erledigt) {
         $div_item_row_color_classes = "bg-success";
+        $button_dropdown_color_classes = "btn-success";
         $checked = "checked";
       } else {
         $div_item_row_color_classes = $color_theme;
+        $button_dropdown_color_classes = $button_theme;
         $checked = "";
       }
 
@@ -38,7 +41,7 @@
         print_r("<div class='$div_item_quantity_classes'>$item->Anzahl $item->Einheit</div>");
         print_r("<div class='$div_item_name_classes'>$item->Name</div>");
         print_r("<div class='$div_item_menu dropdown'>");
-          print_r("<button type='button' class='dropdown-menu-button btn $button_theme pt-0 pb-0' id='dropdown-menu-button-dataID-" . $item->ID . "' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>");
+          print_r("<button type='button' class='$button_dropdown_classes $button_dropdown_color_classes' id='dropdown-menu-button-dataID-" . $item->ID . "' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>");
             print_r("<i class='fas fa-angle-down'></i>");
           print_r("</button>");
           print_r("<div class='dropdown-menu' aria-labelledby='dropdown-menu-button-dataID-" . $item->ID . "'>");

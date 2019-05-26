@@ -8,6 +8,10 @@
     transition: .5s;
 }
 
+.dropdown-menu-button {
+    transition: .5s;
+}
+
 .nav-link-font {
     font-size: 16px !important;
 }
