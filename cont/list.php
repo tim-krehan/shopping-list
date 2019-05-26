@@ -33,7 +33,7 @@
             print_r("<div class='$div_item_checkbox_classes'><input type='checkbox' class='$input_item_checkbox_classes' data-color='$color_theme' data-id='$item->ID' $checked></div>");
             print_r("<div class='$div_item_quantity_classes'>$item->Anzahl $item->Einheit</div>");
             print_r("<div class='$div_item_name_classes'>$item->Name</div>");
-            print_r("<a class='fas fa-angle-right $div_item_menu'></a>");
+            print_r("<a href='#' class='fas fa-angle-right $div_item_menu'></a>");
         print_r("</div>");
       }
     ?>
