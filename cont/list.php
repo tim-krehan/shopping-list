@@ -42,8 +42,8 @@
             print_r("<i class='fas fa-angle-down'></i>");
           print_r("</button>");
           print_r("<div class='dropdown-menu' aria-labelledby='dropdownMenuButtonDataID-" . $item->ID . "'>");
-            print_r("<button class='dropdown-item'><i class='fas fa-edit'></i> Bearbeiten</button>");
-            print_r("<button class='dropdown-item'><i class='fas fa-trash-alt'></i> Löschen</button>");
+            print_r("<button type='button' class='dropdown-item'><i class='fas fa-edit'></i> Bearbeiten</button>");
+            print_r("<button type='button' class='dropdown-item'><i class='fas fa-trash-alt'></i> Löschen</button>");
           print_r("</div>");
         print_r("</div>");
       print_r("</div>");
