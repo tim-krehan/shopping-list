@@ -36,7 +36,7 @@
         print_r("<div class='$div_item_quantity_classes'>$item->Anzahl $item->Einheit</div>");
         print_r("<div class='$div_item_name_classes'>$item->Name</div>");
         print_r("<div class='$div_item_menu'>");
-          print_r("<button class='dropdown-toggle' id='dropdownMenuButtonDataID-" . $item->ID . "'>more...</button>");
+          print_r("<button class='btn btn-primary dropdown-toggle' id='dropdownMenuButtonDataID-" . $item->ID . "'>more...</button>");
           print_r("<div class='dropdown-menu' aria-labelledby='dropdownMenuButtonDataID-" . $item->ID . "'>");
             print_r("<button class='dropdown-item'>Action</button>");
             print_r("<button class='dropdown-item'>Another action</button>");
