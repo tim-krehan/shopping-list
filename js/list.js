@@ -11,7 +11,7 @@ function highlightNewEntry(){
   var cookies = document.cookie;
   var cookieRegExp = new RegExp(/;?\s+newItem=(\d+)/g);
   var match = cookieRegExp.exec(cookies);
-  console.log(cookieRegExp);
+  console.log(cookies);
   if(match!=null){  
     var newID = match[1];
     var checkBox = $(`[data-id='${newID}']`);
