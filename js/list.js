@@ -49,15 +49,21 @@ function checkItem() {
     success: function () {
       var dataIdSelector = (`[data-id='${dataId}']`);
       var color = $(dataIdSelector).data("color");
+      var buttoncolor = $(dataIdSelector).data("buttoncolor");
       $(dataIdSelector).parent().parent().removeClass("bg-danger");
+      $(dataIdSelector).parent().parent().find(".dropdown-menu-button").removeClass("btn-danger");
 
       if($(dataIdSelector).prop("checked")){
         $(dataIdSelector).parent().parent().removeClass(color);
         $(dataIdSelector).parent().parent().addClass("bg-success");
+        $(dataIdSelector).parent().parent().find(".dropdown-menu-button").removeClass(buttoncolor);
+        $(dataIdSelector).parent().parent().find(".dropdown-menu-button").addClass("btn-success");
       }
       else{
         $(dataIdSelector).parent().parent().removeClass("bg-success");
         $(dataIdSelector).parent().parent().addClass(color);
+        $(dataIdSelector).parent().parent().find(".dropdown-menu-button").addClass(buttoncolor);
+        $(dataIdSelector).parent().parent().find(".dropdown-menu-button").removeClass("btn-success");
       }
     },
     error: function () {
