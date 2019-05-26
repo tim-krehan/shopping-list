@@ -48,29 +48,29 @@ function checkItem() {
     },
     success: function () {
       var dataIdSelector = (`[data-id='${dataId}']`);
-      console.log(dataIdSelector);
-    //   var color = $(dataIdSelector).data("color");
-    //   $(dataIdSelector).parent().parent().removeClass("bg-danger");
+      // console.log(dataIdSelector);
+      var color = $(dataIdSelector).data("color");
+      $(dataIdSelector).parent().parent().removeClass("bg-danger");
 
-    //   if($(dataIdSelector).prop("checked")){
-    //     $(dataIdSelector).parent().parent().removeClass(color);
-    //     $(dataIdSelector).parent().parent().addClass("bg-success");
-    //   }
-    //   else{
-    //     $(dataIdSelector).parent().parent().removeClass("bg-success");
-    //     $(dataIdSelector).parent().parent().addClass(color);
-    //   }
-    // },
-    // error: function () {
-    //   $(dataIdSelector).parent().parent().addClass("bg-danger");
-    //   $(dataIdSelector).parent().parent().data("toggle", "popover");
-    //   $(dataIdSelector).parent().parent().data("container", "body");
-    //   $(dataIdSelector).parent().parent().data("placement", "top");
-    //   $(dataIdSelector).parent().parent().data("html", true);
-    //   $(dataIdSelector).parent().parent().data("trigger", "focus");
-    //   $(dataIdSelector).parent().parent().data("content", "Dieses Element konnte nicht gespeichert werden.<br />Bitte die Seite Aktualisieren");
-    //   $(dataIdSelector).parent().parent().attr("title", "Fehler!");
-    //   $(dataIdSelector).parent().parent().popover('show');
+      if($(dataIdSelector).prop("checked")){
+        $(dataIdSelector).parent().parent().removeClass(color);
+        $(dataIdSelector).parent().parent().addClass("bg-success");
+      }
+      else{
+        $(dataIdSelector).parent().parent().removeClass("bg-success");
+        $(dataIdSelector).parent().parent().addClass(color);
+      }
+    },
+    error: function () {
+      $(dataIdSelector).parent().parent().addClass("bg-danger");
+      $(dataIdSelector).parent().parent().data("toggle", "popover");
+      $(dataIdSelector).parent().parent().data("container", "body");
+      $(dataIdSelector).parent().parent().data("placement", "top");
+      $(dataIdSelector).parent().parent().data("html", true);
+      $(dataIdSelector).parent().parent().data("trigger", "focus");
+      $(dataIdSelector).parent().parent().data("content", "Dieses Element konnte nicht gespeichert werden.<br />Bitte die Seite Aktualisieren");
+      $(dataIdSelector).parent().parent().attr("title", "Fehler!");
+      $(dataIdSelector).parent().parent().popover('show');
     }
   });
 }
