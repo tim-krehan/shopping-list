@@ -44,7 +44,7 @@
           print_r("<button type='button' class='$button_dropdown_classes $button_dropdown_color_classes' id='dropdown-menu-button-dataID-" . $item->ID . "' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>");
             print_r("<i class='fas fa-angle-down'></i>");
           print_r("</button>");
-          print_r("<div class='dropdown-menu' aria-labelledby='dropdown-menu-button-dataID-" . $item->ID . "'>");
+          print_r("<div class='dropdown-menu dropdown-menu-right' aria-labelledby='dropdown-menu-button-dataID-" . $item->ID . "'>");
             print_r("<button type='button' class='dropdown-item'><i class='fas fa-edit'></i> Bearbeiten</button>");
             print_r("<button type='button' class='dropdown-item'><i class='fas fa-trash-alt'></i> Löschen</button>");
           print_r("</div>");
