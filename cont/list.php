@@ -35,7 +35,12 @@
       print_r("<div class='$div_item_checkbox_classes'><input type='checkbox' class='$input_item_checkbox_classes' data-color='$color_theme' data-id='$item->ID' $checked></div>");
       print_r("<div class='$div_item_quantity_classes'>$item->Anzahl $item->Einheit</div>");
       print_r("<div class='$div_item_name_classes'>$item->Name</div>");
-      print_r("<div class='$div_item_menu'><i class='fas fa-pen dropdown-toggle' id='dropdownMenuButtonDataID" . $item->ID . "'></i></div>");
+      print_r("<div class='$div_item_menu'><i class='fas fa-angle-right' id='dropdownMenuButtonDataID" . $item->ID . "'></i></div>");
+        print_r("<div class='dropdown-menu' aria-labelledby='dropdownMenuButtonDataID" . $item->ID . "'>");
+          print_r("<a class='dropdown-item' href='#'>Action</a>");
+          print_r("<a class='dropdown-item' href='#'>Another action</a>");
+          print_r("<a class='dropdown-item' href='#'>Something else here</a>");
+        print_r("</div>");
       print_r("</div>");
     }
     ?>
