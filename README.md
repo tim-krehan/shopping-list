@@ -1,3 +1,9 @@
+# Shoutout!
+We Use BrowserStack for cross browser testing, as it provides full testing capabillities within one application.
+
+[ ![BrowserStack](https://live.browserstack.com/favicon.ico) BrowserStack](https://www.browserstack.com)
+
+
 # Requirements
 
 ## Apache Modules:
