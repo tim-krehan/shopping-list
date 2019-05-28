@@ -5,6 +5,8 @@ $(document).ready(function () {
   $("#nameField").focus();
   $("#anzahl").on("focus", function () { $(this).select(); });
   $("#nameField").on("focus", function () { $(this).select(); });
+  $(".edit-listitem").click(editItem);
+  $(".del-listitem").click(deleteSingleItem);
 });
 
 function highlightNewEntry(){
@@ -27,14 +29,35 @@ function highlightNewEntry(){
 
 function deleteCheckeditems() {
   $.post({
-    url: "api/list/del",
-    data: {
-      function: "del"
-    },
+    url: "api/list/clear",
     success: function () {
       location.reload();
     }
   });
+}
+
+function deleteSingleItem() {
+  var id = $(this).parent().parent().parent().find("input[type=checkbox]").data("id");
+  $.post({
+    url: "api/list/del",
+    data: {
+      id: id
+    },
+    success: function (data) {
+      location.reload();
+    }
+  });
+}
+
+function editItem(){
+  var row = $(this).parent().parent().parent();
+  var amount = row.find(".list-row-amount").data("amount");
+  var unit = row.find(".list-row-amount").data("unit");
+  var name = row.find(".list-row-name").html();
+  row.find(".list-row-amount").html("");
+  row.find(".list-row-name").html("");
+  row.find(".list-row-amount").append("");
+  row.find(".list-row-name").append('<input type="text" class="form-control" autocomplete="off" value="'+name+'" required>');
 }
 
 function checkItem() {

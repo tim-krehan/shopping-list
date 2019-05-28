@@ -14,6 +14,10 @@
       break;
 
     case 'del':
+      $shopping->removeSingleItem($_POST["id"]);
+      break;
+
+    case 'clear':
       $shopping->removeChecked();
       break;
 

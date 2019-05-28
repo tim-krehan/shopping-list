@@ -38,15 +38,15 @@
 
       print_r("<div class='list-row $div_item_row_classes $div_item_row_color_classes'>");
         print_r("<div class='$div_item_checkbox_classes'><input type='checkbox' class='$input_item_checkbox_classes' data-buttoncolor='$button_theme' data-color='$color_theme' data-id='$item->ID' $checked></div>");
-        print_r("<div class='$div_item_quantity_classes'>$item->Anzahl $item->Einheit</div>");
-        print_r("<div class='$div_item_name_classes'>$item->Name</div>");
+        print_r("<div class='list-row-amount $div_item_quantity_classes' data-amount='$item->Anzahl' data-unit='$item->Einheit'>$item->Anzahl $item->Einheit</div>");
+        print_r("<div class='list-row-name $div_item_name_classes'>$item->Name</div>");
         print_r("<div class='$div_item_menu dropdown'>");
           print_r("<button type='button' class='$button_dropdown_classes $button_dropdown_color_classes' id='dropdown-menu-button-dataID-" . $item->ID . "' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>");
             print_r("<i class='fas fa-angle-down'></i>");
           print_r("</button>");
           print_r("<div class='dropdown-menu dropdown-menu-right' aria-labelledby='dropdown-menu-button-dataID-" . $item->ID . "'>");
-            print_r("<button type='button' class='dropdown-item'><i class='fas fa-edit'></i> Bearbeiten</button>");
-            print_r("<button type='button' class='dropdown-item'><i class='fas fa-trash-alt'></i> Löschen</button>");
+            print_r("<button type='button' class='edit-listitem dropdown-item'><i class='fas fa-edit'></i> Bearbeiten</button>");
+            print_r("<button type='button' class='del-listitem dropdown-item'><i class='fas fa-trash-alt'></i> Löschen</button>");
           print_r("</div>");
         print_r("</div>");
       print_r("</div>");

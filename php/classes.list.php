@@ -52,6 +52,15 @@
       }
     }
 
+    function removeSingleItem($id){
+      include $_SESSION["docroot"].'/config/config.php';
+      include $_SESSION["docroot"].'/php/connect.php';
+      $deleteQuery = $mysqli->prepare("DELETE FROM `Einkauf` WHERE `Einkauf`.`ID` = ?;");
+      $deleteQuery->bind_param("s", $id);
+      $deleteQuery->execute();
+      $mysqli->close();
+    }
+
     function removeChecked(){
       include $_SESSION["docroot"].'/config/config.php';
       include $_SESSION["docroot"].'/php/connect.php';
