@@ -54,10 +54,25 @@ function editItem(){
   var amount = row.find(".list-row-amount").data("amount");
   var unit = row.find(".list-row-amount").data("unit");
   var name = row.find(".list-row-name").html();
+
   row.find(".list-row-amount").html("");
+  row.find(".list-row-amount").addClass("d-flex", "flex-row");
+  var options = $("[data-id='new']").find("select").html();
+  row.find(".list-row-amount").append(
+    '<input type="number" class="form-control w-50 mr-1" step=".25" value="' + amount +'" required>'
+  ).append(
+    '<select class="form-control w-50 mr-1">'+options+'</select>'
+  );
+  row.find(".list-row-amount").find("option:selected").attr("selected", false);
+  row.find(".list-row-amount").find("option:contains('"+unit+"')").attr("selected", true);
+
   row.find(".list-row-name").html("");
-  row.find(".list-row-amount").append("");
-  row.find(".list-row-name").append('<input type="text" class="form-control" autocomplete="off" value="'+name+'" required>');
+  row.find(".list-row-name").addClass("w-100");
+  row.find(".list-row-name").append('<input type="text" class="form-control ml-auto" autocomplete="off" value="'+name+'" required>');
+
+  row.find(".dropdown").html("");
+  row.find(".dropdown").addClass("d-flex", "flex-row");
+  row.find(".dropdown").html("<i class='fas fa-check p-1'></i><i class='fas fa-times p-1'></i>");
 }
 
 function checkItem() {
@@ -72,21 +87,16 @@ function checkItem() {
     success: function () {
       var dataIdSelector = (`[data-id='${dataId}']`);
       var color = $(dataIdSelector).data("color");
-      var buttoncolor = $(dataIdSelector).data("buttoncolor");
       $(dataIdSelector).parent().parent().removeClass("bg-danger");
       $(dataIdSelector).parent().parent().find(".dropdown-menu-button").removeClass("btn-danger");
 
       if($(dataIdSelector).prop("checked")){
         $(dataIdSelector).parent().parent().removeClass(color);
         $(dataIdSelector).parent().parent().addClass("bg-success");
-        $(dataIdSelector).parent().parent().find(".dropdown-menu-button").removeClass(buttoncolor);
-        $(dataIdSelector).parent().parent().find(".dropdown-menu-button").addClass("btn-success");
       }
       else{
         $(dataIdSelector).parent().parent().removeClass("bg-success");
         $(dataIdSelector).parent().parent().addClass(color);
-        $(dataIdSelector).parent().parent().find(".dropdown-menu-button").addClass(buttoncolor);
-        $(dataIdSelector).parent().parent().find(".dropdown-menu-button").removeClass("btn-success");
       }
     },
     error: function () {

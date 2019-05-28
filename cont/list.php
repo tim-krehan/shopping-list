@@ -16,32 +16,28 @@
     $div_item_quantity_classes = "p-1 col-3";
     $div_item_name_classes = "p-1 font-weight-bold";
     $div_item_menu = "ml-auto mr-2";
-    $button_dropdown_classes = "dropdown-menu-button btn pt-0 pb-0";
+    $button_dropdown_classes = "dropdown-menu-button btn text-light pt-0 pb-0";
 
     foreach ($shopping->list as $index => $item) {
       if ($index % 2 == 0) {
         $color_theme = "bg-primary";
-        $button_theme = "btn-primary";
       } else {
         $color_theme = "bg-secondary";
-        $button_theme = "btn-secondary";
       }
       if ($item->Erledigt) {
         $div_item_row_color_classes = "bg-success";
-        $button_dropdown_color_classes = "btn-success";
         $checked = "checked";
       } else {
         $div_item_row_color_classes = $color_theme;
-        $button_dropdown_color_classes = $button_theme;
         $checked = "";
       }
 
       print_r("<div class='list-row $div_item_row_classes $div_item_row_color_classes'>");
-        print_r("<div class='$div_item_checkbox_classes'><input type='checkbox' class='$input_item_checkbox_classes' data-buttoncolor='$button_theme' data-color='$color_theme' data-id='$item->ID' $checked></div>");
+        print_r("<div class='$div_item_checkbox_classes'><input type='checkbox' class='$input_item_checkbox_classes' data-color='$color_theme' data-id='$item->ID' $checked></div>");
         print_r("<div class='list-row-amount $div_item_quantity_classes' data-amount='$item->Anzahl' data-unit='$item->Einheit'>$item->Anzahl $item->Einheit</div>");
         print_r("<div class='list-row-name $div_item_name_classes'>$item->Name</div>");
         print_r("<div class='$div_item_menu dropdown'>");
-          print_r("<button type='button' class='$button_dropdown_classes $button_dropdown_color_classes' id='dropdown-menu-button-dataID-" . $item->ID . "' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>");
+          print_r("<button type='button' class='$button_dropdown_classes' id='dropdown-menu-button-dataID-" . $item->ID . "' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>");
             print_r("<i class='fas fa-angle-down'></i>");
           print_r("</button>");
           print_r("<div class='dropdown-menu dropdown-menu-right' aria-labelledby='dropdown-menu-button-dataID-" . $item->ID . "'>");
@@ -55,7 +51,7 @@
 
     <div class="input-group mb-3 mt-3" data-id='new'>
       <div class="input-group-prepend col-3 p-0">
-        <input type='number' name='anzahl' value='1' class='form-control w-50 mr-1'>
+        <input type='number' name='anzahl' value='1' step=".25" class='form-control w-50 mr-1'>
         <select class="form-control w-50 mr-1" name="einheit">
           <?php
           foreach ($units->list as $index => $unit) {
