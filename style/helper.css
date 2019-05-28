@@ -15,6 +15,19 @@
     box-shadow: none;
 }
 
+.save-list-row-changes {
+    color: var(--light);
+}
+.save-list-row-changes:hover {
+    color: var(--success);
+}
+.del-list-row-changes {
+    color: var(--light);
+}
+.del-list-row-changes:hover {
+    color: var(--danger);
+}
+
 .nav-link-font {
     font-size: 16px !important;
 }

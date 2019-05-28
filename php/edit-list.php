@@ -13,6 +13,10 @@
       $shopping->newItems($_POST["list"]);
       break;
 
+    case 'change':
+      $shopping->changeSingleItem($_POST["id"], $_POST["anzahl"], $_POST["einheit"], $_POST["name"]);
+      break;
+
     case 'del':
       $shopping->removeSingleItem($_POST["id"]);
       break;

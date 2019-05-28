@@ -72,7 +72,32 @@ function editItem(){
 
   row.find(".dropdown").html("");
   row.find(".dropdown").addClass("d-flex", "flex-row");
-  row.find(".dropdown").html("<i class='fas fa-check p-1'></i><i class='fas fa-times p-1'></i>");
+  var checkButton = $("<button type='button' class='save-list-row-changes btn p-2'><i class='fas fa-check'></i></button>");
+  var removeButton = $("<button type='button' class='del-list-row-changes btn p-2'><i class='fas fa-times'></i></button>");
+  row.find(".dropdown").append(checkButton);
+  row.find(".dropdown").append(removeButton);
+
+  checkButton.click(changeListItem);
+  removeButton.click(function(){window.location = window.location;});
+}
+
+function changeListItem(){
+  var id = $(this).parent().parent().find("input[type=checkbox]").data("id");
+  var amount = $(this).parent().parent().find("input[type=number]").val();
+  var unit = $(this).parent().parent().find("select option:selected").val();
+  var name = $(this).parent().parent().find("input[type=text]").val();
+  $.post({
+    url: "api/list/change",
+    data: {
+      id: id,
+      anzahl: amount,
+      einheit: unit,
+      name: name
+    },
+    success: function(data){
+      window.location = window.location;
+    }
+  });
 }
 
 function checkItem() {
@@ -80,7 +105,7 @@ function checkItem() {
   $.post({
     url: "api/list/check",
     data: {
-      function: "check",
+      // function: "check",
       id: dataId,
       status: $(this).prop("checked")
     },
