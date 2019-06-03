@@ -102,15 +102,14 @@ function changeListItem(){
 
 function checkItem() {
   var dataId = $(this).data("id");
+  var dataIdSelector = (`[data-id='${dataId}']`);
   $.post({
     url: "api/list/check",
     data: {
-      // function: "check",
       id: dataId,
       status: $(this).prop("checked")
     },
     success: function () {
-      var dataIdSelector = (`[data-id='${dataId}']`);
       var color = $(dataIdSelector).data("color");
       $(dataIdSelector).parent().parent().removeClass("bg-danger");
       $(dataIdSelector).parent().parent().find(".dropdown-menu-button").removeClass("btn-danger");

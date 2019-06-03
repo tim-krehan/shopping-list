@@ -42,9 +42,9 @@ if (!is_null($connection->connect_error))
 
 $CONFIG["installed"] = true;
 $CONFIG["host"] = $_POST['dbhost'];
+$CONFIG["database"] = $_POST['database'];
 $CONFIG["username"] = $_POST['username'];
 $CONFIG["passwd"] = $_POST['passwd'];
-$CONFIG["database"] = $_POST['database'];
 
 file_put_contents($_SESSION["docroot"].'/config/config.php', '<?php '."\r\n".'$CONFIG = '.var_export($CONFIG, true).";\n\r?>");
 
@@ -54,14 +54,14 @@ CREATE TABLE `Einheit` (
  `ID` int(11) NOT NULL,
  `Name` varchar(255) NOT NULL,
  `Standard` tinyint(1) NOT NULL
-);");
+) ENGINE = InnoDB CHARSET=utf8mb4 COLLATE utf8mb4_unicode_ci;");
 
 array_push($SQLStatements, "
 CREATE TABLE `Einheit` (
   `ID` int(11) NOT NULL,
   `Name` varchar(255) NOT NULL,
   `Standard` tinyint(1) NOT NULL
-);");
+) ENGINE = InnoDB CHARSET=utf8mb4 COLLATE utf8mb4_unicode_ci;");
 
 array_push($SQLStatements, "
 CREATE TABLE `Einkauf` (
@@ -70,7 +70,7 @@ CREATE TABLE `Einkauf` (
   `Einheit` int(11) NOT NULL DEFAULT '5',
   `Name` varchar(255) NOT NULL,
   `Erledigt` tinyint(1) NOT NULL DEFAULT '0'
-);");
+) ENGINE = InnoDB CHARSET=utf8mb4 COLLATE utf8mb4_unicode_ci;");
 
 array_push($SQLStatements, "
 CREATE TABLE `users` (
@@ -81,14 +81,14 @@ CREATE TABLE `users` (
   `password` char(128) NOT NULL,
   `salt` char(64) NOT NULL,
   `last_login` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-);");
+) ENGINE = InnoDB CHARSET=utf8mb4 COLLATE utf8mb4_unicode_ci;");
 
 array_push($SQLStatements, "
 CREATE TABLE `sessions` (
   `session_id` varchar(255),
   `user` INT NOT NULL,
   `expires` datetime NOT NULL
-);");
+) ENGINE = InnoDB CHARSET=utf8mb4 COLLATE utf8mb4_unicode_ci;");
 
 array_push($SQLStatements, "
 CREATE TABLE `Rezept` (
@@ -96,7 +96,7 @@ CREATE TABLE `Rezept` (
   `Name` varchar(255) NOT NULL,
   `Dauer` int(11) NOT NULL,
   `Beschreibung` text NOT NULL
-);");
+) ENGINE = InnoDB CHARSET=utf8mb4 COLLATE utf8mb4_unicode_ci;");
 
 array_push($SQLStatements, "
 CREATE TABLE `RezeptZutat` (
@@ -105,13 +105,13 @@ CREATE TABLE `RezeptZutat` (
   `Menge` float NOT NULL,
   `Einheit` int(11) NOT NULL,
   `Zutat` int(11) NOT NULL
-);");
+) ENGINE = InnoDB CHARSET=utf8mb4 COLLATE utf8mb4_unicode_ci;");
 
 array_push($SQLStatements, "
 CREATE TABLE `Zutat` (
   `ID` int(11) NOT NULL,
   `Name` varchar(255) NOT NULL
-);");
+) ENGINE = InnoDB CHARSET=utf8mb4 COLLATE utf8mb4_unicode_ci;");
 
 array_push($SQLStatements, "
 CREATE VIEW `ViewEinkauf` AS  select `Einkauf`.`ID` AS `ID`,`Einkauf`.`Anzahl` AS `Anzahl`,`Einheit`.`Name` AS `Einheit`,`Einkauf`.`Name` AS `Name`,`Einkauf`.`Erledigt` AS `Erledigt` from (`Einkauf` join `Einheit` on((`Einkauf`.`Einheit` = `Einheit`.`ID`))) ;");
