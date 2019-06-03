@@ -23,7 +23,7 @@
     function getID($Name){
       include $_SESSION["docroot"].'/php/connect.php';
       $selectQuery = $mysqli->prepare("SELECT `ID` FROM `Einheit` WHERE `Name` = ?;");
-      $selectQuery->bind_param("s", "$Name");
+      $selectQuery->bind_param("s", $Name);
       $selectQuery->execute();
       $result = $selectQuery->get_result();
       $ID = $result->fetch_assoc();
