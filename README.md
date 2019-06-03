@@ -3,6 +3,8 @@ We Use BrowserStack for cross browser testing, as it provides full testing capab
 
 [ ![BrowserStack](https://live.browserstack.com/favicon.ico) BrowserStack](https://www.browserstack.com)
 
+# Recomendations
+We strongly recomment to use a ` utf8mb4 ` database collation, as it has the best compatibillity with smileys and other non standard symbols. (You can't tell the enduser, that they can't use smileys. Trust me, I tried.)
 
 # Requirements
 
