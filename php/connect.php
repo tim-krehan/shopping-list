@@ -6,6 +6,7 @@
     $passwd = $CONFIG['passwd'],
     $database = $CONFIG['database']
   );
+  $mysqli->set_charset("utf8");
   if (!is_null($mysqli->connect_error))
   {
       header("Location: /error/DBConnFailed");

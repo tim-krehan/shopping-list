@@ -1,9 +1,8 @@
 <?php
-  session_start();
   include $_SESSION["docroot"].'/php/classes.recipe.php';
   $book = new cookbook;
 
-  switch ($_POST["function"]) {
+  switch ($_GET["function"]) {
     case 'del':
       $book->removeRecipe($_POST["id"]);
       break;
@@ -14,7 +13,7 @@
       break;
 
     case 'auto':
-      $book->getAllIngredients();
+      $book->getAllIngredientsContaining($_POST["q"]);
       break;
 
     case 'edit':
@@ -25,6 +24,15 @@
     case 'update':
       $book->updateRecipe($_POST["id"], $_POST["recipeName"], $_POST["recipeDuration"], $_POST["recipeDescription"], $_POST["ingredient"]);
       header(("Location: /recipe/".$_POST["id"]));
+      break;
+
+    case 'export':
+      $book->fillCookbook();
+      echo json_encode($book);
+      break;
+
+    case 'import':
+      $book->importCookbook();
       break;
 
     default:
