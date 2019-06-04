@@ -5,6 +5,10 @@ $(document).ready(function () {
   $("input[type=text]").on("focus", function () { $(this).select(); });
 
   $(".autocomplete-ingredient").on("input", autocomplete);
+
+  $('#recipeDescription').summernote({
+    
+  });
 });
 
 function removeItem(elem) {
