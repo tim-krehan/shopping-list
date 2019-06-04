@@ -35,11 +35,9 @@
     }
     echo "</div>";
 
-    echo "<div class='card-body'>";
+    echo "<div class='recipe-card-body card-body embed-responsive-16by9'>";
     echo "<h2 class='card-title'>Zubereitung</h2>";
-    foreach(explode("\r\n", $recipe->Beschreibung) as $paragraph){
-      echo "<p>$paragraph</p>";
-    }
+    echo $recipe->Beschreibung;
     echo "</div>";
 
   echo '</div>';

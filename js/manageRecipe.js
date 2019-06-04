@@ -12,12 +12,12 @@ $(document).ready(function () {
     codeviewFilter: true,
     codeviewIframeFilter: true,
     toolbar: [
-      ['misc', ['undo', 'redo']],
-      ['style', ['bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subscript', 'clear']],
+      ['style', ['style', 'bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subscript', 'clear']],
       ['font', ['color', 'fontsize']],
       ['para', ['ul', 'ol', 'paragraph']],
       ['table', ['table']],
       ['insert', ['link', 'picture', 'video']],
+      ['misc', ['undo', 'redo']],
       ['view', ['codeview', 'help']]
     ]
   });
