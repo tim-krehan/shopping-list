@@ -95,7 +95,7 @@ CREATE TABLE `Rezept` (
   `ID` int(11) NOT NULL,
   `Name` varchar(255) NOT NULL,
   `Dauer` int(11) NOT NULL,
-  `Beschreibung` text NOT NULL
+  `Beschreibung` longtext NOT NULL
 ) ENGINE = InnoDB CHARSET=utf8mb4 COLLATE utf8mb4_unicode_ci;");
 
 array_push($SQLStatements, "
