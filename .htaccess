@@ -27,7 +27,6 @@
 #Deny every *.php file
 <Files *.php>
     Require all granted
-    Allow from 127.0.0.1
 </Files>
 
 #allow following files
