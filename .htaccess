@@ -26,33 +26,27 @@
 
 #Deny every *.php file
 <Files *.php>
-    Order Deny,Allow
-    Deny from all
+    Require all granted
     Allow from 127.0.0.1
 </Files>
 
 #allow following files
 <Files index.php>
-    Order Allow,Deny
-    Allow from all
+    Require all granted
 </Files>
 
 <Files api.php>
-    Order Allow,Deny
-    Allow from all
+    Require all granted
 </Files>
 
 <Files login.php>
-    Order Allow,Deny
-    Allow from all
+    Require all granted
 </Files>
 
 <Files logout.php>
-    Order Allow,Deny
-    Allow from all
+    Require all granted
 </Files>
 
 <Files install*.php>
-    Order Allow,Deny
-    Allow from all
+    Require all granted
 </Files>
