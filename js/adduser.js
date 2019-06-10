@@ -27,6 +27,7 @@ $(document).ready(function () {
     });
 });
 function userPopover(title, text){
+    $("#newuser").popover('dispose');
     $("#newuser").data("toggle", "popover");
     $("#newuser").data("container", "body");
     $("#newuser").data("placement", "bottom");
