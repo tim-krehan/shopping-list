@@ -33,7 +33,12 @@
       }
 
       print_r("<div class='list-row $div_item_row_classes $div_item_row_color_classes'>");
-        print_r("<div class='$div_item_checkbox_classes'><input type='checkbox' class='$input_item_checkbox_classes' data-color='$color_theme' data-id='$item->ID' $checked></div>");
+        print_r("<div class='$div_item_checkbox_classes'>");
+          print_r("<div class='custom-control custom-checkbox'>");
+            print_r("<input type='checkbox' class='$input_item_checkbox_classes custom-control-input' data-color='$color_theme' id='$item->ID-checkbox' data-id='$item->ID' $checked>");
+            print_r("<label class='custom-control-label' for='$item->ID-checkbox'></label>");
+          print_r("</div>");
+        print_r("</div>");
         print_r("<div class='list-row-amount $div_item_quantity_classes' data-amount='$item->Anzahl' data-unit='$item->Einheit'>$item->Anzahl $item->Einheit</div>");
         print_r("<div class='list-row-name $div_item_name_classes'>$item->Name</div>");
         print_r("<div class='$div_item_menu dropdown'>");
@@ -70,6 +75,5 @@
         <button class="btn btn-outline-secondary" type="submit" id="button-addon2"><i class="fas fa-plus"></i></button>
       </div>
     </div>
-
   </form>
 </div>
