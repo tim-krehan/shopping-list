@@ -12,8 +12,10 @@
     $additionalInput = "";
   }
 ?>
+<link rel="stylesheet" href="/3rd-party/summernote/summernote-bs4.css">
 <script src="/js/manageRecipe.js" charset="utf-8"></script>
 <script src="/js/autocomplete.js" charset="utf-8"></script>
+<script src="/3rd-party/summernote/summernote-bs4.min.js" charset="utf-8"></script>
 <?php echo $script; ?>
 <div class="container mt-5">
   <h1><?php echo $title ?></h1>
@@ -37,7 +39,7 @@
 
   <div class="form-group">
     <label for="recipeDescription">Beschreibung</label>
-    <textarea class="form-control" id="recipeDescription" name="recipeDescription" rows="3" rows="8" cols="80" spellcheck="true" required></textarea>
+    <textarea class="form-control" id="recipeDescription" name="recipeDescription" required></textarea>
   </div>
 
   <label>Zutaten</label>

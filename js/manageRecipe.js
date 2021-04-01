@@ -5,6 +5,22 @@ $(document).ready(function () {
   $("input[type=text]").on("focus", function () { $(this).select(); });
 
   $(".autocomplete-ingredient").on("input", autocomplete);
+
+  $('#recipeDescription').summernote({
+    height: 300,
+    dialogsFade: true,
+    codeviewFilter: true,
+    codeviewIframeFilter: true,
+    toolbar: [
+      ['style', ['style', 'bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subscript', 'clear']],
+      ['font', ['color', 'fontsize']],
+      ['para', ['ul', 'ol', 'paragraph']],
+      ['table', ['table']],
+      ['insert', ['link', 'picture', 'video']],
+      ['misc', ['undo', 'redo']],
+      ['view', ['codeview', 'help']]
+    ]
+  });
 });
 
 function removeItem(elem) {

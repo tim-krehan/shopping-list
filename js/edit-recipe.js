@@ -10,7 +10,7 @@ $(document).ready(function () {
       $("[name=id]").val(recipe.ID);
       $("#recipeName").val(recipe.Name);
       $("#recipeDuration").val(recipe.Dauer);
-      $("#recipeDescription").val(recipe.Beschreibung);
+      $("#recipeDescription").summernote('code', recipe.Beschreibung);
       for (var i = 1; i <= recipe.Zutaten.length; i++) {
         $((".ingredientRow input[name='ingredient[" + i + "][Amount]']")).val(recipe.Zutaten[(i - 1)].Menge);
         $((".ingredientRow input[name='ingredient[" + i + "][Name]']")).val(recipe.Zutaten[(i - 1)].Name);
