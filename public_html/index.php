@@ -10,8 +10,8 @@ if (!(isset($_SESSION["docroot"]))) {
   $_SESSION["docroot"] = __DIR__;
 }
 include $_SESSION["docroot"] . '/config/config.php';
-if (($CONFIG["installed"] == false) && ($site != "error")) {
-  header("Location: /install/install.php");
+if (($CONFIG["first_launch"] == true) && ($site != "error")) {
+  header("Location: /install/install_adduser.php");
   exit;
 }
 if ($site != "error") {
@@ -19,10 +19,11 @@ if ($site != "error") {
 }
 
 include $_SESSION["docroot"] . '/version.php';
-
 include $_SESSION["docroot"] . '/php/classes.user.php';
+
+$token = isset($_COOKIE["token"]) ? $_COOKIE["token"] : "";
 $user = new user();
-$user->get_info($_COOKIE["token"]);
+$user->get_info($token);
 ?>
 <html lang="de" dir="ltr">
 
