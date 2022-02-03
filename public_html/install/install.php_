@@ -1,6 +1,6 @@
 <?php
   session_start();
-  if (!($_SESSION["docroot"]))
+  if (!isset($_SESSION["docroot"]))
   {
      $_SESSION["docroot"] = str_replace("/install", "", __DIR__);
   }

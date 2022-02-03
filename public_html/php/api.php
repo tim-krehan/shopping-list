@@ -1,16 +1,17 @@
 <?php
   session_start();
+  $_SESSION["docroot"] =  __DIR__;
   switch($_GET["call"]) {
     case 'list':
-      include $_SESSION["docroot"].'/php/edit-list.php';
+      include $_SESSION["docroot"].'/edit-list.php';
       break;
 
     case 'recipes':
-      include $_SESSION["docroot"].'/php/edit-recipes.php';
+      include $_SESSION["docroot"].'/edit-recipes.php';
       break;
 
     case 'user':
-      include $_SESSION["docroot"].'/php/edit-user.php';
+      include $_SESSION["docroot"].'/edit-user.php';
       break;
 
     default:

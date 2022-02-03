@@ -84,7 +84,7 @@
     function new($uname, $password){
       include $_SESSION["docroot"].'/php/connect.php';
       include $_SESSION["docroot"].'/php/hash.php';
-
+      
       $selectQuery = $mysqli->prepare("SELECT `uid` FROM `users` WHERE `username` = ?;");
       $selectQuery->bind_param("s", $uname);
       $selectQuery->execute();
@@ -98,6 +98,18 @@
         $result = $insertQuery->get_result();
         unset($salt);
         unset($password);
+        
+        $selectQuery = $mysqli->prepare("SELECT count(*) AS \"count\" FROM `users`;");
+        $selectQuery->execute();
+        $result = $selectQuery->get_result();
+        if($result["count"] === 1){
+          $CONFIG["first_launch"] = false;
+          file_put_contents(
+            $_SESSION["docroot"].'/config/config.php',
+            '<?php '."\r\n".'$CONFIG = '.var_export($CONFIG, true).";\n\r?>"
+          );
+        }
+        
         print_r(0);
       }
       else{print_r(1);}
