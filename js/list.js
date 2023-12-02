@@ -16,7 +16,7 @@ function highlightNewEntry(){
   if(match!=null){  
     var newID = match[1];
     var checkBox = $(`[data-id='${newID}']`);
-    var newRow = checkBox.parent().parent();
+    var newRow = checkBox.parent().parent().parent();
     newRow.removeClass($(checkBox).data("color"));
     newRow.addClass("alert-primary");
     setTimeout(function () {
@@ -111,28 +111,28 @@ function checkItem() {
     },
     success: function () {
       var color = $(dataIdSelector).data("color");
-      $(dataIdSelector).parent().parent().removeClass("bg-danger");
-      $(dataIdSelector).parent().parent().find(".dropdown-menu-button").removeClass("btn-danger");
+      $(dataIdSelector).parent().parent().parent().removeClass("bg-danger");
+      $(dataIdSelector).parent().parent().parent().find(".dropdown-menu-button").removeClass("btn-danger");
 
       if($(dataIdSelector).prop("checked")){
-        $(dataIdSelector).parent().parent().removeClass(color);
-        $(dataIdSelector).parent().parent().addClass("bg-success");
+        $(dataIdSelector).parent().parent().parent().removeClass(color);
+        $(dataIdSelector).parent().parent().parent().addClass("bg-success");
       }
       else{
-        $(dataIdSelector).parent().parent().removeClass("bg-success");
-        $(dataIdSelector).parent().parent().addClass(color);
+        $(dataIdSelector).parent().parent().parent().removeClass("bg-success");
+        $(dataIdSelector).parent().parent().parent().addClass(color);
       }
     },
     error: function () {
-      $(dataIdSelector).parent().parent().addClass("bg-danger");
-      $(dataIdSelector).parent().parent().data("toggle", "popover");
-      $(dataIdSelector).parent().parent().data("container", "body");
-      $(dataIdSelector).parent().parent().data("placement", "top");
-      $(dataIdSelector).parent().parent().data("html", true);
-      $(dataIdSelector).parent().parent().data("trigger", "focus");
-      $(dataIdSelector).parent().parent().data("content", "Dieses Element konnte nicht gespeichert werden.<br />Bitte die Seite Aktualisieren");
-      $(dataIdSelector).parent().parent().attr("title", "Fehler!");
-      $(dataIdSelector).parent().parent().popover('show');
+      $(dataIdSelector).parent().parent().parent().addClass("bg-danger");
+      $(dataIdSelector).parent().parent().parent().data("toggle", "popover");
+      $(dataIdSelector).parent().parent().parent().data("container", "body");
+      $(dataIdSelector).parent().parent().parent().data("placement", "top");
+      $(dataIdSelector).parent().parent().parent().data("html", true);
+      $(dataIdSelector).parent().parent().parent().data("trigger", "focus");
+      $(dataIdSelector).parent().parent().parent().data("content", "Dieses Element konnte nicht gespeichert werden.<br />Bitte die Seite Aktualisieren");
+      $(dataIdSelector).parent().parent().parent().attr("title", "Fehler!");
+      $(dataIdSelector).parent().parent().parent().popover('show');
     }
   });
 }
