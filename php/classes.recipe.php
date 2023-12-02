@@ -1,6 +1,7 @@
 <?php
   class unit {
     public $ID, $Name, $Standard;
+    function __construct(){}
   }
   class unitList {
     public $units = array();
@@ -12,7 +13,7 @@
       $unit->Standard = $Standard;
       array_push($this->units, $unit);
     }
-    function unitList(){
+    function __construct(){
       include $_SESSION["docroot"].'/php/connect.php';
       $result = $mysqli->query("SELECT * FROM `Einheit`;");
       while($item = $result->fetch_assoc()){
@@ -33,7 +34,7 @@
 
   class ingredient {
     public $ID, $Menge, $Einheit, $Name;
-    function ingredient($ID, $Menge, $Einheit, $Name){
+    function __construct($ID, $Menge, $Einheit, $Name){
       $this->ID = $ID;
       $this->Menge = $Menge;
       $this->Einheit = $Einheit;
@@ -44,7 +45,7 @@
   class recipe {
     public $ID, $Name, $Dauer, $Beschreibung;
     public $Zutaten = array();
-    function recipe($ID, $Name, $Dauer, $Beschreibung){
+    function __construct($ID, $Name, $Dauer, $Beschreibung){
       $this->ID = $ID;
       $this->Name = $Name;
       $this->Dauer = $Dauer;
