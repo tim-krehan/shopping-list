@@ -1,7 +1,7 @@
 <?php
   class item {
     public $ID, $Anzahl, $Einheit, $Name, $Erledigt;
-    function item($ID, $Anzahl, $Einheit, $Name, $Erledigt){
+    function __construct($ID, $Anzahl, $Einheit, $Name, $Erledigt){
       $this->ID = $ID;
       $this->Anzahl = $Anzahl;
       $this->Einheit = $Einheit;
@@ -16,7 +16,7 @@
       array_push($this->list, $current);
     }
 
-    function shopping(){
+    function __construct(){
       include $_SESSION["docroot"].'/config/config.php';
       include $_SESSION["docroot"].'/php/connect.php';
       $result = $mysqli->query("SELECT * FROM `ViewEinkauf` ORDER BY `ViewEinkauf`.`Name` ASC;");
@@ -132,7 +132,7 @@
 
   class unit {
     public $ID, $Name, $Standard;
-    function unit($ID, $Name, $Standard){
+    function __construct($ID, $Name, $Standard){
        $this->ID = $ID;
        $this->Name = $Name;
        $this->Standard = $Standard;
@@ -145,7 +145,7 @@
       array_push($this->list, $current);
     }
 
-    function units(){
+    function __construct(){
       include $_SESSION["docroot"].'/config/config.php';
       include $_SESSION["docroot"].'/php/connect.php';
       $result = $mysqli->query("SELECT * FROM `Einheit`;");
