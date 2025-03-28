@@ -27,7 +27,7 @@ jobs:
 
       - name: Read VERSION file
         id: read_version
-        run: echo "v$(cat version.json |jq '.version' -r)" >> $GITHUB_ENV
+        run: echo "VERSION=$(cat version.json |jq '.version' -r)" >> $GITHUB_ENV
 
       - name: Log into registry ${{ env.REGISTRY }}
         uses: docker/login-action@v3
@@ -41,6 +41,6 @@ jobs:
           docker build . \
             --build-arg APP_VERSION=${{ env.VERSION }} \
             --tag ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest \
-            --tag ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.VERSION }}
-          docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.VERSION }}
+            --tag ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:v${{ env.VERSION }}
           docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+          docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:v${{ env.VERSION }}

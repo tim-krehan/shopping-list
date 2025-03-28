@@ -38,7 +38,7 @@ shoppingList:
   shoppingList:
     image:
       repository: ghcr.io/tim-krehan/shopping-list
-      tag: latest
+      tag: v0.2.6
     resources:
       limits:
         cpu: 500m
