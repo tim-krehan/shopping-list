@@ -14,7 +14,7 @@ mysql:
     resources:
       limits:
         cpu: 500m
-        memory: 256Mi
+        memory: 1024Mi
       requests:
         cpu: 250m
         memory: 128Mi
@@ -25,10 +25,10 @@ mysql:
   replicas: 1
   type: ClusterIP
 mysqlSecret:
-  mysqlDatabase: ""
-  mysqlPassword: ""
-  mysqlRootPassword: ""
-  mysqlUser: ""
+  mysqlDatabase: "shopping-list"
+  mysqlPassword: "P4$$w0rd"
+  mysqlRootPassword: "R00tP4$$w0rd"
+  mysqlUser: "shopper"
 shoppingList:
   ports:
   - port: 80

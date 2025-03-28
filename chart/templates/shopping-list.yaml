@@ -20,7 +20,7 @@ spec:
       containers:
       - env:
         - name: DB_HOST
-          value: {{ quote include "chart.fullname" . }}-mysql
+          value: {{ include "chart.fullname" . }}-mysql
         - name: DB_DATABASE
           valueFrom:
             secretKeyRef:
