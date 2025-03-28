@@ -1,6 +1,6 @@
 kubernetesClusterDomain: cluster.local
 ingress:
-  host: shopping-list.local
+  host: shopping-list.example.com
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 mysql:
@@ -14,7 +14,7 @@ mysql:
     resources:
       limits:
         cpu: 500m
-        memory: 1024Mi
+        memory: 1Gi
       requests:
         cpu: 250m
         memory: 128Mi
@@ -29,6 +29,9 @@ mysqlSecret:
   mysqlPassword: "P4$$w0rd"
   mysqlRootPassword: "R00tP4$$w0rd"
   mysqlUser: "shopper"
+pvc:
+  mysqlPvc:
+    storageRequest: 1Gi
 shoppingList:
   ports:
   - port: 80
@@ -38,7 +41,7 @@ shoppingList:
   shoppingList:
     image:
       repository: ghcr.io/tim-krehan/shopping-list
-      tag: v0.2.7
+      tag: v0.2.8
     resources:
       limits:
         cpu: 500m
