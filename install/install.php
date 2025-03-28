@@ -5,6 +5,10 @@
      $_SESSION["docroot"] = str_replace("/install", "", __DIR__);
   }
 
+  if (getenv('DB_HOST') && getenv('DB_DATABASE') && getenv('DB_USERNAME') && getenv('DB_PASSWORD')) {
+    header("Location: /install/install_action.php");
+  }
+
   header("Cache-Control: no-cache, no-store, must-revalidate"); // HTTP 1.1.
   header("Pragma: no-cache"); // HTTP 1.0.
   header("Expires: 0"); // Proxies.

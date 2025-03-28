@@ -1,0 +1,48 @@
+kubernetesClusterDomain: cluster.local
+ingress:
+  host: shopping-list.local
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+mysql:
+  mysql:
+    env:
+      lang: C.UTF-8
+      tz: Europe/Berlin
+    image:
+      repository: bitnami/mysql
+      tag: latest
+    resources:
+      limits:
+        cpu: 500m
+        memory: 256Mi
+      requests:
+        cpu: 250m
+        memory: 128Mi
+  ports:
+  - port: 3306
+    protocol: TCP
+    targetPort: 3306
+  replicas: 1
+  type: ClusterIP
+mysqlSecret:
+  mysqlDatabase: ""
+  mysqlPassword: ""
+  mysqlRootPassword: ""
+  mysqlUser: ""
+shoppingList:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  replicas: 1
+  shoppingList:
+    image:
+      repository: ghcr.io/tim-krehan/shopping-list
+      tag: latest
+    resources:
+      limits:
+        cpu: 500m
+        memory: 256Mi
+      requests:
+        cpu: 250m
+        memory: 128Mi

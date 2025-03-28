@@ -4,17 +4,22 @@ session_start();
 header("Cache-Control: no-cache, no-store, must-revalidate"); // HTTP 1.1.
 header("Pragma: no-cache"); // HTTP 1.0.
 header("Expires: 0"); // Proxies.
-if (!(is_writable($_SESSION["docroot"].'/config/config.php')))
-{
-  if(file_exists($_SESSION["docroot"].'/config/config.php'))
+
+$config_via_env = getenv('DB_HOST') && getenv('DB_DATABASE') && getenv('DB_USERNAME') && getenv('DB_PASSWORD');
+
+if ($config_via_env == false) {
+  if (!(is_writable($_SESSION["docroot"].'/config/config.php')))
   {
-    header("Location: /error/ConfigReadOnly");
-    exit;
-  }
-  elseif (!(is_writable($_SESSION["docroot"].'/config')))
-  {
-    header("Location: /error/ConfigFolderReadOnly");
-    exit;
+    if(file_exists($_SESSION["docroot"].'/config/config.php'))
+    {
+      header("Location: /error/ConfigReadOnly");
+      exit;
+    }
+    elseif (!(is_writable($_SESSION["docroot"].'/config')))
+    {
+      header("Location: /error/ConfigFolderReadOnly");
+      exit;
+    }
   }
 }
 
@@ -26,13 +31,21 @@ if($CONFIG['installed']=='true'){
 
 
 
-
-$connection = new mysqli(
-  $host = $_POST['dbhost'],
-  $username = $_POST['username'],
-  $passwd = $_POST['passwd'],
-  $database = $_POST['database']
-);
+if ($config_via_env == false) {
+  $connection = new mysqli(
+    $host = $_POST['dbhost'],
+    $username = $_POST['username'],
+    $passwd = $_POST['passwd'],
+    $database = $_POST['database']
+  );
+} else {
+  $connection = new mysqli(
+    $host = $CONFIG['host'],
+    $username = $CONFIG['username'],
+    $passwd = $CONFIG['passwd'],
+    $database = $CONFIG['database']
+  );
+}
 
 if (!is_null($connection->connect_error))
 {
@@ -40,21 +53,17 @@ if (!is_null($connection->connect_error))
     exit;
 }
 
-$CONFIG["installed"] = true;
-$CONFIG["host"] = $_POST['dbhost'];
-$CONFIG["database"] = $_POST['database'];
-$CONFIG["username"] = $_POST['username'];
-$CONFIG["passwd"] = $_POST['passwd'];
+if ($config_via_env == false) {
+  $CONFIG["installed"] = true;
+  $CONFIG["host"] = $_POST['dbhost'];
+  $CONFIG["database"] = $_POST['database'];
+  $CONFIG["username"] = $_POST['username'];
+  $CONFIG["passwd"] = $_POST['passwd'];
 
-file_put_contents($_SESSION["docroot"].'/config/config.php', '<?php '."\r\n".'$CONFIG = '.var_export($CONFIG, true).";\n\r?>");
+  file_put_contents($_SESSION["docroot"].'/config/config.php', '<?php '."\r\n".'$CONFIG = '.var_export($CONFIG, true).";\n\r?>");
+}
 
 $SQLStatements = Array ();
-array_push($SQLStatements, "
-CREATE TABLE `Einheit` (
- `ID` int(11) NOT NULL,
- `Name` varchar(255) NOT NULL,
- `Standard` tinyint(1) NOT NULL
-) ENGINE = InnoDB CHARSET=utf8mb4 COLLATE utf8mb4_unicode_ci;");
 
 array_push($SQLStatements, "
 CREATE TABLE `Einheit` (
@@ -209,5 +218,9 @@ foreach($SQLStatements as $statement){
   $result = $connection->query($statement);
 }
 $connection->close();
+
+// create file NEW_USERS_ALLOWED in config directory
+file_put_contents($_SESSION["docroot"].'/config/NEW_USERS_ALLOWED', '');
+
 header ("Location: install_adduser.php");
 ?>

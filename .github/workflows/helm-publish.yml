@@ -1,0 +1,34 @@
+name: Publish Helm Chart
+
+on:
+  push:
+    tags: ['v*.*.*']
+
+env:
+  HELM_EXPERIMENTAL_OCI: 1
+  REGISTRY: ghcr.io
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    permissions:
+      packages: write
+      contents: read
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Helm
+        uses: azure/setup-helm@v4.2.0
+
+      - name: Log in to Helm registry
+        run: helm registry login -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }} ${{ env.REGISTRY }}
+
+      - name: Upload Helm chart
+        run: |
+          rm -rf .package
+          mkdir -p .package
+          helm package chart -d .package
+          helm push .package/*.tgz oci://${{ env.REGISTRY }}/${{ github.repository }}

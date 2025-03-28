@@ -1,4 +1,5 @@
 <?php
+error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
 session_start();
 if (in_array("site", array_keys($_GET))) {
   $site = $_GET["site"];
