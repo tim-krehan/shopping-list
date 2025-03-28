@@ -26,7 +26,7 @@
 
     <div class="form-group d-flex flex-row justify-content-end">
       <a id="newuser" class="btn btn-primary text-light">Neuer Benutzer</a>
-      <a href="/" id="done" class="btn btn-success text-light ml-1 disabled">Fertigstellen</a>
+      <a id="done" class="btn btn-success text-light ml-1 disabled">Fertigstellen</a>
     </div>
 
   </div>

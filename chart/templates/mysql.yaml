@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "chart.fullname" . }}-mysql
+  labels:
+    app: mysql
+  {{- include "chart.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.mysql.replicas }}
+  selector:
+    matchLabels:
+      app: mysql
+    {{- include "chart.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        app: mysql
+      {{- include "chart.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+      - env:
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: MYSQL_ROOT_PASSWORD
+              name: {{ include "chart.fullname" . }}-mysql-secret
+        - name: MYSQL_USER
+          valueFrom:
+            secretKeyRef:
+              key: MYSQL_USER
+              name: {{ include "chart.fullname" . }}-mysql-secret
+        - name: MYSQL_DATABASE
+          valueFrom:
+            secretKeyRef:
+              key: MYSQL_DATABASE
+              name: {{ include "chart.fullname" . }}-mysql-secret
+        - name: MYSQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: MYSQL_PASSWORD
+              name: {{ include "chart.fullname" . }}-mysql-secret
+        - name: TZ
+          value: {{ quote .Values.mysql.mysql.env.tz }}
+        - name: LANG
+          value: {{ quote .Values.mysql.mysql.env.lang }}
+        - name: KUBERNETES_CLUSTER_DOMAIN
+          value: {{ quote .Values.kubernetesClusterDomain }}
+        image: {{ .Values.mysql.mysql.image.repository }}:{{ .Values.mysql.mysql.image.tag
+          | default .Chart.AppVersion }}
+        name: mysql
+        ports:
+        - containerPort: 3306
+        resources: {{- toYaml .Values.mysql.mysql.resources | nindent 10 }}

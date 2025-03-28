@@ -13,6 +13,10 @@ $(document).ready(function () {
                     $("#password").val("");
                     $("#done").removeClass("disabled");
                 }
+                else if (data == "1"){
+                    // redirect to site
+                    window.location.href = "/error/UserCreationNotAllowed";
+                }
                 else{
                     userPopover("Fehler!", "Bei der Benutzeranlage ist ein Fehler aufgetreten! Bitte versuchen Sie es erneut.<br>Sollte dieser fehler häufiger auftreten, wenden Sie sich bitte an den Serveradministrator.")
                 }
@@ -21,6 +25,19 @@ $(document).ready(function () {
                 userPopover("Fehler!", "Es scheint, als wäre keine Verbindung mit der ShoppingList möglich.<br>Bitte Prüfen Sie ihre Netzwerkverbindung!");
             }
         });
+    });
+    $("#done").click(function () {
+        $.post({
+            url: "/api/user/done",
+            success: function (data) {
+                if (data == "0"){
+                    window.location.href = "/";
+                }
+                else{
+                    userPopover("Fehler!", "Bei der Benutzeranlage ist ein Fehler aufgetreten! Bitte versuchen Sie es erneut.<br>Sollte dieser fehler häufiger auftreten, wenden Sie sich bitte an den Serveradministrator.")
+                }
+            },
+        })
     });
     $("#adduser-button-done").click(function () {
         window.location.href = "/";
