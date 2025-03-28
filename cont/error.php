@@ -36,6 +36,10 @@
       echo "</ul>";
       echo "<p class='card-text'>Bitte informieren Sie den Administrator des Webservers.</p>";
       break;
+    case "UserCreationNotAllowed":
+      echo "<p class='card-text'>Das Erstellen von Benutzern ist nicht erlaubt.</p>";
+      echo "<p class='card-text'>Für die Useranlage muss eine Datei NEW_USERS_ALLOWED im config Verzeichnis existieren.</p>";
+      break;
     default:
       echo "<p class='card-text'>Unbekannter Fehler</p>";
       break;

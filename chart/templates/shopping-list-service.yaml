@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "chart.fullname" . }}-shopping-list
+  labels:
+  {{- include "chart.labels" . | nindent 4 }}
+spec:
+  type: ClusterIP
+  selector:
+    app: shopping-list
+    {{- include "chart.selectorLabels" . | nindent 4 }}
+  ports:
+  {{- .Values.shoppingList.ports | toYaml | nindent 2 }}

@@ -22,8 +22,22 @@
       $user->change_username($_POST["username"]);
       break;
 
+    case 'done':
+      // remove the NEW_USERS_ALLOWED file to prevent further user creation
+      if (file_exists($_SESSION["docroot"].'/config/NEW_USERS_ALLOWED')) {
+        unlink($_SESSION["docroot"].'/config/NEW_USERS_ALLOWED');
+      }
+      print_r(0);
+      break;
+
     case 'new':
-      $user->new($_POST["username"], $_POST["passwd"]);
+      // to create new users, ensure the file "NEW_USERS_ALLOWED" is present within the config directory
+      if (file_exists($_SESSION["docroot"].'/config/NEW_USERS_ALLOWED')) {
+        $user->new($_POST["username"], $_POST["passwd"]);
+      }
+      else {
+        echo 1;
+      }
       break;
 
     default:
