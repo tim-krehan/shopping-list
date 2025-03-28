@@ -1,20 +1,27 @@
 kubernetesClusterDomain: cluster.local
 ingress:
-  host: shopping-list.local
+  ingressClassName: nginx
+  host: shopping-list.example.com
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
+    # external-dns.alpha.kubernetes.io/hostname: shopping-list.example.com
+    # cert-manager.io/cluster-issuer: intermediate-ca-issuer
+    # cert-manager.io/duration: 2160h
+    # cert-manager.io/renew-before: 360h
+    # nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    # nginx.ingress.kubernetes.io/ssl-passthrough: "true"
 mysql:
   mysql:
     env:
       lang: C.UTF-8
       tz: Europe/Berlin
     image:
-      repository: bitnami/mysql
+      repository: mysql
       tag: latest
     resources:
       limits:
         cpu: 500m
-        memory: 256Mi
+        memory: 1Gi
       requests:
         cpu: 250m
         memory: 128Mi
@@ -25,10 +32,13 @@ mysql:
   replicas: 1
   type: ClusterIP
 mysqlSecret:
-  mysqlDatabase: ""
-  mysqlPassword: ""
-  mysqlRootPassword: ""
-  mysqlUser: ""
+  mysqlDatabase: "shopping-list"
+  mysqlPassword: "P4$$w0rd"
+  mysqlRootPassword: "R00tP4$$w0rd"
+  mysqlUser: "shopper"
+pvc:
+  mysqlPvc:
+    storageRequest: 1Gi
 shoppingList:
   ports:
   - port: 80
@@ -38,7 +48,7 @@ shoppingList:
   shoppingList:
     image:
       repository: ghcr.io/tim-krehan/shopping-list
-      tag: v0.2.6
+      tag: v0.2.9
     resources:
       limits:
         cpu: 500m

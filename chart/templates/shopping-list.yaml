@@ -1,47 +1,43 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Service
 metadata:
   name: {{ include "chart.fullname" . }}-shopping-list
   labels:
-    app: shopping-list
   {{- include "chart.labels" . | nindent 4 }}
 spec:
-  replicas: {{ .Values.shoppingList.replicas }}
+  type: ClusterIP
   selector:
-    matchLabels:
-      app: shopping-list
-    {{- include "chart.selectorLabels" . | nindent 6 }}
-  template:
-    metadata:
-      labels:
-        app: shopping-list
-      {{- include "chart.selectorLabels" . | nindent 8 }}
-    spec:
-      containers:
-      - env:
-        - name: DB_HOST
-          value: {{ quote include "chart.fullname" . }}-mysql
-        - name: DB_DATABASE
-          valueFrom:
-            secretKeyRef:
-              key: MYSQL_DATABASE
-              name: {{ include "chart.fullname" . }}-mysql-secret
-        - name: DB_USERNAME
-          valueFrom:
-            secretKeyRef:
-              key: MYSQL_USER
-              name: {{ include "chart.fullname" . }}-mysql-secret
-        - name: DB_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              key: MYSQL_PASSWORD
-              name: {{ include "chart.fullname" . }}-mysql-secret
-        - name: KUBERNETES_CLUSTER_DOMAIN
-          value: {{ quote .Values.kubernetesClusterDomain }}
-        image: {{ .Values.shoppingList.shoppingList.image.repository }}:{{ .Values.shoppingList.shoppingList.image.tag
-          | default .Chart.AppVersion }}
-        name: shopping-list
-        ports:
-        - containerPort: 80
-        resources: {{- toYaml .Values.shoppingList.shoppingList.resources | nindent 10
-          }}
+    app: shopping-list
+    app.kubernetes.io/instance: shopping-list
+    app.kubernetes.io/name: chart
+    {{- include "chart.selectorLabels" . | nindent 4 }}
+  ports:
+  {{- .Values.shoppingList.ports | toYaml | nindent 2 }}
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ include "chart.fullname" . }}-shopping-list
+  labels:
+  {{- include "chart.labels" . | nindent 4 }}
+  {{- with .Values.ingress.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  ingressClassName: {{ .Values.ingress.ingressClassName }}
+  rules:
+  - host: {{ .Values.ingress.host }}
+    http:
+      paths:
+      - backend:
+          service:
+            name: '{{ include "chart.fullname" . }}-shopping-list'
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
+  tls:
+  - hosts:
+    - {{ .Values.ingress.host }}
+    secretName: {{ include "chart.fullname" . }}-tls
