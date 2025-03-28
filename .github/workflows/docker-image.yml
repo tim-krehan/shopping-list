@@ -27,7 +27,7 @@ jobs:
 
       - name: Read VERSION file
         id: read_version
-        run: cat version.json |jq ".version" -r >> $GITHUB_ENV
+        run: echo "v$(cat version.json |jq '.version' -r)" >> $GITHUB_ENV
 
       - name: Log into registry ${{ env.REGISTRY }}
         uses: docker/login-action@v3
