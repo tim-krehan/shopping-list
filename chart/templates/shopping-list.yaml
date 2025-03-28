@@ -25,6 +25,7 @@ metadata:
     {{- toYaml . | nindent 4 }}
   {{- end }}
 spec:
+  ingressClassName: {{ .Values.ingress.ingressClassName }}
   rules:
   - host: {{ .Values.ingress.host }}
     http:
@@ -36,3 +37,7 @@ spec:
               number: 80
         path: /
         pathType: Prefix
+  tls:
+  - hosts:
+    - {{ .Values.ingress.host }}
+    secretName: {{ include "chart.fullname" . }}-tls

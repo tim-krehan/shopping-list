@@ -1,15 +1,22 @@
 kubernetesClusterDomain: cluster.local
 ingress:
+  ingressClassName: nginx
   host: shopping-list.example.com
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
+    # external-dns.alpha.kubernetes.io/hostname: shopping-list.example.com
+    # cert-manager.io/cluster-issuer: intermediate-ca-issuer
+    # cert-manager.io/duration: 2160h
+    # cert-manager.io/renew-before: 360h
+    # nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    # nginx.ingress.kubernetes.io/ssl-passthrough: "true"
 mysql:
   mysql:
     env:
       lang: C.UTF-8
       tz: Europe/Berlin
     image:
-      repository: bitnami/mysql
+      repository: mysql
       tag: latest
     resources:
       limits:
