@@ -8,9 +8,7 @@ spec:
   type: ClusterIP
   selector:
     app: shopping-list
-    app.kubernetes.io/instance: shopping-list
-    app.kubernetes.io/name: chart
-    {{- include "chart.selectorLabels" . | nindent 4 }}
+            {{- include "chart.selectorLabels" . | nindent 4 }}
   ports:
   {{- .Values.shoppingList.ports | toYaml | nindent 2 }}
 ---

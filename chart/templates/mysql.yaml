@@ -8,8 +8,6 @@ spec:
   type: {{ .Values.mysql.type }}
   selector:
     app: mysql
-    app.kubernetes.io/instance: shopping-list
-    app.kubernetes.io/name: chart
-    {{- include "chart.selectorLabels" . | nindent 4 }}
+            {{- include "chart.selectorLabels" . | nindent 4 }}
   ports:
   {{- .Values.mysql.ports | toYaml | nindent 2 }}
