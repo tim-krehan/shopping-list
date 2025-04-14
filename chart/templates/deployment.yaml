@@ -10,16 +10,12 @@ spec:
   selector:
     matchLabels:
       app: mysql
-      app.kubernetes.io/instance: shopping-list
-      app.kubernetes.io/name: chart
-    {{- include "chart.selectorLabels" . | nindent 6 }}
+                {{- include "chart.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       labels:
         app: mysql
-        app.kubernetes.io/instance: shopping-list
-        app.kubernetes.io/name: chart
-      {{- include "chart.selectorLabels" . | nindent 8 }}
+                      {{- include "chart.selectorLabels" . | nindent 8 }}
     spec:
       containers:
       - env:
@@ -27,22 +23,38 @@ spec:
           valueFrom:
             secretKeyRef:
               key: MYSQL_ROOT_PASSWORD
+              {{ if not .Values.mysqlSecret.existingSecret }}
               name: {{ include "chart.fullname" . }}-mysql-secret
+              {{ else }}
+              name: {{ .Values.mysqlSecret.existingSecret }}
+              {{ end }}
         - name: MYSQL_USER
           valueFrom:
             secretKeyRef:
               key: MYSQL_USER
+              {{ if not .Values.mysqlSecret.existingSecret }}
               name: {{ include "chart.fullname" . }}-mysql-secret
+              {{ else }}
+              name: {{ .Values.mysqlSecret.existingSecret }}
+              {{ end }}
         - name: MYSQL_DATABASE
           valueFrom:
             secretKeyRef:
               key: MYSQL_DATABASE
+              {{ if not .Values.mysqlSecret.existingSecret }}
               name: {{ include "chart.fullname" . }}-mysql-secret
+              {{ else }}
+              name: {{ .Values.mysqlSecret.existingSecret }}
+              {{ end }}
         - name: MYSQL_PASSWORD
           valueFrom:
             secretKeyRef:
               key: MYSQL_PASSWORD
+              {{ if not .Values.mysqlSecret.existingSecret }}
               name: {{ include "chart.fullname" . }}-mysql-secret
+              {{ else }}
+              name: {{ .Values.mysqlSecret.existingSecret }}
+              {{ end }}
         - name: TZ
           value: {{ quote .Values.mysql.mysql.env.tz }}
         - name: LANG
@@ -75,16 +87,12 @@ spec:
   selector:
     matchLabels:
       app: shopping-list
-      app.kubernetes.io/instance: shopping-list
-      app.kubernetes.io/name: chart
-    {{- include "chart.selectorLabels" . | nindent 6 }}
+                {{- include "chart.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       labels:
         app: shopping-list
-        app.kubernetes.io/instance: shopping-list
-        app.kubernetes.io/name: chart
-      {{- include "chart.selectorLabels" . | nindent 8 }}
+                      {{- include "chart.selectorLabels" . | nindent 8 }}
     spec:
       containers:
       - env:
@@ -94,17 +102,29 @@ spec:
           valueFrom:
             secretKeyRef:
               key: MYSQL_DATABASE
+              {{ if not .Values.mysqlSecret.existingSecret }}
               name: {{ include "chart.fullname" . }}-mysql-secret
+              {{ else }}
+              name: {{ .Values.mysqlSecret.existingSecret }}
+              {{ end }}
         - name: DB_USERNAME
           valueFrom:
             secretKeyRef:
               key: MYSQL_USER
+              {{ if not .Values.mysqlSecret.existingSecret }}
               name: {{ include "chart.fullname" . }}-mysql-secret
+              {{ else }}
+              name: {{ .Values.mysqlSecret.existingSecret }}
+              {{ end }}
         - name: DB_PASSWORD
           valueFrom:
             secretKeyRef:
               key: MYSQL_PASSWORD
+              {{ if not .Values.mysqlSecret.existingSecret }}
               name: {{ include "chart.fullname" . }}-mysql-secret
+              {{ else }}
+              name: {{ .Values.mysqlSecret.existingSecret }}
+              {{ end }}
         - name: KUBERNETES_CLUSTER_DOMAIN
           value: {{ quote .Values.kubernetesClusterDomain }}
         image: {{ .Values.shoppingList.shoppingList.image.repository }}:{{ .Values.shoppingList.shoppingList.image.tag
