@@ -12,8 +12,8 @@ We strongly recomment to use a ` utf8mb4 ` database collation, as it has the bes
 * mod-rewrite
 
 ## Packages
-* php7
-* php7-mysql
+* php8
+* php8-mysql
 
 # Sample Apache Config
 ```apache

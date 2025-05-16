@@ -6,10 +6,10 @@ metadata:
   name: sl-shopping-list-mysql-pvc
   labels:
     app: mysql
-    helm.sh/chart: shopping-list-0.2.10
+    helm.sh/chart: shopping-list-0.2.11
     app.kubernetes.io/name: shopping-list
     app.kubernetes.io/instance: sl
-    app.kubernetes.io/version: "0.2.10"
+    app.kubernetes.io/version: "0.2.11"
     app.kubernetes.io/managed-by: Helm
 spec:
   accessModes:
@@ -24,10 +24,10 @@ kind: Service
 metadata:
   name: sl-shopping-list-mysql
   labels:
-    helm.sh/chart: shopping-list-0.2.10
+    helm.sh/chart: shopping-list-0.2.11
     app.kubernetes.io/name: shopping-list
     app.kubernetes.io/instance: sl
-    app.kubernetes.io/version: "0.2.10"
+    app.kubernetes.io/version: "0.2.11"
     app.kubernetes.io/managed-by: Helm
 spec:
   type: ClusterIP
@@ -46,10 +46,10 @@ kind: Service
 metadata:
   name: sl-shopping-list-shopping-list
   labels:
-    helm.sh/chart: shopping-list-0.2.10
+    helm.sh/chart: shopping-list-0.2.11
     app.kubernetes.io/name: shopping-list
     app.kubernetes.io/instance: sl
-    app.kubernetes.io/version: "0.2.10"
+    app.kubernetes.io/version: "0.2.11"
     app.kubernetes.io/managed-by: Helm
 spec:
   type: ClusterIP
@@ -69,10 +69,10 @@ metadata:
   name: sl-shopping-list-mysql
   labels:
     app: mysql
-    helm.sh/chart: shopping-list-0.2.10
+    helm.sh/chart: shopping-list-0.2.11
     app.kubernetes.io/name: shopping-list
     app.kubernetes.io/instance: sl
-    app.kubernetes.io/version: "0.2.10"
+    app.kubernetes.io/version: "0.2.11"
     app.kubernetes.io/managed-by: Helm
 spec:
   replicas: 1
@@ -150,10 +150,10 @@ metadata:
   name: sl-shopping-list-shopping-list
   labels:
     app: shopping-list
-    helm.sh/chart: shopping-list-0.2.10
+    helm.sh/chart: shopping-list-0.2.11
     app.kubernetes.io/name: shopping-list
     app.kubernetes.io/instance: sl
-    app.kubernetes.io/version: "0.2.10"
+    app.kubernetes.io/version: "0.2.11"
     app.kubernetes.io/managed-by: Helm
 spec:
   replicas: 1
@@ -196,7 +196,7 @@ spec:
               
         - name: KUBERNETES_CLUSTER_DOMAIN
           value: "cluster.local"
-        image: ghcr.io/tim-krehan/shopping-list:v0.2.10
+        image: ghcr.io/tim-krehan/shopping-list:v0.2.11
         name: shopping-list
         ports:
         - containerPort: 80
@@ -214,10 +214,10 @@ kind: Ingress
 metadata:
   name: sl-shopping-list-shopping-list
   labels:
-    helm.sh/chart: shopping-list-0.2.10
+    helm.sh/chart: shopping-list-0.2.11
     app.kubernetes.io/name: shopping-list
     app.kubernetes.io/instance: sl
-    app.kubernetes.io/version: "0.2.10"
+    app.kubernetes.io/version: "0.2.11"
     app.kubernetes.io/managed-by: Helm
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
