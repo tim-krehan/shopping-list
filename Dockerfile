@@ -1,5 +1,5 @@
 # Use the official PHP image as the base image
-ARG PHP_VERSION=8.3
+ARG PHP_VERSION=8.4
 FROM php:${PHP_VERSION}-apache
 
 # Define application version as a build argument
