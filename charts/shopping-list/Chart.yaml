@@ -1,6 +1,6 @@
 apiVersion: v2
 name: shopping-list
-description: A Helm chart for deploying lightweight shopping list
+description: A lightweight shopping list application
 # A chart can be either an 'application' or a 'library' chart.
 #
 # Application charts are a collection of templates that can be packaged into versioned archives

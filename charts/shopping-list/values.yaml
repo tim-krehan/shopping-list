@@ -33,7 +33,7 @@ mysql:
   type: ClusterIP
 mysqlSecret:
   # the secret must contain the keys MYSQL_DATABASE, MYSQL_PASSWORD, MYSQL_ROOT_PASSWORD, and MYSQL_USER
-  existingSecret: "check123"
+  existingSecret: ""
   # these values are used to create the secret, if existingSecret is not set
   mysqlDatabase: "shopping-list"
   mysqlPassword: "P4$$w0rd"
