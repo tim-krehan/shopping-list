@@ -3,7 +3,7 @@
     "tasks": [
         {
             "label": "Create Deployment File",
-            "command": "helm template sl ./chart --dry-run=client > deployment.yaml",
+            "command": "helm template shopping-list ./charts/shopping-list --dry-run=client > deployment.yaml",
             "type": "shell",
             "args": [],
             "problemMatcher": [

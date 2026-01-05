@@ -1,5 +1,6 @@
 kubernetesClusterDomain: cluster.local
 ingress:
+  enabled: false
   ingressClassName: nginx
   host: shopping-list.example.com
   annotations:
@@ -10,6 +11,23 @@ ingress:
     # cert-manager.io/renew-before: 360h
     # nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     # nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+route:
+  enabled: false
+  apiVersion: gateway.networking.k8s.io/v1
+  kind: HTTPRoute
+  annotations: {}
+  labels: {}
+  hostnames:
+    - shopping-list.example.com
+  parentRefs:
+    - group: gateway.networking.k8s.io
+      kind: Gateway
+      name: external-gateway
+      namespace: traefik
+      sectionName: websecure
+  https: false
+  filters: []
+
 mysql:
   mysql:
     env:
@@ -43,10 +61,6 @@ pvc:
   mysqlPvc:
     storageRequest: 1Gi
 shoppingList:
-  ports:
-  - port: 80
-    protocol: TCP
-    targetPort: 80
   replicas: 1
   shoppingList:
     image:

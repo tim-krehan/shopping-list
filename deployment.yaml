@@ -1,14 +1,32 @@
 ---
+# Source: shopping-list/templates/mysql-secret.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: shopping-list-mysql-secret
+  labels:
+    helm.sh/chart: shopping-list-0.3.0
+    app.kubernetes.io/name: shopping-list
+    app.kubernetes.io/instance: shopping-list
+    app.kubernetes.io/version: "0.2.11"
+    app.kubernetes.io/managed-by: Helm
+data:
+  MYSQL_DATABASE: "c2hvcHBpbmctbGlzdA=="
+  MYSQL_PASSWORD: "UDQkJHcwcmQ="
+  MYSQL_ROOT_PASSWORD: "UjAwdFA0JCR3MHJk"
+  MYSQL_USER: "c2hvcHBlcg=="
+type: Opaque
+---
 # Source: shopping-list/templates/mysql-pvc.yaml
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: sl-shopping-list-mysql-pvc
+  name: shopping-list-mysql-pvc
   labels:
     app: mysql
-    helm.sh/chart: shopping-list-0.2.11
+    helm.sh/chart: shopping-list-0.3.0
     app.kubernetes.io/name: shopping-list
-    app.kubernetes.io/instance: sl
+    app.kubernetes.io/instance: shopping-list
     app.kubernetes.io/version: "0.2.11"
     app.kubernetes.io/managed-by: Helm
 spec:
@@ -22,11 +40,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: sl-shopping-list-mysql
+  name: shopping-list-mysql
   labels:
-    helm.sh/chart: shopping-list-0.2.11
+    helm.sh/chart: shopping-list-0.3.0
     app.kubernetes.io/name: shopping-list
-    app.kubernetes.io/instance: sl
+    app.kubernetes.io/instance: shopping-list
     app.kubernetes.io/version: "0.2.11"
     app.kubernetes.io/managed-by: Helm
 spec:
@@ -34,21 +52,21 @@ spec:
   selector:
     app: mysql
     app.kubernetes.io/name: shopping-list
-    app.kubernetes.io/instance: sl
+    app.kubernetes.io/instance: shopping-list
   ports:
   - port: 3306
     protocol: TCP
     targetPort: 3306
 ---
-# Source: shopping-list/templates/shopping-list.yaml
+# Source: shopping-list/templates/service.yaml
 apiVersion: v1
 kind: Service
 metadata:
-  name: sl-shopping-list-shopping-list
+  name: shopping-list-shopping-list
   labels:
-    helm.sh/chart: shopping-list-0.2.11
+    helm.sh/chart: shopping-list-0.3.0
     app.kubernetes.io/name: shopping-list
-    app.kubernetes.io/instance: sl
+    app.kubernetes.io/instance: shopping-list
     app.kubernetes.io/version: "0.2.11"
     app.kubernetes.io/managed-by: Helm
 spec:
@@ -56,7 +74,7 @@ spec:
   selector:
     app: shopping-list
     app.kubernetes.io/name: shopping-list
-    app.kubernetes.io/instance: sl
+    app.kubernetes.io/instance: shopping-list
   ports:
   - port: 80
     protocol: TCP
@@ -66,12 +84,12 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sl-shopping-list-mysql
+  name: shopping-list-mysql
   labels:
     app: mysql
-    helm.sh/chart: shopping-list-0.2.11
+    helm.sh/chart: shopping-list-0.3.0
     app.kubernetes.io/name: shopping-list
-    app.kubernetes.io/instance: sl
+    app.kubernetes.io/instance: shopping-list
     app.kubernetes.io/version: "0.2.11"
     app.kubernetes.io/managed-by: Helm
 spec:
@@ -80,13 +98,13 @@ spec:
     matchLabels:
       app: mysql
       app.kubernetes.io/name: shopping-list
-      app.kubernetes.io/instance: sl
+      app.kubernetes.io/instance: shopping-list
   template:
     metadata:
       labels:
         app: mysql
         app.kubernetes.io/name: shopping-list
-        app.kubernetes.io/instance: sl
+        app.kubernetes.io/instance: shopping-list
     spec:
       containers:
       - env:
@@ -94,30 +112,22 @@ spec:
           valueFrom:
             secretKeyRef:
               key: MYSQL_ROOT_PASSWORD
-              
-              name: check123
-              
+              name: shopping-list-mysql-secret
         - name: MYSQL_USER
           valueFrom:
             secretKeyRef:
               key: MYSQL_USER
-              
-              name: check123
-              
+              name: shopping-list-mysql-secret
         - name: MYSQL_DATABASE
           valueFrom:
             secretKeyRef:
               key: MYSQL_DATABASE
-              
-              name: check123
-              
+              name: shopping-list-mysql-secret
         - name: MYSQL_PASSWORD
           valueFrom:
             secretKeyRef:
               key: MYSQL_PASSWORD
-              
-              name: check123
-              
+              name: shopping-list-mysql-secret
         - name: TZ
           value: "Europe/Berlin"
         - name: LANG
@@ -141,18 +151,18 @@ spec:
       volumes:
       - name: mysql-data
         persistentVolumeClaim:
-          claimName: sl-shopping-list-mysql-pvc
+          claimName: shopping-list-mysql-pvc
 ---
 # Source: shopping-list/templates/deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sl-shopping-list-shopping-list
+  name: shopping-list-shopping-list
   labels:
     app: shopping-list
-    helm.sh/chart: shopping-list-0.2.11
+    helm.sh/chart: shopping-list-0.3.0
     app.kubernetes.io/name: shopping-list
-    app.kubernetes.io/instance: sl
+    app.kubernetes.io/instance: shopping-list
     app.kubernetes.io/version: "0.2.11"
     app.kubernetes.io/managed-by: Helm
 spec:
@@ -161,39 +171,33 @@ spec:
     matchLabels:
       app: shopping-list
       app.kubernetes.io/name: shopping-list
-      app.kubernetes.io/instance: sl
+      app.kubernetes.io/instance: shopping-list
   template:
     metadata:
       labels:
         app: shopping-list
         app.kubernetes.io/name: shopping-list
-        app.kubernetes.io/instance: sl
+        app.kubernetes.io/instance: shopping-list
     spec:
       containers:
       - env:
         - name: DB_HOST
-          value: sl-shopping-list-mysql
+          value: shopping-list-mysql
         - name: DB_DATABASE
           valueFrom:
             secretKeyRef:
               key: MYSQL_DATABASE
-              
-              name: check123
-              
+              name: shopping-list-mysql-secret
         - name: DB_USERNAME
           valueFrom:
             secretKeyRef:
               key: MYSQL_USER
-              
-              name: check123
-              
+              name: shopping-list-mysql-secret
         - name: DB_PASSWORD
           valueFrom:
             secretKeyRef:
               key: MYSQL_PASSWORD
-              
-              name: check123
-              
+              name: shopping-list-mysql-secret
         - name: KUBERNETES_CLUSTER_DOMAIN
           value: "cluster.local"
         image: ghcr.io/tim-krehan/shopping-list:v0.2.11
@@ -207,34 +211,3 @@ spec:
           requests:
             cpu: 250m
             memory: 128Mi
----
-# Source: shopping-list/templates/shopping-list.yaml
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: sl-shopping-list-shopping-list
-  labels:
-    helm.sh/chart: shopping-list-0.2.11
-    app.kubernetes.io/name: shopping-list
-    app.kubernetes.io/instance: sl
-    app.kubernetes.io/version: "0.2.11"
-    app.kubernetes.io/managed-by: Helm
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
-spec:
-  ingressClassName: nginx
-  rules:
-  - host: shopping-list.example.com
-    http:
-      paths:
-      - backend:
-          service:
-            name: 'sl-shopping-list-shopping-list'
-            port:
-              number: 80
-        path: /
-        pathType: Prefix
-  tls:
-  - hosts:
-    - shopping-list.example.com
-    secretName: sl-shopping-list-tls
