@@ -3,6 +3,16 @@ entries:
   shopping-list:
   - apiVersion: v2
     appVersion: 0.2.11
+    created: "2026-01-05T11:28:16.035014622Z"
+    description: A lightweight shopping list application
+    digest: f27aeb5eee463a9054642df5183c42cc4639d67e644f1dad1f6339a3765f9137
+    name: shopping-list
+    type: application
+    urls:
+    - shopping-list-0.3.0.tgz
+    version: 0.3.0
+  - apiVersion: v2
+    appVersion: 0.2.11
     created: "2025-07-09T06:48:21.010850288Z"
     description: A lightweight shopping list application
     digest: b3de6b3d1908c8bcb1af3509e96c58d3ae8bc7c60c60a08465b165e6020f2ca4
@@ -71,4 +81,4 @@ entries:
     urls:
     - shopping-list-0.1.0.tgz
     version: 0.1.0
-generated: "2025-07-09T06:48:21.009629704Z"
+generated: "2026-01-05T11:28:16.03505087Z"
